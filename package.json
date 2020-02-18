@@ -24,13 +24,16 @@
     "@react-navigation/native": "^5.0.3",
     "@react-navigation/stack": "^5.0.3",
     "easy-peasy": "^3.3.0",
+    "htmlparser2": "^4.0.0",
     "moment": "^2.24.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-button": "^2.4.0",
     "react-native-config": "^0.12.0",
     "react-native-gesture-handler": "^1.5.6",
+    "react-native-html-parser": "^0.1.0",
     "react-native-reanimated": "^1.7.0",
+    "react-native-render-html": "^4.2.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.0.0-beta.2",
     "react-native-splash-screen": "^3.2.0",
@@ -38,7 +41,8 @@
     "react-native-svg": "^11.0.1",
     "react-native-webview": "^8.1.0",
     "shortid": "^2.2.15",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "website-scraper": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

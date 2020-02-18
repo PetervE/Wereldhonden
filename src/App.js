@@ -1,5 +1,5 @@
 
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -82,6 +82,11 @@ const MainStackScreen = (props) => {
   );
 }
 const App = () => {  
+
+  useEffect(() => {
+    console.disableYellowBox = true;
+  }, []);
+
   return (
     <View style={{ flexGrow: 1, backgroundColor: 'white' }}>
       <StoreProvider store={store}>
