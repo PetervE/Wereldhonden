@@ -3,8 +3,8 @@ import { Platform } from 'react-native';
 
 const store = createStore({
 	// data
-	raw: false,
 	busy: false,
+	dogs: false,
 	// mutations
 	update: action((state, payload) => {
 		state[payload.key] = payload.value;

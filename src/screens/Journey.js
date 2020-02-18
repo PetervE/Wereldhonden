@@ -6,6 +6,7 @@ import Button from 'react-native-button';
 import { isAndroid, DIMENSIONS } from '../styles';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import Loader from '../components/Loader';
+import shortid from 'shortid';
 
 import { DOMParser } from 'react-native-html-parser';
 
@@ -17,46 +18,65 @@ const JourneyScreen = ({ navigation }) => {
   const { update } = useStoreActions(actions => actions);
   const { raw, busy, dogs } = storage;
 
-  const listDogs = async() => {
-    // update({ key: 'busy', value: true })
-    const req = await fetch('https://wereldhonden.nl/hond-adopteren');
-    const html = new DOMParser().parseFromString(req._bodyText, 'text/html');
-    const sections = html.getElementsByAttribute('itemprop', 'blogPost');
+  const fetchData = async() => {
+    try {
+      const req = await fetch('https://wereldhonden.nl/hond-adopteren');
+      const html = new DOMParser().parseFromString(req._bodyText, 'text/html');
+      const sections = html.getElementsByAttribute('itemprop', 'blogPost');
+  
+      let list = [];
+      Array.from(sections).map(s => { // map over sections and extract data
+        const body = s.childNodes[3].childNodes[1].childNodes[1].childNodes[1];
+        const info = body.childNodes[body.childNodes[3].tagName == 'br' ? 5 : 3].childNodes[1];
+        const info2 = body.childNodes[body.childNodes[3].tagName == 'br' ? 7 : 5].childNodes[1];
 
-    let dogs = [];
-    // map over sections and extract data
-    Array.from(sections).map(s => {
-      const body = s.childNodes[3].childNodes[1].childNodes[1].childNodes[1].childNodes[1];
-      // console.log(body);
-      dogs.push({
-        name: s.childNodes[1].data || s.childNodes[1].firstChild.data || s.childNodes[1].firstChild.firstChild.data || '',
-        image: `https://wereldhonden.nl${ body.childNodes[1].childNodes[1].childNodes[1].firstChild.attributes[0].value }`
+        const nameRaw = s.childNodes[1].data || s.childNodes[1].firstChild.data || s.childNodes[1].firstChild.firstChild.data || '';
+        const name = nameRaw.split(' ');
+        const image = body.childNodes[1].childNodes[1].childNodes[1].childNodes[1].firstChild.attributes[0];
+        const gender = info.childNodes[3].childNodes[3].firstChild;
+        const type = info.childNodes[3].childNodes[3].firstChild;
+        const age = info.childNodes[5].childNodes[3].firstChild;
+        const height = info.childNodes[7].childNodes[3].firstChild;
+        const castrated = info.childNodes[9].childNodes[3].firstChild;
+        const origin = info2.childNodes[1].childNodes[3].firstChild;
+        const location = info2.childNodes[3].childNodes[3].firstChild;
+        const fee = info2.childNodes[5].childNodes[3].firstChild;
+
+        list.push({
+          id: shortid.generate(),
+          name: name[0].trim(),
+          status: name[1] ? name[1].trim().substring(1, name[1].length-1) : 'beschikbaar',
+          image: `https://wereldhonden.nl${ image.value }`,
+          gender: gender.data,
+          type: type.data,
+          age: age.data,
+          height: height.data,
+          castrated: castrated.data,
+          origin: origin.data,
+          location: location.data,
+          fee: fee.data
+        });
       });
-    });
-    update({ key: 'dogs', value: dogs });
-    update({ key: 'busy', value: false });
+      return list;
+
+    } catch(error) {
+      throw(error);
+    }
+  }
+
+  const listDogs = async() => {
+    if(!dogs || !dogs.length) {
+      update({ key: 'busy', value: true });
+      const list = await fetchData();
+      update({ key: 'dogs', value: list });
+    }
+    navigation.navigate('Modal');
   }
 
   if(busy) return (
   <View style={{ flexGrow: 1, alignItems: 'stretch', justifyContent: 'center' }}>
     <Loader />
   </View>
-  );
-
-  if(dogs && dogs.length) return (
-    <ScrollView style={{ flexGrow: 1 }}>
-    {
-      dogs.map((d, i) => {
-        return (
-          <View key={`dog-${i}`}>
-            <Image source={{ uri: d.image }} style={{ width: DIMENSIONS.width, height: (DIMENSIONS.width / 4) * 3}} />
-            <Text>{ d.name }</Text>
-          </View>
-        );
-      })
-    }
-    <Button onPress={() => listDogs() }>List dogs</Button>
-    </ScrollView>
   );
 
   return (
