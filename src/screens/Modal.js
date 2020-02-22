@@ -5,6 +5,9 @@ import Button from 'react-native-button';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import { isAndroid, DIMENSIONS } from '../styles';
 import Loader from '../components/Loader';
+import Dog from '../components/Dog';
+
+import ArrowDown from '../images/download.svg';
 
 import Messages from '../components/Messages';
 
@@ -22,29 +25,49 @@ const ModalScreen = ({ navigation }) => {
 
   return (
     <View style={{ flexGrow: 1 }}>
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView 
+      style={{ flex: 1, flexDirection: 'row' }} 
+      horizontal
+      pagingEnabled={true}
+      >
         <View style={{
-          flexGrow: 1
+          flexGrow: 1,
+          flexDirection: 'row'
         }}>
         {
           dogs.map((d, i) => {
             return (
-              <View key={`dog-${i}`}>
-                <Image source={{ uri: d.image }} style={{ width: DIMENSIONS.width, height: (DIMENSIONS.width / 4) * 3}} />
-                <Text>{ d.name }</Text>
-              </View>
+              <ScrollView 
+              key={`dog-${i}`}
+              contentContainerStyle={{
+                height: '100%',
+                backgroundColor: 'white',
+                width: DIMENSIONS.width,
+                alignItems: 'stretch'
+              }}
+              >
+                <Dog d={d} />
+              </ScrollView>
             );
           })
         }
         </View>
       </ScrollView>
-      <View style={{ backgroundColor: 'white', alignItems: 'stretch' }}>
-        <SafeAreaView style={{ flexGrow: 1, alignItems: 'stretch' }}>
-          <Button style={{ 
-            height: 100, 
+      <View style={{ backgroundColor: 'white', alignItems: 'stretch', borderTopColor: '#ccc', borderTopWidth: 1 }}>
+        <Button 
+          containerStyle={{
+            height: 50,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          style={{ 
+            fontFamily: 'Roboto-Thin',
+            color: '#222',
             paddingVertical: 16,
-          }} onPress={() => navigation.goBack() }>Back</Button>
-        </SafeAreaView>
+          }} onPress={() => navigation.goBack() }>
+            <ArrowDown width={20} height={20} />
+          </Button>
+          <SafeAreaView />
       </View>
     </View>
   );

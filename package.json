@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "clear-metro": "rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-* && watchman watch-del-all",
+    "clear-metro": "watchman watch-del-all && rm -rf $TMPDIR/metro-* && rm -rf $TMPDIR/haste-* && rm -rf $TMPDIR/react-native-packager-cache-* && rm -rf $TMPDIR/metro-bundler-cache-*",
     "clear-adb": "./android/gradlew --stop && adb kill-server && cd android && ./gradlew clean && adb devices && cd ..",
+    "clear-watchman": "brew uninstall watchman && brew install watchman",
     "android": "react-native run-android --variant=debug",
     "android-bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "android-bundle-debug": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
@@ -40,6 +41,7 @@
     "react-native-status-bar-height": "^2.4.0",
     "react-native-svg": "^11.0.1",
     "react-native-webview": "^8.1.0",
+    "rxjs": "6.0.0",
     "shortid": "^2.2.15",
     "styled-components": "^5.0.1",
     "website-scraper": "^4.2.0"

@@ -11,6 +11,7 @@ import shortid from 'shortid';
 import { DOMParser } from 'react-native-html-parser';
 
 import Messages from '../components/Messages';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 const JourneyScreen = ({ navigation }) => {
 
@@ -22,45 +23,60 @@ const JourneyScreen = ({ navigation }) => {
     try {
       const req = await fetch('https://wereldhonden.nl/hond-adopteren');
       const html = new DOMParser().parseFromString(req._bodyText, 'text/html');
+      
       const sections = html.getElementsByAttribute('itemprop', 'blogPost');
-  
-      let list = [];
-      Array.from(sections).map(s => { // map over sections and extract data
-        const body = s.childNodes[3].childNodes[1].childNodes[1].childNodes[1];
-        const info = body.childNodes[body.childNodes[3].tagName == 'br' ? 5 : 3].childNodes[1];
-        const info2 = body.childNodes[body.childNodes[3].tagName == 'br' ? 7 : 5].childNodes[1];
+      const titles = html.getElementsByTagName('h2');
+      const imagesTotal = html.getElementsByAttribute('title');
+      const images = Array.prototype.slice.call(imagesTotal).filter(image => {
+        if(image == null || !image.firstChild || !image.firstChild.tagName) return;
+        if(image.firstChild.tagName !== 'img') return;
+        return image;
+      });
+      const infos = html.getElementsByAttribute('class', 'adop2');
+      const infos2 = html.getElementsByAttribute('class', 'adop3');
+      
+      const list = [];
+      Array.from(sections).map((s, index) => { 
+        const titleRaw = titles.item(index);
+        const imageRaw = images[index];
+        const info = infos.item(index).childNodes[1].childNodes;
+        const info2 = infos2.item(index).childNodes[1].childNodes;
 
-        const nameRaw = s.childNodes[1].data || s.childNodes[1].firstChild.data || s.childNodes[1].firstChild.firstChild.data || '';
-        const name = nameRaw.split(' ');
-        const image = body.childNodes[1].childNodes[1].childNodes[1].childNodes[1].firstChild.attributes[0];
-        const gender = info.childNodes[3].childNodes[3].firstChild;
-        const type = info.childNodes[3].childNodes[3].firstChild;
-        const age = info.childNodes[5].childNodes[3].firstChild;
-        const height = info.childNodes[7].childNodes[3].firstChild;
-        const castrated = info.childNodes[9].childNodes[3].firstChild;
-        const origin = info2.childNodes[1].childNodes[3].firstChild;
-        const location = info2.childNodes[3].childNodes[3].firstChild;
-        const fee = info2.childNodes[5].childNodes[3].firstChild;
-
+        if(!titleRaw || !imageRaw || !info || !info2) return;
+        
+        const title = titleRaw.firstChild.data || titleRaw.firstChild.firstChild.data || '';
+        const image = `https://wereldhonden.nl${ imageRaw.attributes[0].value }`;
+        const status = title.split(' ')[1] ? title.split(' ')[1].trim().substring(1, title.split(' ')[1].length-1) : 'beschikbaar';
+        const gender = info[1].childNodes[3].firstChild.data;
+        const type = info[3].childNodes[3].firstChild.data;
+        const age = info[5].childNodes[3].firstChild.data;
+        const height = info[7].childNodes[3].firstChild.data
+        const castrated = info[9].childNodes[3].firstChild.data;
+        const origin = info2[1].childNodes[3].firstChild.data;
+        const location = info2[3].childNodes[3].firstChild.data;
+        const fee = info2[5].childNodes[3].firstChild.data;
+        
         list.push({
           id: shortid.generate(),
-          name: name[0].trim(),
-          status: name[1] ? name[1].trim().substring(1, name[1].length-1) : 'beschikbaar',
-          image: `https://wereldhonden.nl${ image.value }`,
-          gender: gender.data,
-          type: type.data,
-          age: age.data,
-          height: height.data,
-          castrated: castrated.data,
-          origin: origin.data,
-          location: location.data,
-          fee: fee.data
+          name: title.split(' ')[0].trim(),
+          status: status,
+          image: image,
+          gender: gender,
+          type: type,
+          age: age,
+          height: height,
+          castrated: castrated,
+          origin: origin,
+          location: location,
+          fee: fee
         });
+  
       });
+
       return list;
 
     } catch(error) {
-      throw(error);
+      throw(123, error);
     }
   }
 
@@ -81,7 +97,7 @@ const JourneyScreen = ({ navigation }) => {
 
   return (
     <View style={{ flexGrow: 1, alignItems: 'stretch', justifyContent: 'center' }}>
-      <Button onPress={() => listDogs() }>List dogs</Button>
+      <Button onPress={() => listDogs() }>Play game</Button>
     </View>
   );
 
