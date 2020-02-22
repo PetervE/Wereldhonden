@@ -16,11 +16,13 @@ export const Row = styled(View)`
 
 export const Label = styled(Text)`
     font-family: Roboto-Thin;
-    width: 150px;
+    flex-basis: 150px;
     font-size: 14px;
 `
 
 export const TitleAnswer = styled(Text)`
     font-family: Roboto-Bold;
     font-size: 20px;
+    flex-grow: 1;
+    text-align: right;
 `;

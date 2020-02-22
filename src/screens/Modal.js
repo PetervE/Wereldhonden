@@ -24,7 +24,7 @@ const ModalScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={{ flexGrow: 1 }}>
+    <View style={{ flexGrow: 1, backgroundColor: 'white' }}>
       <ScrollView 
       style={{ flex: 1, flexDirection: 'row' }} 
       horizontal
@@ -46,7 +46,7 @@ const ModalScreen = ({ navigation }) => {
                 alignItems: 'stretch'
               }}
               >
-                <Dog d={d} />
+                <Dog d={d} i={i} length={dogs.length} />
               </ScrollView>
             );
           })

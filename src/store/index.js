@@ -8,7 +8,7 @@ const store = createStore({
 	// mutations
 	update: action((state, payload) => {
 		state[payload.key] = payload.value;
-		console.log(`store change: ${ payload.key }: `, state[payload.key]);
+		console.log(`STORE: ${ payload.key }`, state[payload.key]);
 	})
 });
 

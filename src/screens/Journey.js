@@ -46,7 +46,7 @@ const JourneyScreen = ({ navigation }) => {
         
         const title = titleRaw.firstChild.data || titleRaw.firstChild.firstChild.data || '';
         const image = `https://wereldhonden.nl${ imageRaw.attributes[0].value }`;
-        const status = title.split(' ')[1] ? title.split(' ')[1].trim().substring(1, title.split(' ')[1].length-1) : 'beschikbaar';
+        let status = title.split(' ')[1] ? title.split(' ')[1].trim().substring(1, title.split(' ')[1].length-1) : 'beschikbaar';
         const gender = info[1].childNodes[3].firstChild.data;
         const type = info[3].childNodes[3].firstChild.data;
         const age = info[5].childNodes[3].firstChild.data;
@@ -56,6 +56,9 @@ const JourneyScreen = ({ navigation }) => {
         const location = info2[3].childNodes[3].firstChild.data;
         const fee = info2[5].childNodes[3].firstChild.data;
         
+        if(status == 'geadopteerd') return;
+        if(status == 'i') status = 'in optie';
+
         list.push({
           id: shortid.generate(),
           name: title.split(' ')[0].trim(),
