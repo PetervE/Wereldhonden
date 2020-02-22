@@ -5,6 +5,7 @@ const store = createStore({
 	// data
 	busy: false,
 	dogs: false,
+	user: false,
 	// mutations
 	update: action((state, payload) => {
 		state[payload.key] = payload.value;

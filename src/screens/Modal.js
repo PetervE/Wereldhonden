@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import {  View, Text, ScrollView, Image, KeyboardAvoidingView, TextInput, 
-          TouchableWithoutFeedback, Keyboard, StatusBar, SafeAreaView } from 'react-native';
+          TouchableWithoutFeedback, Keyboard, StatusBar, SafeAreaView,
+          Switch } from 'react-native';
 import Button from 'react-native-button';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import { isAndroid, DIMENSIONS } from '../styles';
@@ -22,6 +23,10 @@ const ModalScreen = ({ navigation }) => {
   useEffect(() => {
     update({ key: 'busy', value: false });
   }, []);
+
+  const toggle = (d, i) => {
+    console.log(d, i); 
+  }
 
   return (
     <View style={{ flexGrow: 1, backgroundColor: 'white' }}>
@@ -47,6 +52,9 @@ const ModalScreen = ({ navigation }) => {
               }}
               >
                 <Dog d={d} i={i} length={dogs.length} />
+                <View style={{ flexBasis: 100, alignItems: 'center' }}>
+                  <Switch onValueChange={() => toggle(d, i)} value={true} />
+                </View>
               </ScrollView>
             );
           })

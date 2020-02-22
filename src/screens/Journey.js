@@ -60,7 +60,6 @@ const JourneyScreen = ({ navigation }) => {
         if(status == 'i') status = 'in optie';
 
         list.push({
-          id: shortid.generate(),
           name: title.split(' ')[0].trim(),
           status: status,
           image: image,

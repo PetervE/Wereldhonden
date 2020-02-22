@@ -21,7 +21,7 @@ export const Label = styled(Text)`
 `
 
 export const TitleAnswer = styled(Text)`
-    font-family: Roboto-Bold;
+    font-family: Roboto-Medium;
     font-size: 20px;
     flex-grow: 1;
     text-align: right;
