@@ -1,6 +1,11 @@
 
 import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Amplify, { Analytics } from 'aws-amplify';
+import amplify from './aws-exports';
+import {  ConfirmSignIn, ConfirmSignUp, ForgotPassword, RequireNewPassword, 
+          SignIn, SignUp, VerifyContact, withAuthenticator 
+        } from 'aws-amplify-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -19,6 +24,11 @@ import SettingsIcon from './images/settings.svg';
 import JourneyIconGrey from './images/journey-grey.svg';
 import MapIconGrey from './images/map-grey.svg';
 import SettingsIconGrey from './images/settings-grey.svg';
+
+Analytics.disable();
+Amplify.configure(amplify);
+console.disableYellowBox = true;
+window.LOG_LEVEL = 'DEBUG';
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -104,4 +114,58 @@ const App = () => {
   );
 }
 
-export default App;
+export default withAuthenticator(App, {
+    usernameAttributes: 'email',
+    signUpConfig: {
+      hideAllDefaults: true,
+      header: 'After signing up check email to confirm your account.',
+      defaultCountryCode: '31',
+      signUpFields: [
+        {
+          label: 'Email',
+          key: 'email',
+          required: true,
+          displayOrder: 1,
+          type: 'string'
+        },
+        {
+          label: 'Password',
+          key: 'password',
+          required: true,
+          displayOrder: 2,
+          type: 'password'
+        }
+      ]
+    },
+    signInConfig: {
+      hideAllDefaults: true,
+      header: 'Please use your email as Username to sign up. Check email to get confirmation code.',
+      defaultCountryCode: '31',
+      signUpFields: [
+        {
+          label: 'Email',
+          key: 'email',
+          required: true,
+          displayOrder: 1,
+          type: 'string'
+        },
+        {
+          label: 'Password',
+          key: 'password',
+          required: true,
+          displayOrder: 2,
+          type: 'password'
+        }
+      ]
+    }
+  }, 
+  [
+    <SignIn/>,
+    <ConfirmSignIn/>,
+    <VerifyContact/>,
+    <SignUp/>,
+    <ConfirmSignUp/>,
+    <ForgotPassword/>,
+    <RequireNewPassword />
+  ]
+);

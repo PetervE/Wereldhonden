@@ -1,0 +1,20 @@
+{
+    "env": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-wereldhonden-env-01527-authRole",
+            "UnauthRoleArn": "arn:aws:iam::897517238696:role/amplify-wereldhonden-env-01527-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::897517238696:role/amplify-wereldhonden-env-01527-authRole",
+            "Region": "eu-central-1",
+            "DeploymentBucketName": "amplify-wereldhonden-env-01527-deployment",
+            "UnauthRoleName": "amplify-wereldhonden-env-01527-unauthRole",
+            "StackName": "amplify-wereldhonden-env-01527",
+            "StackId": "arn:aws:cloudformation:eu-central-1:897517238696:stack/amplify-wereldhonden-env-01527/382ecc80-55c9-11ea-bf67-0aee1f35785e",
+            "AmplifyAppId": "d2hx67hdftkwcr"
+        },
+        "categories": {
+            "auth": {
+                "wereldhonden496aff2a": {}
+            }
+        }
+    }
+}

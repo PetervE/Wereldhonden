@@ -1,0 +1,17 @@
+{
+    "projectName": "Wereldhonden",
+    "version": "3.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react-native",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "build",
+            "BuildCommand": "yarn build",
+            "StartCommand": "yarn start"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}
