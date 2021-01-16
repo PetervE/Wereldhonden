@@ -7,157 +7,122 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6420F523FC1DCB004DEA6B /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420E823FC1DCA004DEA6B /* Roboto-Bold.ttf */; };
-		0A6420F623FC1DCB004DEA6B /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420E923FC1DCA004DEA6B /* Roboto-Regular.ttf */; };
-		0A6420F723FC1DCB004DEA6B /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420EA23FC1DCA004DEA6B /* Roboto-LightItalic.ttf */; };
-		0A6420F823FC1DCB004DEA6B /* Itim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420EB23FC1DCA004DEA6B /* Itim-Regular.ttf */; };
-		0A6420F923FC1DCB004DEA6B /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420EC23FC1DCA004DEA6B /* Roboto-BlackItalic.ttf */; };
-		0A6420FA23FC1DCB004DEA6B /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420ED23FC1DCA004DEA6B /* Roboto-Black.ttf */; };
-		0A6420FB23FC1DCB004DEA6B /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420EE23FC1DCA004DEA6B /* Roboto-BoldItalic.ttf */; };
-		0A6420FC23FC1DCB004DEA6B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420EF23FC1DCA004DEA6B /* Roboto-Light.ttf */; };
-		0A6420FD23FC1DCB004DEA6B /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420F023FC1DCA004DEA6B /* Roboto-Italic.ttf */; };
-		0A6420FE23FC1DCB004DEA6B /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420F123FC1DCB004DEA6B /* Roboto-ThinItalic.ttf */; };
-		0A6420FF23FC1DCB004DEA6B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420F223FC1DCB004DEA6B /* Roboto-Thin.ttf */; };
-		0A64210023FC1DCB004DEA6B /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420F323FC1DCB004DEA6B /* Roboto-Medium.ttf */; };
-		0A64210123FC1DCB004DEA6B /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A6420F423FC1DCB004DEA6B /* Roboto-MediumItalic.ttf */; };
-		0ADF3F2B240138E300CC18FD /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0ADF3F2A240138E300CC18FD /* Config.xcconfig */; };
-		0F6BE20339BB47DF96BB32A4 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5803D9CAB1294A03B3E6E700 /* Roboto-Light.ttf */; };
+		00E356F31AD99517003FC87E /* WERELDHONDENTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WERELDHONDENTests.m */; };
+		0D0076981FDE5A8AD4BCF65F /* libPods-WERELDHONDEN-WERELDHONDENTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37F1B55D6346DB872F6FCDA7 /* libPods-WERELDHONDEN-WERELDHONDENTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		14769CB8DB4B48C389F8DBA9 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0650AD3029E7496BBFA3140D /* FontAwesome.ttf */; };
-		14F0365C8D704CED956453B5 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F41E2CB95FF04990836DCCF5 /* Roboto-LightItalic.ttf */; };
-		173A53FE9F6748F1BC254AFC /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70CA5F79FFD448258D584511 /* Foundation.ttf */; };
-		2F87087F8981CD6662130455 /* libPods-Wereldhonden.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DE06BF938E266A2AA0A99EA /* libPods-Wereldhonden.a */; };
-		304E598E9CEC4B6C995C9378 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C100D7C333FB4F9099573B95 /* Entypo.ttf */; };
-		353893638B164332A0E42001 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 19BCA5509D1E42FE8807B908 /* Octicons.ttf */; };
-		501C821C7FFF4037962AFBD7 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99D9F433D8AF4F3DB39083BE /* Fontisto.ttf */; };
-		54D9E399F4DA4FA888EBEB59 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09F10C4CC7264D538EC06FF4 /* Roboto-BlackItalic.ttf */; };
-		5AD1359F381946E0A3B1551F /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 455EAA13A55147EDAE89AE9E /* Roboto-Medium.ttf */; };
-		5D6602E6D4024A4B987F1B40 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65235D9884434A258B7FDC1D /* Roboto-Italic.ttf */; };
-		69A1CA724DCA42BCA5ADC755 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE1F94521E0148B6AC2461FB /* FontAwesome5_Solid.ttf */; };
-		6DEC3930B234464B8CCC0802 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C859EE25D124EC1BF4CA3B6 /* Roboto-ThinItalic.ttf */; };
-		6FBC815E9C264B5B9F94A980 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FC340F9A1BE843B3B93FB9B0 /* Ionicons.ttf */; };
-		7994DB80068B44B29D4A190D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0464E84A4C984693A8A9BEB7 /* EvilIcons.ttf */; };
-		84A8119814024F33A507FA82 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B75540B087334D83B5260076 /* Roboto-Black.ttf */; };
-		899DBC3C05694E9B8F734887 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2364C5C5FD448F192D8A98A /* Roboto-Bold.ttf */; };
-		9692BBF1C34E436D8AF19B3D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 900AC921D51C4C7AAD5FB8F4 /* FontAwesome5_Brands.ttf */; };
-		9C54AC8E6DB24C02854E0DC9 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35A2B75F46BD4A05829B5BDD /* Roboto-MediumItalic.ttf */; };
-		A27C151FBB134138B9F95371 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAA158B22D33488C8D33608B /* Roboto-Regular.ttf */; };
-		ABDEAA071CEB4D75AAD8353E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5345E42A20C542D3B655C461 /* Zocial.ttf */; };
-		CD17C4022A0E447AB6984A74 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8770F614E8AF4CD4B29E65A1 /* FontAwesome5_Regular.ttf */; };
-		CD457A34DAD94B39A379BFEA /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E65733320AB4147B1462D18 /* Feather.ttf */; };
-		CE57C8D6DB824CF59EC3FD15 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50145B67E885455DA01CA6DE /* MaterialCommunityIcons.ttf */; };
-		D8C5C28E90FF48E4BCB9E2C8 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 880B25A482E14283B6F36785 /* SimpleLineIcons.ttf */; };
-		DC2ACCD12F554E2D92B928FE /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DB7B4CF11EB4547B8890769 /* AntDesign.ttf */; };
-		DDDD4FFB0DE64870B7FF76A9 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 096E3C49846E4152B40B26DC /* MaterialIcons.ttf */; };
-		EC01D2FD1F564CCCB8021A04 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82C0A72CC95C4316B691AB7F /* Roboto-BoldItalic.ttf */; };
-		F975C910715146349DCA06A0 /* Itim-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFC29AA86A0B46C08C050F6F /* Itim-Regular.ttf */; };
-		FB53DE8B315C4E4FB9D4F181 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A5741DB3B564B03A58528A8 /* Roboto-Thin.ttf */; };
+		1C06304023E9B09D33029C71 /* libPods-WERELDHONDEN-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E377CABF17832CD70FBD6F1 /* libPods-WERELDHONDEN-tvOSTests.a */; };
+		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
+		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
+		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* WERELDHONDENTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* WERELDHONDENTests.m */; };
+		4BCAC5F58AD00A439A5142B8 /* libPods-WERELDHONDEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0199A02CC9F75B285EFC3F1E /* libPods-WERELDHONDEN.a */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		B2B34473FE1BF9416BBF54EB /* libPods-WERELDHONDEN-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E602B7D92BA8E9CB3E86D34F /* libPods-WERELDHONDEN-tvOS.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
+			remoteInfo = WERELDHONDEN;
+		};
+		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
+			remoteInfo = "WERELDHONDEN-tvOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		0464E84A4C984693A8A9BEB7 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		0650AD3029E7496BBFA3140D /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		096E3C49846E4152B40B26DC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		09F10C4CC7264D538EC06FF4 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BlackItalic.ttf"; path = "../src/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
-		0A6420E823FC1DCA004DEA6B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../src/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		0A6420E923FC1DCA004DEA6B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../src/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		0A6420EA23FC1DCA004DEA6B /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-LightItalic.ttf"; path = "../../src/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
-		0A6420EB23FC1DCA004DEA6B /* Itim-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Itim-Regular.ttf"; path = "../../src/fonts/Itim-Regular.ttf"; sourceTree = "<group>"; };
-		0A6420EC23FC1DCA004DEA6B /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BlackItalic.ttf"; path = "../../src/fonts/Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
-		0A6420ED23FC1DCA004DEA6B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "../../src/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
-		0A6420EE23FC1DCA004DEA6B /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-BoldItalic.ttf"; path = "../../src/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		0A6420EF23FC1DCA004DEA6B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "../../src/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		0A6420F023FC1DCA004DEA6B /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Italic.ttf"; path = "../../src/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		0A6420F123FC1DCB004DEA6B /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-ThinItalic.ttf"; path = "../../src/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		0A6420F223FC1DCB004DEA6B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../../src/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		0A6420F323FC1DCB004DEA6B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../src/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		0A6420F423FC1DCB004DEA6B /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-MediumItalic.ttf"; path = "../../src/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
-		0ADF3F2A240138E300CC18FD /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Wereldhonden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wereldhonden.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Wereldhonden/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Wereldhonden/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Wereldhonden/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Wereldhonden/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Wereldhonden/main.m; sourceTree = "<group>"; };
-		19BCA5509D1E42FE8807B908 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		1E65733320AB4147B1462D18 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		30E76AD534267A38CBE9949B /* Pods-Wereldhonden-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Wereldhonden-tvOS/Pods-Wereldhonden-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		35A2B75F46BD4A05829B5BDD /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-MediumItalic.ttf"; path = "../src/fonts/Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
-		455EAA13A55147EDAE89AE9E /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		50145B67E885455DA01CA6DE /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		5345E42A20C542D3B655C461 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		5803D9CAB1294A03B3E6E700 /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
-		5DB7B4CF11EB4547B8890769 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
-		65235D9884434A258B7FDC1D /* Roboto-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Italic.ttf"; path = "../src/fonts/Roboto-Italic.ttf"; sourceTree = "<group>"; };
-		68A495F99C4ED95E19F39491 /* Pods-Wereldhonden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden.release.xcconfig"; path = "Target Support Files/Pods-Wereldhonden/Pods-Wereldhonden.release.xcconfig"; sourceTree = "<group>"; };
-		6C859EE25D124EC1BF4CA3B6 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-ThinItalic.ttf"; path = "../src/fonts/Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		70CA5F79FFD448258D584511 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		759BBB2440E4010F8F5E9B18 /* Pods-WereldhondenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WereldhondenTests.debug.xcconfig"; path = "Target Support Files/Pods-WereldhondenTests/Pods-WereldhondenTests.debug.xcconfig"; sourceTree = "<group>"; };
-		82C0A72CC95C4316B691AB7F /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-BoldItalic.ttf"; path = "../src/fonts/Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
-		8770F614E8AF4CD4B29E65A1 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		880B25A482E14283B6F36785 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		893EBC7B035A1659E163E75E /* libPods-Wereldhonden-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wereldhonden-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		900AC921D51C4C7AAD5FB8F4 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		99D9F433D8AF4F3DB39083BE /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		9A5741DB3B564B03A58528A8 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../src/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		9DE06BF938E266A2AA0A99EA /* libPods-Wereldhonden.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wereldhonden.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A988331C1C4170C10AEDC27E /* Pods-Wereldhonden-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Wereldhonden-tvOSTests/Pods-Wereldhonden-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		AC31FAEB157957CC4AF846B3 /* Pods-Wereldhonden-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Wereldhonden-tvOSTests/Pods-Wereldhonden-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AD67035C9BE76608A7CF5B76 /* Pods-Wereldhonden-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-Wereldhonden-tvOS/Pods-Wereldhonden-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		AE1F94521E0148B6AC2461FB /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		B2364C5C5FD448F192D8A98A /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
-		B75540B087334D83B5260076 /* Roboto-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Black.ttf"; path = "../src/fonts/Roboto-Black.ttf"; sourceTree = "<group>"; };
-		B894C37725748270535C8283 /* Pods-WereldhondenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WereldhondenTests.release.xcconfig"; path = "Target Support Files/Pods-WereldhondenTests/Pods-WereldhondenTests.release.xcconfig"; sourceTree = "<group>"; };
-		C100D7C333FB4F9099573B95 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		CAA158B22D33488C8D33608B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		CF4BCDF1DAC6589B996AEA76 /* Pods-Wereldhonden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wereldhonden.debug.xcconfig"; path = "Target Support Files/Pods-Wereldhonden/Pods-Wereldhonden.debug.xcconfig"; sourceTree = "<group>"; };
-		D524B8C9BDA312E331B3A56C /* libPods-WereldhondenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WereldhondenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E678369AAA36C1A3321E40B5 /* libPods-Wereldhonden-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wereldhonden-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* WERELDHONDENTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WERELDHONDENTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* WERELDHONDENTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WERELDHONDENTests.m; sourceTree = "<group>"; };
+		0199A02CC9F75B285EFC3F1E /* libPods-WERELDHONDEN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WERELDHONDEN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* WERELDHONDEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WERELDHONDEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WERELDHONDEN/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = WERELDHONDEN/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WERELDHONDEN/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WERELDHONDEN/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WERELDHONDEN/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* WERELDHONDEN-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WERELDHONDEN-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* WERELDHONDEN-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WERELDHONDEN-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F1B55D6346DB872F6FCDA7 /* libPods-WERELDHONDEN-WERELDHONDENTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WERELDHONDEN-WERELDHONDENTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EBACB927BC55EE2D8E378B7 /* Pods-WERELDHONDEN-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-tvOS.release.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-tvOS/Pods-WERELDHONDEN-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		473851FD27AF741994F5FD46 /* Pods-WERELDHONDEN-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-tvOSTests/Pods-WERELDHONDEN-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		5D739F3B195AA5AC5F7928D9 /* Pods-WERELDHONDEN-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-tvOS/Pods-WERELDHONDEN-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		6E377CABF17832CD70FBD6F1 /* libPods-WERELDHONDEN-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WERELDHONDEN-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WERELDHONDEN/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88401792475EC6CB3901FDF7 /* Pods-WERELDHONDEN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN.debug.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN/Pods-WERELDHONDEN.debug.xcconfig"; sourceTree = "<group>"; };
+		90121A20D0ECA0EEA4D9BDC9 /* Pods-WERELDHONDEN-WERELDHONDENTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-WERELDHONDENTests.debug.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-WERELDHONDENTests/Pods-WERELDHONDEN-WERELDHONDENTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BA4649DD5DFD7662EF414EA3 /* Pods-WERELDHONDEN-WERELDHONDENTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-WERELDHONDENTests.release.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-WERELDHONDENTests/Pods-WERELDHONDEN-WERELDHONDENTests.release.xcconfig"; sourceTree = "<group>"; };
+		C2E70D7E2254C3958D1C28D0 /* Pods-WERELDHONDEN-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN-tvOSTests/Pods-WERELDHONDEN-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2BF890A2467F36E1D7657E0 /* Pods-WERELDHONDEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WERELDHONDEN.release.xcconfig"; path = "Target Support Files/Pods-WERELDHONDEN/Pods-WERELDHONDEN.release.xcconfig"; sourceTree = "<group>"; };
+		E602B7D92BA8E9CB3E86D34F /* libPods-WERELDHONDEN-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WERELDHONDEN-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		EFC29AA86A0B46C08C050F6F /* Itim-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Itim-Regular.ttf"; path = "../src/fonts/Itim-Regular.ttf"; sourceTree = "<group>"; };
-		F41E2CB95FF04990836DCCF5 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-LightItalic.ttf"; path = "../src/fonts/Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
-		FC340F9A1BE843B3B93FB9B0 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		00E356EB1AD99517003FC87E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D0076981FDE5A8AD4BCF65F /* libPods-WERELDHONDEN-WERELDHONDENTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F87087F8981CD6662130455 /* libPods-Wereldhonden.a in Frameworks */,
+				4BCAC5F58AD00A439A5142B8 /* libPods-WERELDHONDEN.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4781E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2B34473FE1BF9416BBF54EB /* libPods-WERELDHONDEN-tvOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48D1E0B4A5D006451C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C06304023E9B09D33029C71 /* libPods-WERELDHONDEN-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A6420E723FC1DAF004DEA6B /* Fonts */ = {
+		00E356EF1AD99517003FC87E /* WERELDHONDENTests */ = {
 			isa = PBXGroup;
 			children = (
-				0A6420EB23FC1DCA004DEA6B /* Itim-Regular.ttf */,
-				0A6420ED23FC1DCA004DEA6B /* Roboto-Black.ttf */,
-				0A6420EC23FC1DCA004DEA6B /* Roboto-BlackItalic.ttf */,
-				0A6420E823FC1DCA004DEA6B /* Roboto-Bold.ttf */,
-				0A6420EE23FC1DCA004DEA6B /* Roboto-BoldItalic.ttf */,
-				0A6420F023FC1DCA004DEA6B /* Roboto-Italic.ttf */,
-				0A6420EF23FC1DCA004DEA6B /* Roboto-Light.ttf */,
-				0A6420EA23FC1DCA004DEA6B /* Roboto-LightItalic.ttf */,
-				0A6420F323FC1DCB004DEA6B /* Roboto-Medium.ttf */,
-				0A6420F423FC1DCB004DEA6B /* Roboto-MediumItalic.ttf */,
-				0A6420E923FC1DCA004DEA6B /* Roboto-Regular.ttf */,
-				0A6420F223FC1DCB004DEA6B /* Roboto-Thin.ttf */,
-				0A6420F123FC1DCB004DEA6B /* Roboto-ThinItalic.ttf */,
+				00E356F21AD99517003FC87E /* WERELDHONDENTests.m */,
+				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = Fonts;
+			path = WERELDHONDENTests;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Wereldhonden */ = {
+		00E356F01AD99517003FC87E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				00E356F11AD99517003FC87E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		13B07FAE1A68108700A75B9A /* WERELDHONDEN */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -165,10 +130,10 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Wereldhonden;
+			name = WERELDHONDEN;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -176,25 +141,25 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				9DE06BF938E266A2AA0A99EA /* libPods-Wereldhonden.a */,
-				E678369AAA36C1A3321E40B5 /* libPods-Wereldhonden-tvOS.a */,
-				893EBC7B035A1659E163E75E /* libPods-Wereldhonden-tvOSTests.a */,
-				D524B8C9BDA312E331B3A56C /* libPods-WereldhondenTests.a */,
+				0199A02CC9F75B285EFC3F1E /* libPods-WERELDHONDEN.a */,
+				37F1B55D6346DB872F6FCDA7 /* libPods-WERELDHONDEN-WERELDHONDENTests.a */,
+				E602B7D92BA8E9CB3E86D34F /* libPods-WERELDHONDEN-tvOS.a */,
+				6E377CABF17832CD70FBD6F1 /* libPods-WERELDHONDEN-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		70890AB766F7C2B4DCACC87A /* Pods */ = {
+		3744054E741AB4C4EFEAEA80 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CF4BCDF1DAC6589B996AEA76 /* Pods-Wereldhonden.debug.xcconfig */,
-				68A495F99C4ED95E19F39491 /* Pods-Wereldhonden.release.xcconfig */,
-				AD67035C9BE76608A7CF5B76 /* Pods-Wereldhonden-tvOS.debug.xcconfig */,
-				30E76AD534267A38CBE9949B /* Pods-Wereldhonden-tvOS.release.xcconfig */,
-				AC31FAEB157957CC4AF846B3 /* Pods-Wereldhonden-tvOSTests.debug.xcconfig */,
-				A988331C1C4170C10AEDC27E /* Pods-Wereldhonden-tvOSTests.release.xcconfig */,
-				759BBB2440E4010F8F5E9B18 /* Pods-WereldhondenTests.debug.xcconfig */,
-				B894C37725748270535C8283 /* Pods-WereldhondenTests.release.xcconfig */,
+				88401792475EC6CB3901FDF7 /* Pods-WERELDHONDEN.debug.xcconfig */,
+				D2BF890A2467F36E1D7657E0 /* Pods-WERELDHONDEN.release.xcconfig */,
+				90121A20D0ECA0EEA4D9BDC9 /* Pods-WERELDHONDEN-WERELDHONDENTests.debug.xcconfig */,
+				BA4649DD5DFD7662EF414EA3 /* Pods-WERELDHONDEN-WERELDHONDENTests.release.xcconfig */,
+				5D739F3B195AA5AC5F7928D9 /* Pods-WERELDHONDEN-tvOS.debug.xcconfig */,
+				3EBACB927BC55EE2D8E378B7 /* Pods-WERELDHONDEN-tvOS.release.xcconfig */,
+				C2E70D7E2254C3958D1C28D0 /* Pods-WERELDHONDEN-tvOSTests.debug.xcconfig */,
+				473851FD27AF741994F5FD46 /* Pods-WERELDHONDEN-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -209,14 +174,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				0ADF3F2A240138E300CC18FD /* Config.xcconfig */,
-				0A6420E723FC1DAF004DEA6B /* Fonts */,
-				13B07FAE1A68108700A75B9A /* Wereldhonden */,
+				13B07FAE1A68108700A75B9A /* WERELDHONDEN */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
+				00E356EF1AD99517003FC87E /* WERELDHONDENTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				70890AB766F7C2B4DCACC87A /* Pods */,
-				FD60D935BC9549F4809BA660 /* Resources */,
+				3744054E741AB4C4EFEAEA80 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -226,70 +189,96 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Wereldhonden.app */,
+				13B07F961A680F5B00A75B9A /* WERELDHONDEN.app */,
+				00E356EE1AD99517003FC87E /* WERELDHONDENTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* WERELDHONDEN-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* WERELDHONDEN-tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		FD60D935BC9549F4809BA660 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				EFC29AA86A0B46C08C050F6F /* Itim-Regular.ttf */,
-				B75540B087334D83B5260076 /* Roboto-Black.ttf */,
-				09F10C4CC7264D538EC06FF4 /* Roboto-BlackItalic.ttf */,
-				B2364C5C5FD448F192D8A98A /* Roboto-Bold.ttf */,
-				82C0A72CC95C4316B691AB7F /* Roboto-BoldItalic.ttf */,
-				65235D9884434A258B7FDC1D /* Roboto-Italic.ttf */,
-				5803D9CAB1294A03B3E6E700 /* Roboto-Light.ttf */,
-				F41E2CB95FF04990836DCCF5 /* Roboto-LightItalic.ttf */,
-				455EAA13A55147EDAE89AE9E /* Roboto-Medium.ttf */,
-				35A2B75F46BD4A05829B5BDD /* Roboto-MediumItalic.ttf */,
-				CAA158B22D33488C8D33608B /* Roboto-Regular.ttf */,
-				9A5741DB3B564B03A58528A8 /* Roboto-Thin.ttf */,
-				6C859EE25D124EC1BF4CA3B6 /* Roboto-ThinItalic.ttf */,
-				5DB7B4CF11EB4547B8890769 /* AntDesign.ttf */,
-				C100D7C333FB4F9099573B95 /* Entypo.ttf */,
-				0464E84A4C984693A8A9BEB7 /* EvilIcons.ttf */,
-				1E65733320AB4147B1462D18 /* Feather.ttf */,
-				0650AD3029E7496BBFA3140D /* FontAwesome.ttf */,
-				900AC921D51C4C7AAD5FB8F4 /* FontAwesome5_Brands.ttf */,
-				8770F614E8AF4CD4B29E65A1 /* FontAwesome5_Regular.ttf */,
-				AE1F94521E0148B6AC2461FB /* FontAwesome5_Solid.ttf */,
-				99D9F433D8AF4F3DB39083BE /* Fontisto.ttf */,
-				70CA5F79FFD448258D584511 /* Foundation.ttf */,
-				FC340F9A1BE843B3B93FB9B0 /* Ionicons.ttf */,
-				50145B67E885455DA01CA6DE /* MaterialCommunityIcons.ttf */,
-				096E3C49846E4152B40B26DC /* MaterialIcons.ttf */,
-				19BCA5509D1E42FE8807B908 /* Octicons.ttf */,
-				880B25A482E14283B6F36785 /* SimpleLineIcons.ttf */,
-				5345E42A20C542D3B655C461 /* Zocial.ttf */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* Wereldhonden */ = {
+		00E356ED1AD99517003FC87E /* WERELDHONDENTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Wereldhonden" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "WERELDHONDENTests" */;
 			buildPhases = (
-				8A79AF511E7CB9E37C554F49 /* [CP] Check Pods Manifest.lock */,
+				3B9AF2EF129B776F0624B8BC /* [CP] Check Pods Manifest.lock */,
+				00E356EA1AD99517003FC87E /* Sources */,
+				00E356EB1AD99517003FC87E /* Frameworks */,
+				00E356EC1AD99517003FC87E /* Resources */,
+				71D262B1F00D4DF3FB5151C6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00E356F51AD99517003FC87E /* PBXTargetDependency */,
+			);
+			name = WERELDHONDENTests;
+			productName = WERELDHONDENTests;
+			productReference = 00E356EE1AD99517003FC87E /* WERELDHONDENTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		13B07F861A680F5B00A75B9A /* WERELDHONDEN */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WERELDHONDEN" */;
+			buildPhases = (
+				B89FAC7A429C82F24E7ED319 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				DAD1B937112C1E3769DA26D5 /* [CP] Copy Pods Resources */,
+				BCFA128B211FBD7BDD8D5DF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Wereldhonden;
-			productName = Wereldhonden;
-			productReference = 13B07F961A680F5B00A75B9A /* Wereldhonden.app */;
+			name = WERELDHONDEN;
+			productName = WERELDHONDEN;
+			productReference = 13B07F961A680F5B00A75B9A /* WERELDHONDEN.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2D02E47A1E0B4A5D006451C7 /* WERELDHONDEN-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WERELDHONDEN-tvOS" */;
+			buildPhases = (
+				B7DD235B832C59F93FF5CB4B /* [CP] Check Pods Manifest.lock */,
+				FD10A7F122414F3F0027D42C /* Start Packager */,
+				2D02E4771E0B4A5D006451C7 /* Sources */,
+				2D02E4781E0B4A5D006451C7 /* Frameworks */,
+				2D02E4791E0B4A5D006451C7 /* Resources */,
+				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WERELDHONDEN-tvOS";
+			productName = "WERELDHONDEN-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* WERELDHONDEN-tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D02E48F1E0B4A5D006451C7 /* WERELDHONDEN-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WERELDHONDEN-tvOSTests" */;
+			buildPhases = (
+				776BD455311E0EF0A6B4F064 /* [CP] Check Pods Manifest.lock */,
+				2D02E48C1E0B4A5D006451C7 /* Sources */,
+				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
+				2D02E48E1E0B4A5D006451C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
+			);
+			name = "WERELDHONDEN-tvOSTests";
+			productName = "WERELDHONDEN-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* WERELDHONDEN-tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -297,20 +286,32 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 940;
-				ORGANIZATIONNAME = Facebook;
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
+					00E356ED1AD99517003FC87E = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 4F9TJQL3DK;
+						LastSwiftMigration = 1120;
+					};
+					2D02E47A1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					2D02E48F1E0B4A5D006451C7 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Wereldhonden" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "WERELDHONDEN" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -319,61 +320,43 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Wereldhonden */,
+				13B07F861A680F5B00A75B9A /* WERELDHONDEN */,
+				00E356ED1AD99517003FC87E /* WERELDHONDENTests */,
+				2D02E47A1E0B4A5D006451C7 /* WERELDHONDEN-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* WERELDHONDEN-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		00E356EC1AD99517003FC87E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13B07F8E1A680F5B00A75B9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6420FE23FC1DCB004DEA6B /* Roboto-ThinItalic.ttf in Resources */,
-				0A64210123FC1DCB004DEA6B /* Roboto-MediumItalic.ttf in Resources */,
-				0A6420FB23FC1DCB004DEA6B /* Roboto-BoldItalic.ttf in Resources */,
-				0ADF3F2B240138E300CC18FD /* Config.xcconfig in Resources */,
-				0A6420F823FC1DCB004DEA6B /* Itim-Regular.ttf in Resources */,
-				0A6420FC23FC1DCB004DEA6B /* Roboto-Light.ttf in Resources */,
+				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				0A6420FA23FC1DCB004DEA6B /* Roboto-Black.ttf in Resources */,
-				0A6420F923FC1DCB004DEA6B /* Roboto-BlackItalic.ttf in Resources */,
-				0A6420F723FC1DCB004DEA6B /* Roboto-LightItalic.ttf in Resources */,
-				0A6420F623FC1DCB004DEA6B /* Roboto-Regular.ttf in Resources */,
-				0A64210023FC1DCB004DEA6B /* Roboto-Medium.ttf in Resources */,
-				0A6420FD23FC1DCB004DEA6B /* Roboto-Italic.ttf in Resources */,
-				0A6420FF23FC1DCB004DEA6B /* Roboto-Thin.ttf in Resources */,
-				0A6420F523FC1DCB004DEA6B /* Roboto-Bold.ttf in Resources */,
-				F975C910715146349DCA06A0 /* Itim-Regular.ttf in Resources */,
-				84A8119814024F33A507FA82 /* Roboto-Black.ttf in Resources */,
-				54D9E399F4DA4FA888EBEB59 /* Roboto-BlackItalic.ttf in Resources */,
-				899DBC3C05694E9B8F734887 /* Roboto-Bold.ttf in Resources */,
-				EC01D2FD1F564CCCB8021A04 /* Roboto-BoldItalic.ttf in Resources */,
-				5D6602E6D4024A4B987F1B40 /* Roboto-Italic.ttf in Resources */,
-				0F6BE20339BB47DF96BB32A4 /* Roboto-Light.ttf in Resources */,
-				14F0365C8D704CED956453B5 /* Roboto-LightItalic.ttf in Resources */,
-				5AD1359F381946E0A3B1551F /* Roboto-Medium.ttf in Resources */,
-				9C54AC8E6DB24C02854E0DC9 /* Roboto-MediumItalic.ttf in Resources */,
-				A27C151FBB134138B9F95371 /* Roboto-Regular.ttf in Resources */,
-				FB53DE8B315C4E4FB9D4F181 /* Roboto-Thin.ttf in Resources */,
-				6DEC3930B234464B8CCC0802 /* Roboto-ThinItalic.ttf in Resources */,
-				DC2ACCD12F554E2D92B928FE /* AntDesign.ttf in Resources */,
-				304E598E9CEC4B6C995C9378 /* Entypo.ttf in Resources */,
-				7994DB80068B44B29D4A190D /* EvilIcons.ttf in Resources */,
-				CD457A34DAD94B39A379BFEA /* Feather.ttf in Resources */,
-				14769CB8DB4B48C389F8DBA9 /* FontAwesome.ttf in Resources */,
-				9692BBF1C34E436D8AF19B3D /* FontAwesome5_Brands.ttf in Resources */,
-				CD17C4022A0E447AB6984A74 /* FontAwesome5_Regular.ttf in Resources */,
-				69A1CA724DCA42BCA5ADC755 /* FontAwesome5_Solid.ttf in Resources */,
-				501C821C7FFF4037962AFBD7 /* Fontisto.ttf in Resources */,
-				173A53FE9F6748F1BC254AFC /* Foundation.ttf in Resources */,
-				6FBC815E9C264B5B9F94A980 /* Ionicons.ttf in Resources */,
-				CE57C8D6DB824CF59EC3FD15 /* MaterialCommunityIcons.ttf in Resources */,
-				DDDD4FFB0DE64870B7FF76A9 /* MaterialIcons.ttf in Resources */,
-				353893638B164332A0E42001 /* Octicons.ttf in Resources */,
-				D8C5C28E90FF48E4BCB9E2C8 /* SimpleLineIcons.ttf in Resources */,
-				ABDEAA071CEB4D75AAD8353E /* Zocial.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E4791E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48E1E0B4A5D006451C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +377,21 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		8A79AF511E7CB9E37C554F49 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		3B9AF2EF129B776F0624B8BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -409,59 +406,113 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Wereldhonden-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-WERELDHONDEN-WERELDHONDENTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DAD1B937112C1E3769DA26D5 /* [CP] Copy Pods Resources */ = {
+		71D262B1F00D4DF3FB5151C6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Wereldhonden/Pods-Wereldhonden-resources.sh",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_ROOT}/Target Support Files/Pods-WERELDHONDEN-WERELDHONDENTests/Pods-WERELDHONDEN-WERELDHONDENTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wereldhonden/Pods-Wereldhonden-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WERELDHONDEN-WERELDHONDENTests/Pods-WERELDHONDEN-WERELDHONDENTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		776BD455311E0EF0A6B4F064 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WERELDHONDEN-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7DD235B832C59F93FF5CB4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WERELDHONDEN-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B89FAC7A429C82F24E7ED319 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WERELDHONDEN-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCFA128B211FBD7BDD8D5DF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WERELDHONDEN/Pods-WERELDHONDEN-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WERELDHONDEN/Pods-WERELDHONDEN-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -483,9 +534,36 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		00E356EA1AD99517003FC87E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00E356F31AD99517003FC87E /* WERELDHONDENTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13B07F871A680F5B00A75B9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,69 +573,245 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2D02E4771E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D02E48C1E0B4A5D006451C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DCD954D1E0B4F2C00145EB5 /* WERELDHONDENTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		13B07FB11A68108700A75B9A /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13B07FB21A68108700A75B9A /* Base */,
-			);
-			name = LaunchScreen.xib;
-			path = Wereldhonden;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13B07F861A680F5B00A75B9A /* WERELDHONDEN */;
+			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D02E47A1E0B4A5D006451C7 /* WERELDHONDEN-tvOS */;
+			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		00E356F61AD99517003FC87E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90121A20D0ECA0EEA4D9BDC9 /* Pods-WERELDHONDEN-WERELDHONDENTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = WERELDHONDENTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WERELDHONDEN.app/WERELDHONDEN";
+			};
+			name = Debug;
+		};
+		00E356F71AD99517003FC87E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA4649DD5DFD7662EF414EA3 /* Pods-WERELDHONDEN-WERELDHONDENTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COPY_PHASE_STRIP = NO;
+				INFOPLIST_FILE = WERELDHONDENTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+					"$(inherited)",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WERELDHONDEN.app/WERELDHONDEN";
+			};
+			name = Release;
+		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CF4BCDF1DAC6589B996AEA76 /* Pods-Wereldhonden.debug.xcconfig */;
+			baseConfigurationReference = 88401792475EC6CB3901FDF7 /* Pods-WERELDHONDEN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 4F9TJQL3DK;
-				INFOPLIST_FILE = Wereldhonden/Info.plist;
+				ENABLE_BITCODE = NO;
+				INFOPLIST_FILE = WERELDHONDEN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gg.fearless.wereldhonden;
-				PRODUCT_NAME = Wereldhonden;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.wereldhonden.app;
+				PRODUCT_NAME = WERELDHONDEN;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 68A495F99C4ED95E19F39491 /* Pods-Wereldhonden.release.xcconfig */;
+			baseConfigurationReference = D2BF890A2467F36E1D7657E0 /* Pods-WERELDHONDEN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4F9TJQL3DK;
-				INFOPLIST_FILE = Wereldhonden/Info.plist;
+				INFOPLIST_FILE = WERELDHONDEN/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = gg.fearless.wereldhonden;
-				PRODUCT_NAME = Wereldhonden;
+				PRODUCT_BUNDLE_IDENTIFIER = nl.wereldhonden.app;
+				PRODUCT_NAME = WERELDHONDEN;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		2D02E4971E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D739F3B195AA5AC5F7928D9 /* Pods-WERELDHONDEN-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "WERELDHONDEN-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WERELDHONDEN-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		2D02E4981E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EBACB927BC55EE2D8E378B7 /* Pods-WERELDHONDEN-tvOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "WERELDHONDEN-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WERELDHONDEN-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
+		2D02E4991E0B4A5E006451C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2E70D7E2254C3958D1C28D0 /* Pods-WERELDHONDEN-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "WERELDHONDEN-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WERELDHONDEN-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WERELDHONDEN-tvOS.app/WERELDHONDEN-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		2D02E49A1E0B4A5E006451C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 473851FD27AF741994F5FD46 /* Pods-WERELDHONDEN-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "WERELDHONDEN-tvOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-lc++",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.WERELDHONDEN-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WERELDHONDEN-tvOS.app/WERELDHONDEN-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ADF3F2A240138E300CC18FD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -600,7 +854,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -609,9 +869,9 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ADF3F2A240138E300CC18FD /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -647,7 +907,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
+					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
+					"\"$(inherited)\"",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -657,7 +923,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Wereldhonden" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "WERELDHONDENTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E356F61AD99517003FC87E /* Debug */,
+				00E356F71AD99517003FC87E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WERELDHONDEN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -666,7 +941,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Wereldhonden" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WERELDHONDEN-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4971E0B4A5E006451C7 /* Debug */,
+				2D02E4981E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "WERELDHONDEN-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D02E4991E0B4A5E006451C7 /* Debug */,
+				2D02E49A1E0B4A5E006451C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "WERELDHONDEN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

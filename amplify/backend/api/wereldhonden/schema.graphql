@@ -1,5 +1,0 @@
-type Todo @model {
-  id: ID!
-  email: String!
-  liked: String
-}
