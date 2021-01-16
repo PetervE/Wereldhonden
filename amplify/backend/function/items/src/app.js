@@ -30,8 +30,17 @@ app.get('/items', async function (req, res) {
           const e = selector(el);
           let obj = {};
 
-          const title = e.find('h2').text().trim();
-          obj.name = title || false;
+          const titleAndStatus = e.find('h2').text().trim();
+          const parts = titleAndStatus.split('(');
+          const length = parts.length;
+
+          if (length > 1) {
+            obj.name = parts[0];
+            obj.status = parts[1].slice(0, -1).trim();
+          } else {
+            obj.name = titleAndStatus;
+            obj.status = false;
+          }
 
           const image = e.find('img').attr('src');
           obj.image = image || false;
