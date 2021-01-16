@@ -19,23 +19,24 @@ app.get('/items', async function (req, res) {
     const url = 'https://wereldhonden.nl/hond-adopteren';
     const operation = await axios.get(url);
     if (operation.data) {
-      const $ = cheerio.load(operation.data);
-      const raw = $('div[class="items-leading clearfix"]')
-        .children('div[itemprop="blogPost"]')
-        .html();
+      const selector = cheerio.load(operation.data);
 
-      // let list = [];
-      // raw.each((i, element) => {
-      //   let elem = $(element).html();
-      //   list.push(elem);
-      // });
+      var arr = selector('body').find('div[itemprop="blogPost"]');
+
+      let list = [];
+      const array = arr
+        .map((idx, el) => {
+          const elementSelector = selector(el);
+          const title = elementSelector.find('h2').text().trim();
+          if (title) list.push({name: title});
+        })
+        .get();
 
       res.json({
         success: 'success',
         url: req.url,
-        data: operation.data,
-        raw: raw,
-        // list: list,
+        data: selector.html(),
+        list: list,
       });
     } else {
       res.json({error: 'no html', url: req.url});
