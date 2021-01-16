@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var awsServerlessExpressMiddleware = require('aws-serverless-express/middleware');
+var axios = require('axios');
+var cheerio = require('cheerio');
 
 var app = express();
 app.use(bodyParser.json());
@@ -12,13 +14,35 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/items', function (req, res) {
-  const data = [
-    {id: 1, name: 'Dog 1'},
-    {id: 2, name: 'Dog 2'},
-  ];
+app.get('/items', async function (req, res) {
+  try {
+    const url = 'https://wereldhonden.nl/hond-adopteren';
+    const operation = await axios.get(url);
+    if (operation.data) {
+      const $ = cheerio.load(operation.data);
+      const raw = $('div[class="items-leading clearfix"]')
+        .children('div[itemprop="blogPost"]')
+        .html();
 
-  res.json({success: 'get call succeed!', url: req.url, data: data});
+      // let list = [];
+      // raw.each((i, element) => {
+      //   let elem = $(element).html();
+      //   list.push(elem);
+      // });
+
+      res.json({
+        success: 'success',
+        url: req.url,
+        data: operation.data,
+        raw: raw,
+        // list: list,
+      });
+    } else {
+      res.json({error: 'no html', url: req.url});
+    }
+  } catch (err) {
+    res.json({error: 'error try catch', url: req.url, data: err});
+  }
 });
 
 app.listen(3000, function () {
