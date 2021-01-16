@@ -21,21 +21,46 @@ app.get('/items', async function (req, res) {
     if (operation.data) {
       const selector = cheerio.load(operation.data);
 
-      var arr = selector('body').find('div[itemprop="blogPost"]');
+      var array = selector('body').find('div[itemprop="blogPost"]');
 
       let list = [];
-      const array = arr
+
+      array
         .map((idx, el) => {
-          const elementSelector = selector(el);
-          const title = elementSelector.find('h2').text().trim();
-          if (title) list.push({name: title});
+          const e = selector(el);
+          let obj = {};
+
+          const title = e.find('h2').text().trim();
+          obj.name = title || false;
+
+          const image = e.find('img').attr('src');
+          obj.image = image || false;
+
+          var lastKey = false;
+          e.find('td').each(function (i, elem) {
+            if (i === 0) return;
+            const text = selector(this).text();
+            if (typeof text !== 'string' || text.length === 0) return;
+            const isKey = i % 2 === 0;
+            if (isKey) {
+              lastKey = text
+                .split(':')[0]
+                .toLocaleLowerCase()
+                .replace(/ /g, '');
+
+              if (lastKey) obj[lastKey] = '';
+            } else {
+              if (lastKey) obj[lastKey] = text;
+            }
+          });
+
+          list.push(obj);
         })
         .get();
 
       res.json({
         success: 'success',
         url: req.url,
-        data: selector.html(),
         list: list,
       });
     } else {

@@ -16,14 +16,8 @@ const App = () => {
   }, []);
 
   const init = async () => {
-    // const data = await fetch('https://wereldhonden.nl/hond-adopteren');
-    // console.log(data);
-
     const result = await API.get('restapi', '/items');
     console.log(result);
-
-    console.log(typeof result.data);
-
   };
 
   return (
