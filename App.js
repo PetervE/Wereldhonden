@@ -16,7 +16,7 @@ const App = () => {
   }, []);
 
   const init = async () => {
-    const result = await API.get('restapi', '/items');
+    const result = await API.get('restapi', '/scraper');
     console.log(result);
   };
 

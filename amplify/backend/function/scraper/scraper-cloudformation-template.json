@@ -33,12 +33,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "items",
+            "scraper",
             {
               "Fn::Join": [
                 "",
                 [
-                  "items",
+                  "scraper",
                   "-",
                   {
                     "Ref": "env"
@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-wereldhonden-dev-111828-deployment",
-          "S3Key": "amplify-builds/items-4366506a7a5551487054-build.zip"
+          "S3Key": "amplify-builds/scraper-33616153317242626f39-build.zip"
         }
       }
     },
@@ -79,12 +79,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "wereldhondenLambdaRole9bb2a923",
+            "wereldhondenLambdaRole7a52496c",
             {
               "Fn::Join": [
                 "",
                 [
-                  "wereldhondenLambdaRole9bb2a923",
+                  "wereldhondenLambdaRole7a52496c",
                   "-",
                   {
                     "Ref": "env"

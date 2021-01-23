@@ -8,7 +8,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
-    "build": ""
+    "build": "",
+    "function": "node amplify/backend/function/items/src/app.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",

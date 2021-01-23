@@ -6,6 +6,13 @@
             "privacy": {
                 "open": true
             }
+        },
+        {
+            "name": "/scraper",
+            "lambdaFunction": "scraper",
+            "privacy": {
+                "open": true
+            }
         }
     ],
     "resourceName": "restapi",
@@ -13,6 +20,9 @@
     "functionArns": [
         {
             "lambdaFunction": "items"
+        },
+        {
+            "lambdaFunction": "scraper"
         }
     ],
     "privacy": {
@@ -29,7 +39,15 @@
                 "Name",
                 "Arn"
             ]
+        },
+        {
+            "category": "function",
+            "resourceName": "scraper",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
         }
     ],
-    "uuid": "e591c397"
+    "uuid": "cb56cdf8"
 }
