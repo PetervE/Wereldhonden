@@ -69,7 +69,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-wereldhonden-dev-111828-deployment",
-          "S3Key": "amplify-builds/scraper-33616153317242626f39-build.zip"
+          "S3Key": "amplify-builds/scraper-7957514f7a41542b5165-build.zip"
         }
       }
     },

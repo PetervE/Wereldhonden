@@ -15,16 +15,28 @@ exports.handler = async (event) => {
 
     let page = await browser.newPage();
 
-    await page.goto('https://example.com');
+    await page.goto('https://wereldhonden.nl/hond-adopteren');
 
-    result = await page.title();
+    result = await page.evaluate(() => {
+      let data = []; // Create an empty array that will store our data
+      let elements = document.querySelectorAll('div[itemprop="blogPost"]'); // Select all Products
+
+      for (var element of elements) {
+        const title = element.querySelector('h2').innerText;
+        data.push({title}); // Push an object with the data onto our array
+      }
+
+      return data; // Return our data array
+    });
   } catch (error) {
-    console.log;
+    console.log(error);
   } finally {
     if (browser !== null) {
       await browser.close();
     }
   }
+
+  const content = result || 'No data';
 
   const response = {
     statusCode: 200,
@@ -32,7 +44,7 @@ exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
     },
-    body: JSON.stringify(result),
+    body: JSON.stringify(content),
   };
   return response;
 };
