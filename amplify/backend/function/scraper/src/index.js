@@ -64,8 +64,12 @@ exports.handler = async (event) => {
             isProp = text.substr(text.length - 1) === ':';
             if (isProp) {
               let check = text.slice(0, -1).replace(/ /g, '_').toLowerCase();
-              if (!check || check !== undefined) lastProp = check;
-              else {
+              if (!check || check !== undefined) {
+                if (check === 'ras/type') lastProp = 'type';
+                else {
+                  lastProp = check;
+                }
+              } else {
                 lastProp = false;
               }
             } else {

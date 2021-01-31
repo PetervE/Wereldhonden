@@ -1,0 +1,64 @@
+# type Blog @model {
+# id: ID!
+# name: String!
+# posts: [Post] @connection(keyName: "byBlog", fields: ["id"])
+# }
+
+# type Post @model @key(name: "byBlog", fields: ["blogID"]) {
+# id: ID!
+# title: String!
+# blogID: ID!
+# blog: Blog @connection(fields: ["blogID"])
+# comments: [Comment] @connection(keyName: "byPost", fields: ["id"])
+# }
+
+# type Comment @model @key(name: "byPost", fields: ["postID", "content"]) {
+# id: ID!
+# postID: ID!
+# post: Post @connection(fields: ["postID"])
+# content: String!
+# }
+
+type Applicant 
+@model
+ {
+	id: ID!
+  name: String
+	phone: String
+	email: String
+	choices: [Choice] @connection(keyName: "byApplicant", fields: ["id"])
+}
+
+type Choice 
+@model
+@key(name: "byApplicant", fields: ["applicantId"])
+ {
+	id: ID!
+	applicantId: ID!
+	applicant: Applicant @connection(fields: ["applicantId"])
+	dogId: ID! 
+	dog: Dog @connection(fields: ["dogId"])
+}
+
+type Dog 
+@model
+ {
+	id: ID!
+	index: Int
+	titel: String
+	status: String
+	geslacht: String
+	gesteriliseerd: String
+	huidige_verblijfplaats: String
+	land_van_herkomst: String
+	leeftijd: String
+	type: String
+	schofthoogte: String
+	vergoeding: String
+	bijzonderheden: String
+	opmerking: String
+	verhaal: String
+	karakter: String
+	fotos: String
+	videos: String
+}
