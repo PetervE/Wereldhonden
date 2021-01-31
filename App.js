@@ -16,7 +16,9 @@ const App = () => {
   }, []);
 
   const init = async () => {
-    const result = await API.get('restapi', '/scraper');
+    const result = await API.get('restapi', '/scraper', {
+      timeout: 60000
+    });
     console.log(result);
   };
 

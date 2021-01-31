@@ -1,37 +1,27 @@
 const chromium = require('chrome-aws-lambda');
 
-async function waitAndClick(index, page) {
-  // await page.waitForFunction(
-  //   `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
-  //   {visible: true},
-  // );
-
-  const selector = `#divload${index}`;
-  const button = `#click${index}`;
-
-  await page.evaluate(
-    (button) => document.querySelector(button).click(),
-    button,
-  );
-  await page.waitForFunction(
-    `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
-    {visible: true},
-  );
-}
-
-function isElement(o) {
-  return typeof HTMLElement === 'object'
-    ? o instanceof HTMLElement //DOM2
-    : o &&
-        typeof o === 'object' &&
-        o !== null &&
-        o.nodeType === 1 &&
-        typeof o.nodeName === 'string';
-}
-
 exports.handler = async (event) => {
   let result = null;
   let browser = null;
+
+  async function waitAndClick(index, page) {
+    // await page.waitForFunction(
+    //   `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
+    //   {visible: true},
+    // );
+
+    const selector = `#divload${index}`;
+    const button = `#click${index}`;
+
+    await page.evaluate(
+      (button) => document.querySelector(button).click(),
+      button,
+    );
+    await page.waitForFunction(
+      `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
+      {visible: true},
+    );
+  }
 
   try {
     browser = await chromium.puppeteer.launch({
@@ -56,21 +46,29 @@ exports.handler = async (event) => {
 
       Array.from(elements).map((element, index) => {
         const obj = {};
+        let lastProp, isProp;
 
         // title
         const title = element.querySelector('h2');
+        if (!title) return;
+
+        let splits = title.innerText.split('(');
+        let length = splits.length;
+
+        obj.title = splits[0];
+        obj.status = length == 2 ? splits[1].trim().slice(0, -1) : false;
 
         // basic info
         const tds = element.querySelectorAll('td');
-        let lastProp;
+
         Array.from(tds).map((td, i) => {
           if (!td || !td.innerText) return;
           const text = td.innerText.trim();
           if (text && typeof text === 'string' && text.length > 1) {
-            const isProp = i % 2 === 0;
+            isProp = text.substr(text.length - 1) === ':';
             if (isProp) {
-              lastProp = text;
-              obj[text] = '';
+              lastProp = text.slice(0, -1);
+              obj[text.slice(0, -1)] = '';
             } else {
               obj[lastProp] = text;
             }
@@ -79,7 +77,6 @@ exports.handler = async (event) => {
 
         // extra text info
         const extra = element.querySelector('div[itemprop="articleBody"]');
-        let lastExtraProp;
         if (extra.innerText) {
           let parts = extra.innerText
             .trim()
@@ -87,23 +84,37 @@ exports.handler = async (event) => {
             .split('\n\n');
 
           parts.map((p, x) => {
-            const isProp = x % 2 === 1;
+            isProp = x % 2 === 0;
             if (isProp) {
-              lastExtraProp = p.trim();
+              lastProp = p.trim().slice(0, -1);
             } else {
-              obj[lastExtraProp] = p;
+              obj[lastProp] = p;
             }
           });
         }
 
-        // const imageSelectors = element.querySelectorAll('a');
-        // let images = [];
-        // for (let image of imageSelectors) {
-        //   if (isElement(image)) images.push(image.getAttribute('href'));
-        // }
-        // obj.images = images;
+        // images
+        const imageSelectors = element.querySelectorAll('a');
+        let images = [];
+        Array.from(imageSelectors).map((img, ind) => {
+          let href = img.getAttribute('href');
+          if (href && typeof href === 'string' && ind !== 1 && ind !== 2) {
+            images.push(href);
+          }
+        });
+        obj.images = images;
 
-        if (title) obj.title = title.innerText;
+        // video
+        const videoSelectors = element.querySelectorAll('iframe');
+        let videos = [];
+        Array.from(videoSelectors).map((img, ind) => {
+          let videosrc = img.getAttribute('src');
+          if (videosrc && typeof videosrc === 'string') {
+            videos.push(videosrc.substring(2));
+          }
+        });
+        obj.videos = videos;
+
         data.push(obj); // Push an object with the data onto our array
       });
 
@@ -125,7 +136,7 @@ exports.handler = async (event) => {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
     },
-    body: content,
+    body: JSON.stringify(content),
   };
   return response;
 };
