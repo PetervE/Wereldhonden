@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "build": "",
-    "function": "node amplify/backend/function/items/src/app.js"
+    "function": "node amplify/backend/function/scraper/src/index.js"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
