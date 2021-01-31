@@ -5,11 +5,6 @@ exports.handler = async (event) => {
   let browser = null;
 
   async function waitAndClick(index, page) {
-    // await page.waitForFunction(
-    //   `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
-    //   {visible: true},
-    // );
-
     const selector = `#divload${index}`;
     const button = `#click${index}`;
 
@@ -64,12 +59,16 @@ exports.handler = async (event) => {
         Array.from(tds).map((td, i) => {
           if (!td || !td.innerText) return;
           const text = td.innerText.trim();
+          if (text === '&nbsp;' || text === 'Contact opnemen') return;
           if (text && typeof text === 'string' && text.length > 1) {
             isProp = text.substr(text.length - 1) === ':';
             if (isProp) {
               lastProp = text.slice(0, -1).replace(/ /g, '_').toLowerCase();
             } else {
-              obj[lastProp] = text;
+              if (lastProp === 'vergoeding') obj.vergoeding = td.innerText;
+              else {
+                obj[lastProp] = text;
+              }
             }
           }
         });
@@ -143,17 +142,3 @@ exports.handler = async (event) => {
   };
   return response;
 };
-
-// exports.handler = async (event) => {
-//   // TODO implement
-//   const response = {
-//     statusCode: 200,
-//     //  Uncomment below to enable CORS requests
-//     //  headers: {
-//     //      "Access-Control-Allow-Origin": "*",
-//     //      "Access-Control-Allow-Headers": "*"
-//     //  },
-//     body: JSON.stringify('Hello from Lambda!'),
-//   };
-//   return response;
-// };
