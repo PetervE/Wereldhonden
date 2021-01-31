@@ -63,8 +63,13 @@ exports.handler = async (event) => {
           if (text && typeof text === 'string' && text.length > 1) {
             isProp = text.substr(text.length - 1) === ':';
             if (isProp) {
-              lastProp = text.slice(0, -1).replace(/ /g, '_').toLowerCase();
+              let check = text.slice(0, -1).replace(/ /g, '_').toLowerCase();
+              if (!check || check !== undefined) lastProp = check;
+              else {
+                lastProp = false;
+              }
             } else {
+              if (!lastProp) return;
               if (lastProp === 'vergoeding') obj.vergoeding = td.innerText;
               else {
                 obj[lastProp] = text;
