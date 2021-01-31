@@ -1,10 +1,5 @@
 {
   "function": {
-    "items": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "scraper": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -16,14 +11,6 @@
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "items",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        },
         {
           "category": "function",
           "resourceName": "scraper",

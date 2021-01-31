@@ -1,13 +1,6 @@
 {
     "paths": [
         {
-            "name": "/items",
-            "lambdaFunction": "items",
-            "privacy": {
-                "open": true
-            }
-        },
-        {
             "name": "/scraper",
             "lambdaFunction": "scraper",
             "privacy": {
@@ -18,9 +11,6 @@
     "resourceName": "restapi",
     "apiName": "restapi",
     "functionArns": [
-        {
-            "lambdaFunction": "items"
-        },
         {
             "lambdaFunction": "scraper"
         }
@@ -34,14 +24,6 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "items",
-            "attributes": [
-                "Name",
-                "Arn"
-            ]
-        },
-        {
-            "category": "function",
             "resourceName": "scraper",
             "attributes": [
                 "Name",
@@ -49,5 +31,5 @@
             ]
         }
     ],
-    "uuid": "cb56cdf8"
+    "uuid": "09bee620"
 }

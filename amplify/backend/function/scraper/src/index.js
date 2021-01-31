@@ -40,7 +40,7 @@ exports.handler = async (event) => {
       let elements = document.querySelectorAll('div[itemprop="blogPost"]'); // Select all Products
 
       Array.from(elements).map((element, index) => {
-        const obj = {};
+        const obj = {index: index};
         let lastProp, isProp;
 
         // title
@@ -50,7 +50,7 @@ exports.handler = async (event) => {
         let splits = title.innerText.split('(');
         let length = splits.length;
 
-        obj.title = splits[0].trim();
+        obj.titel = splits[0].trim();
         obj.status = length == 2 ? splits[1].trim().slice(0, -1) : false;
 
         // basic info
@@ -70,8 +70,9 @@ exports.handler = async (event) => {
               }
             } else {
               if (!lastProp) return;
-              if (lastProp === 'vergoeding') obj.vergoeding = td.innerText;
-              else {
+              if (lastProp === 'vergoeding') {
+                obj.vergoeding = td.innerText.split(' ')[0];
+              } else {
                 obj[lastProp] = text;
               }
             }
@@ -109,7 +110,7 @@ exports.handler = async (event) => {
             images.push(href);
           }
         });
-        obj.images = images;
+        obj.fotos = images;
 
         // video
         const videoSelectors = element.querySelectorAll('iframe');
