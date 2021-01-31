@@ -19,6 +19,16 @@ async function waitAndClick(index, page) {
   );
 }
 
+function isElement(o) {
+  return typeof HTMLElement === 'object'
+    ? o instanceof HTMLElement //DOM2
+    : o &&
+        typeof o === 'object' &&
+        o !== null &&
+        o.nodeType === 1 &&
+        typeof o.nodeName === 'string';
+}
+
 exports.handler = async (event) => {
   let result = null;
   let browser = null;
@@ -44,17 +54,58 @@ exports.handler = async (event) => {
       let data = []; // Create an empty array that will store our data
       let elements = document.querySelectorAll('div[itemprop="blogPost"]'); // Select all Products
 
-      let index = 0;
-      for (var element of elements) {
+      Array.from(elements).map((element, index) => {
+        const obj = {};
+
+        // title
         const title = element.querySelector('h2');
-        const obj = {title: title.innerText};
 
-        const images = element.querySelectorAll('a');
-        if (images.length > 1) obj.image = images[3].getAttribute('href');
+        // basic info
+        const tds = element.querySelectorAll('td');
+        let lastProp;
+        Array.from(tds).map((td, i) => {
+          if (!td || !td.innerText) return;
+          const text = td.innerText.trim();
+          if (text && typeof text === 'string' && text.length > 1) {
+            const isProp = i % 2 === 0;
+            if (isProp) {
+              lastProp = text;
+              obj[text] = '';
+            } else {
+              obj[lastProp] = text;
+            }
+          }
+        });
 
+        // extra text info
+        const extra = element.querySelector('div[itemprop="articleBody"]');
+        let lastExtraProp;
+        if (extra.innerText) {
+          let parts = extra.innerText
+            .trim()
+            .replace(/^( |<br \/>)*(.*?)( |<br \/>)*$/, '$2')
+            .split('\n\n');
+
+          parts.map((p, x) => {
+            const isProp = x % 2 === 1;
+            if (isProp) {
+              lastExtraProp = p.trim();
+            } else {
+              obj[lastExtraProp] = p;
+            }
+          });
+        }
+
+        // const imageSelectors = element.querySelectorAll('a');
+        // let images = [];
+        // for (let image of imageSelectors) {
+        //   if (isElement(image)) images.push(image.getAttribute('href'));
+        // }
+        // obj.images = images;
+
+        if (title) obj.title = title.innerText;
         data.push(obj); // Push an object with the data onto our array
-        index + 1;
-      }
+      });
 
       return data; // Return our data array
     });
