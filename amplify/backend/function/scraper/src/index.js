@@ -55,7 +55,7 @@ exports.handler = async (event) => {
         let splits = title.innerText.split('(');
         let length = splits.length;
 
-        obj.title = splits[0];
+        obj.title = splits[0].trim();
         obj.status = length == 2 ? splits[1].trim().slice(0, -1) : false;
 
         // basic info
@@ -67,8 +67,7 @@ exports.handler = async (event) => {
           if (text && typeof text === 'string' && text.length > 1) {
             isProp = text.substr(text.length - 1) === ':';
             if (isProp) {
-              lastProp = text.slice(0, -1);
-              obj[text.slice(0, -1)] = '';
+              lastProp = text.slice(0, -1).replace(/ /g, '_').toLowerCase();
             } else {
               obj[lastProp] = text;
             }
@@ -86,7 +85,11 @@ exports.handler = async (event) => {
           parts.map((p, x) => {
             isProp = x % 2 === 0;
             if (isProp) {
-              lastProp = p.trim().slice(0, -1);
+              if (x == 0) lastProp = 'verhaal';
+              else if (x == 2) lastProp = 'karakter';
+              else {
+                lastProp = p.slice(0, -1).replace(/ /g, '_').toLowerCase();
+              }
             } else {
               obj[lastProp] = p;
             }
