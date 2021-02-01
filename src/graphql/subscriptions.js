@@ -11,6 +11,7 @@ export const onCreateApplicant = /* GraphQL */ `
       choices {
         items {
           id
+          liked
           applicantId
           dogId
           createdAt
@@ -33,6 +34,7 @@ export const onUpdateApplicant = /* GraphQL */ `
       choices {
         items {
           id
+          liked
           applicantId
           dogId
           createdAt
@@ -55,6 +57,7 @@ export const onDeleteApplicant = /* GraphQL */ `
       choices {
         items {
           id
+          liked
           applicantId
           dogId
           createdAt
@@ -71,6 +74,7 @@ export const onCreateChoice = /* GraphQL */ `
   subscription OnCreateChoice {
     onCreateChoice {
       id
+      liked
       applicantId
       applicant {
         id
@@ -115,6 +119,7 @@ export const onUpdateChoice = /* GraphQL */ `
   subscription OnUpdateChoice {
     onUpdateChoice {
       id
+      liked
       applicantId
       applicant {
         id
@@ -159,6 +164,7 @@ export const onDeleteChoice = /* GraphQL */ `
   subscription OnDeleteChoice {
     onDeleteChoice {
       id
+      liked
       applicantId
       applicant {
         id

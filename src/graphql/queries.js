@@ -11,6 +11,7 @@ export const getApplicant = /* GraphQL */ `
       choices {
         items {
           id
+          liked
           applicantId
           dogId
           createdAt
@@ -49,6 +50,7 @@ export const getChoice = /* GraphQL */ `
   query GetChoice($id: ID!) {
     getChoice(id: $id) {
       id
+      liked
       applicantId
       applicant {
         id
@@ -98,6 +100,7 @@ export const listChoices = /* GraphQL */ `
     listChoices(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        liked
         applicantId
         applicant {
           id

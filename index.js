@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import '@react-native-async-storage/async-storage';
 import {AppRegistry} from 'react-native';
-import App from './App';
+import App from './src/App';
 import {name as appName} from './app.json';
 
 import Amplify from 'aws-amplify';

@@ -34,6 +34,7 @@ type Choice
 @key(name: "byApplicant", fields: ["applicantId"])
  {
 	id: ID!
+  liked: Boolean
 	applicantId: ID!
 	applicant: Applicant @connection(fields: ["applicantId"])
 	dogId: ID! 
