@@ -35,8 +35,6 @@ const theme = {
 };
 
 const App = () => {
-  // return <Text>Hallo</Text>;
-
   return (
     <StateProvider>
       <PaperProvider theme={theme}>

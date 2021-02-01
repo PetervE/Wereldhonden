@@ -37,7 +37,6 @@ const Navigation = (props) => {
 
   useEffect(() => {
     init();
-    console.log('DOGS', dogs);
   }, []);
 
   const init = async () => {
