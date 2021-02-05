@@ -11,6 +11,7 @@ import {
   ScrollView,
   View,
   Text,
+  Switch,
   StatusBar,
   SafeAreaView,
   AppState,
@@ -19,6 +20,7 @@ import {
   Avatar,
   Button,
   Title,
+  Checkbox,
   Divider,
   Card,
   Paragraph,
@@ -45,6 +47,10 @@ const Start = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
   const {user, dogs} = state;
+
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
     init();
@@ -85,16 +91,24 @@ const Start = (props) => {
   return (
     <View style={{flex: 1}}>
       <ScrollView style={{flex: 1}}>
-        <View style={{flex: 0}}>
+        <View style={styles.dogsContainer}>
           {dogs.map((d, i) => {
             return (
-              <View key={`dog-${i}`}>
+              <View style={styles.cardContainer} key={`dog-${i}`}>
                 <Card>
                   <Card.Title title={d.titel} subtitle={d.type} />
                   <Card.Cover
                     source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
                   />
-                  <Card.Actions></Card.Actions>
+                  <Card.Actions>
+                    <Switch
+                      trackColor={{false: '#767577', true: '#81b0ff'}}
+                      thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={toggleSwitch}
+                      value={isEnabled}
+                    />
+                  </Card.Actions>
                 </Card>
               </View>
             );
@@ -106,10 +120,13 @@ const Start = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  dogsContainer: {
     flex: 1,
-    alignItems: 'stretch',
-    justifyContent: 'center',
+    paddingVertical: 8,
+  },
+  cardContainer: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
   },
 });
 
