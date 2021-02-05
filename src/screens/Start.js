@@ -15,7 +15,15 @@ import {
   SafeAreaView,
   AppState,
 } from 'react-native';
-import {Button, Title, Divider} from 'react-native-paper';
+import {
+  Avatar,
+  Button,
+  Title,
+  Divider,
+  Card,
+  Paragraph,
+} from 'react-native-paper';
+import {Loader, Centered} from '../components/common';
 
 import {store, initialState} from '../store.js';
 
@@ -36,12 +44,64 @@ import * as subscriptions from '../graphql/subscriptions';
 const Start = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
-  const {user, activeItem, activeLog} = state;
+  const {user, dogs} = state;
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = async () => {
+    try {
+      const {data} = await API.graphql({
+        query: queries.listDogs,
+        variables: {},
+      });
+      if (!data) return console.log('Error scrape: no data');
+      const items = data.listDogs.items.reduce((memo, item) => {
+        if (item.status !== 'geadopteerd') {
+          memo.push({
+            ...item,
+            fotos: item.fotos ? JSON.parse(item.fotos) : false,
+            videos: item.videos ? JSON.parse(item.videos) : false,
+          });
+        }
+        return memo;
+      }, []);
+      console.log(items.length);
+      dispatch({type: 'SET_DOGS', payload: items});
+    } catch (e) {
+      console.log('Error init', e);
+    }
+  };
+
+  if (!dogs.length) {
+    return (
+      <Centered>
+        <Loader />
+      </Centered>
+    );
+  }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Hallo</Text>
-    </SafeAreaView>
+    <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
+        <View style={{flex: 0}}>
+          {dogs.map((d, i) => {
+            return (
+              <View key={`dog-${i}`}>
+                <Card>
+                  <Card.Title title={d.titel} subtitle={d.type} />
+                  <Card.Cover
+                    source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
+                  />
+                  <Card.Actions></Card.Actions>
+                </Card>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 

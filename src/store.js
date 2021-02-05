@@ -14,6 +14,10 @@ const StateProvider = ({children}) => {
     switch (action.type) {
       case 'SET_USER':
         return {...state, user: action.payload};
+
+      case 'SET_DOGS':
+        return {...state, dogs: action.payload};
+
       default:
         throw new Error();
     }
