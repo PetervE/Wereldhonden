@@ -13,6 +13,7 @@ import {
   StatusBar,
   AppState,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {withTheme, Button} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -22,6 +23,8 @@ import Amplify, {API, graphqlOperation} from 'aws-amplify';
 import * as queries from './graphql/queries';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
+
+import {Loader, Centered} from './components/common';
 
 import Start from './screens/Start';
 import Admin from './screens/Admin';
@@ -33,8 +36,53 @@ const Stack = createStackNavigator();
 const Navigation = (props) => {
   const {theme, navigation} = props;
 
-  const {state} = useContext(store);
-  const {dogs} = state;
+  const {state, dispatch} = useContext(store);
+  const {applicant} = state;
+
+  useEffect(() => {
+    init();
+    return () => {};
+  }, []);
+
+  const createUser = async () => {
+    const {data} = await API.graphql({
+      query: mutations.createApplicant,
+      variables: {input: {}},
+    });
+    console.log('create', data);
+
+    await AsyncStorage.setItem('@user', data.createApplicant.id);
+    dispatch({
+      type: 'SET_APPLICANT',
+      payload: data.createApplicant,
+    });
+  };
+
+  const init = async () => {
+    const value = await AsyncStorage.getItem('@user');
+    if (value) {
+      // get user
+      const {data} = await API.graphql({
+        query: queries.getApplicant,
+        variables: {id: value},
+      });
+      if (data.getApplicant) {
+        dispatch({type: 'SET_APPLICANT', payload: data.getApplicant});
+      } else {
+        createUser();
+      }
+    } else {
+      createUser();
+    }
+  };
+
+  if (!applicant) {
+    return (
+      <Centered>
+        <Loader />
+      </Centered>
+    );
+  }
 
   return (
     <View style={{flex: 1}}>

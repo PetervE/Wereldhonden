@@ -1,6 +1,7 @@
 import React, {createContext, useReducer} from 'react';
 
 const initialState = {
+  applicant: false,
   dogs: [],
 };
 
@@ -12,8 +13,8 @@ const StateProvider = ({children}) => {
   const [state, dispatch] = useReducer((state, action) => {
     // console.log(action.type, action.payload);
     switch (action.type) {
-      case 'SET_USER':
-        return {...state, user: action.payload};
+      case 'SET_APPLICANT':
+        return {...state, applicant: action.payload};
 
       case 'SET_DOGS':
         return {...state, dogs: action.payload};

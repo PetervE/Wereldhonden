@@ -46,13 +46,14 @@ import * as subscriptions from '../graphql/subscriptions';
 const Start = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
-  const {user, dogs} = state;
+  const {applicant, dogs} = state;
 
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
+    console.log('user', applicant);
     init();
   }, []);
 
@@ -73,7 +74,6 @@ const Start = (props) => {
         }
         return memo;
       }, []);
-      console.log(items.length);
       dispatch({type: 'SET_DOGS', payload: items});
     } catch (e) {
       console.log('Error init', e);
