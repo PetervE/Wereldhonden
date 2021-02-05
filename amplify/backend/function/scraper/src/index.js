@@ -40,7 +40,7 @@ exports.handler = async (event) => {
       let elements = document.querySelectorAll('div[itemprop="blogPost"]'); // Select all Products
 
       Array.from(elements).map((element, index) => {
-        const obj = {index: index};
+        const obj = {};
         let lastProp, isProp;
 
         // title
@@ -85,7 +85,7 @@ exports.handler = async (event) => {
 
         // extra text info
         const extra = element.querySelector('div[itemprop="articleBody"]');
-        if (extra.innerText) {
+        if (extra && extra.innerText && String(extra.innerText).length > 0) {
           let parts = extra.innerText
             .trim()
             .replace(/^( |<br \/>)*(.*?)( |<br \/>)*$/, '$2')

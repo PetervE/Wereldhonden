@@ -66,11 +66,11 @@ export const getChoice = /* GraphQL */ `
       dogId
       dog {
         id
-        index
         titel
         status
         geslacht
         gesteriliseerd
+        gecastreerd
         huidige_verblijfplaats
         land_van_herkomst
         leeftijd
@@ -113,11 +113,11 @@ export const listChoices = /* GraphQL */ `
         dogId
         dog {
           id
-          index
           titel
           status
           geslacht
           gesteriliseerd
+          gecastreerd
           huidige_verblijfplaats
           land_van_herkomst
           leeftijd
@@ -144,11 +144,11 @@ export const getDog = /* GraphQL */ `
   query GetDog($id: ID!) {
     getDog(id: $id) {
       id
-      index
       titel
       status
       geslacht
       gesteriliseerd
+      gecastreerd
       huidige_verblijfplaats
       land_van_herkomst
       leeftijd
@@ -175,11 +175,11 @@ export const listDogs = /* GraphQL */ `
     listDogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        index
         titel
         status
         geslacht
         gesteriliseerd
+        gecastreerd
         huidige_verblijfplaats
         land_van_herkomst
         leeftijd

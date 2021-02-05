@@ -45,11 +45,11 @@ type Dog
 @model
  {
 	id: ID!
-	index: Int
 	titel: String
 	status: String
 	geslacht: String
 	gesteriliseerd: String
+	gecastreerd: String
 	huidige_verblijfplaats: String
 	land_van_herkomst: String
 	leeftijd: String

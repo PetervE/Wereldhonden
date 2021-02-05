@@ -90,11 +90,11 @@ export const onCreateChoice = /* GraphQL */ `
       dogId
       dog {
         id
-        index
         titel
         status
         geslacht
         gesteriliseerd
+        gecastreerd
         huidige_verblijfplaats
         land_van_herkomst
         leeftijd
@@ -135,11 +135,11 @@ export const onUpdateChoice = /* GraphQL */ `
       dogId
       dog {
         id
-        index
         titel
         status
         geslacht
         gesteriliseerd
+        gecastreerd
         huidige_verblijfplaats
         land_van_herkomst
         leeftijd
@@ -180,11 +180,11 @@ export const onDeleteChoice = /* GraphQL */ `
       dogId
       dog {
         id
-        index
         titel
         status
         geslacht
         gesteriliseerd
+        gecastreerd
         huidige_verblijfplaats
         land_van_herkomst
         leeftijd
@@ -209,11 +209,11 @@ export const onCreateDog = /* GraphQL */ `
   subscription OnCreateDog {
     onCreateDog {
       id
-      index
       titel
       status
       geslacht
       gesteriliseerd
+      gecastreerd
       huidige_verblijfplaats
       land_van_herkomst
       leeftijd
@@ -235,11 +235,11 @@ export const onUpdateDog = /* GraphQL */ `
   subscription OnUpdateDog {
     onUpdateDog {
       id
-      index
       titel
       status
       geslacht
       gesteriliseerd
+      gecastreerd
       huidige_verblijfplaats
       land_van_herkomst
       leeftijd
@@ -261,11 +261,11 @@ export const onDeleteDog = /* GraphQL */ `
   subscription OnDeleteDog {
     onDeleteDog {
       id
-      index
       titel
       status
       geslacht
       gesteriliseerd
+      gecastreerd
       huidige_verblijfplaats
       land_van_herkomst
       leeftijd

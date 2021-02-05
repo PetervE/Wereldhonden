@@ -21,7 +21,7 @@
         }
       ]
     },
-    "graphqlapi": {
+    "graphql": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
