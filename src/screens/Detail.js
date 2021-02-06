@@ -8,6 +8,7 @@ import React, {
 import {
   StyleSheet,
   LogBox,
+  ImageBackground,
   ScrollView,
   View,
   Text,
@@ -17,6 +18,8 @@ import {
 } from 'react-native';
 import {Button, Title, Divider} from 'react-native-paper';
 import {Loader, Centered} from '../components/common';
+import {windowWidth, windowHeight} from '../components/device';
+import Carousel from 'react-native-snap-carousel';
 
 import {store, initialState} from '../store.js';
 
@@ -45,8 +48,23 @@ const Detail = (props) => {
     console.log('detail dog', props.route.params.dog);
     let active = props.route.params.dog || false;
     setActiveDog(active);
-    return () => {};
+    return () => {
+      setActiveDog(false);
+    };
   }, []);
+
+  const renderItem = ({item, index}) => {
+    return (
+      <View>
+        <ImageBackground
+          source={{uri: `https://wereldhonden.nl${item}`}}
+          style={{
+            height: 400,
+          }}
+        />
+      </View>
+    );
+  };
 
   if (!activeDog) {
     return (
@@ -57,17 +75,24 @@ const Detail = (props) => {
   }
 
   return (
-    <View style={styles.centered}>
-      <Text>{activeDog.titel}</Text>
+    <View style={styles.container}>
+      <Title style={{textAlign: 'center'}}>{activeDog.titel}</Title>
+
+      <Carousel
+        layout={'default'}
+        data={activeDog.fotos}
+        sliderWidth={windowWidth}
+        itemWidth={windowWidth - 60}
+        renderItem={renderItem}
+        onSnapToItem={(index) => console.log(index)}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  centered: {
+  container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
