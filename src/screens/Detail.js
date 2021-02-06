@@ -107,13 +107,15 @@ const Detail = (props) => {
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: 'tomato',
+          backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
           height: 50,
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         <Text style={{fontWeight: '500', color: 'white'}}>
-          {activeDog.status.length ? activeDog.status.toUpperCase() : ''}
+          {activeDog.status.length
+            ? activeDog.status.toUpperCase()
+            : 'BESCHIKBAAR'}
         </Text>
       </View>
 
