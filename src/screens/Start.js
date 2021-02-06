@@ -25,6 +25,7 @@ import {
   Card,
   Paragraph,
 } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {Loader, Centered} from '../components/common';
 
 import {store, initialState} from '../store.js';
@@ -134,6 +135,23 @@ const Start = (props) => {
                     onValueChange={(value) => toggleDog(value, d)}
                     value={value}
                   />
+                  <View style={{flex: 1}} />
+                  <Button
+                    icon={() => (
+                      <Icon name="arrow-right" size={18} color="white" />
+                    )}
+                    mode="contained"
+                    style={{
+                      marginVertical: 8,
+                    }}
+                    contentStyle={{
+                      height: 50,
+                      backgroundColor: 'tomato',
+                      paddingHorizontal: 12,
+                    }}
+                    onPress={() => navigation.navigate('Detail')}>
+                    Detail
+                  </Button>
                 </Card.Actions>
               </Card>
             </View>

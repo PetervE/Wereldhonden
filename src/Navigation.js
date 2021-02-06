@@ -31,6 +31,7 @@ import {Loader, Centered} from './components/common';
 import Start from './screens/Start';
 import Profile from './screens/Profile';
 import Admin from './screens/Admin';
+import Detail from './screens/Detail';
 
 import {store, StateProvider, initialState} from './store.js';
 
@@ -127,6 +128,15 @@ const Navigation = (props) => {
 
   const Tab = createBottomTabNavigator();
 
+  function StartStack() {
+    return (
+      <Stack.Navigator>
+        <Stack.Screen name="Start" component={Start} />
+        <Stack.Screen name="Detail" component={Detail} />
+      </Stack.Navigator>
+    );
+  }
+
   return (
     <View style={{flex: 1}}>
       <NavigationContainer>
@@ -148,7 +158,7 @@ const Navigation = (props) => {
           }}>
           <Tab.Screen
             name="Start"
-            component={Start}
+            component={StartStack}
             options={{title: `start`, headerShown: false}}
             initialParams={{theme: theme}}
           />
