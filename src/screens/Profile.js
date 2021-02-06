@@ -40,33 +40,16 @@ const Profile = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
-  const [likes, setLikes] = useState([]);
-  const [likedDogs, setLikedDogs] = useState([]);
-
-  useFocusEffect(
-    useCallback(() => {
-      const items = choices.reduce((memo, item) => {
-        if (item.liked === true) memo.push(item);
-        return memo;
-      }, []);
-      setLikes(items);
-    }, []),
-  );
-
-  useEffect(() => {
-    if (!likes.length) return;
-    let items = [];
-    likes.map((l) => {
-      const find = dogs.find((d) => d.id === l.dogId);
-      if (find) items.push(find);
-    });
-    setLikedDogs(items);
-  }, [likes]);
-
   return (
     <View style={styles.centered}>
-      {likedDogs.map((x) => {
-        return <Text>{x.titel}</Text>;
+      {choices.map((choice, i) => {
+        const dog = dogs.find((d) => d.id === choice.dogId);
+        if (!dog || choice.liked === false) return null;
+        return (
+          <View key={`liked-${i}`}>
+            <Text>{dog.titel}</Text>
+          </View>
+        );
       })}
     </View>
   );

@@ -99,6 +99,7 @@ const Start = (props) => {
       variables: {applicantId: applicant.id},
     });
     dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
+    console.log('choices', choicesByApplicant.items);
   };
 
   if (!dogs.length) {
