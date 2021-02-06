@@ -51,6 +51,8 @@ const Start = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices, activeDog} = state;
 
+  const [stateChoices, setStateChoices] = useState(choices);
+
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const toggleDog = async (value, dog) => {
@@ -58,6 +60,7 @@ const Start = (props) => {
       if (c.dogId === dog.id && c.applicantId === applicant.id) return c;
     });
 
+    let updatedItem;
     if (choice) {
       // update
       let payload = {...choice, liked: value};
@@ -65,15 +68,21 @@ const Start = (props) => {
       delete payload.dog;
       delete payload.createdAt;
       delete payload.updatedAt;
-      const {data} = await API.graphql({
+      let {data} = await API.graphql({
         query: mutations.updateChoice,
         variables: {
           input: payload,
         },
       });
+      updatedItem = data.updateChoice;
+      const index = choices.findIndex((x) => x.id === updatedItem.id);
+      let updatedArray = [...choices];
+      updatedArray[index] = updatedItem;
+      console.log(updatedItem);
+      setStateChoices(updatedArray);
     } else {
       // create choice
-      const {data} = await API.graphql({
+      let {data} = await API.graphql({
         query: mutations.createChoice,
         variables: {
           input: {
@@ -83,14 +92,12 @@ const Start = (props) => {
           },
         },
       });
+      updatedItem = data.createChoice;
+
+      let items = [...stateChoices, updatedItem];
+
+      setStateChoices(items);
     }
-    const {
-      data: {choicesByApplicant},
-    } = await API.graphql({
-      query: queries.choicesByApplicant,
-      variables: {applicantId: applicant.id},
-    });
-    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
   };
 
   const navigateDogDetail = (dog) => {
@@ -118,7 +125,7 @@ const Start = (props) => {
       <SafeAreaView style={styles.dogsContainer}>
         {dogs.map((d, i) => {
           let value;
-          let choice = choices.find((c) => {
+          let choice = stateChoices.find((c) => {
             if (c.dogId === d.id && c.applicantId === applicant.id) return c;
           });
           if (choice) value = choice.liked;
@@ -126,35 +133,54 @@ const Start = (props) => {
           return (
             <View style={styles.cardContainer} key={`dog-${i}`}>
               <Card>
-                <Card.Title title={d.titel} subtitle={d.type} />
+                <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                  <View style={{flex: 1}}>
+                    <Card.Title title={d.titel} subtitle={d.type} />
+                  </View>
+                  <View
+                    style={{
+                      paddingHorizontal: 8,
+                      backgroundColor:
+                        d.status && d.status !== 'nieuw!'
+                          ? 'tomato'
+                          : 'seagreen',
+                      height: 30,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{fontWeight: '500', color: 'white'}}>
+                      {d.status.length ? d.status.toUpperCase() : 'BESCHIKBAAR'}
+                    </Text>
+                  </View>
+                </View>
                 <Card.Cover
                   source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
                 />
                 <Card.Actions>
-                  <Switch
-                    trackColor={{false: '#767577', true: '#81b0ff'}}
-                    thumbColor={value ? '#f5dd4b' : '#f4f3f4'}
-                    ios_backgroundColor="#3e3e3e"
-                    onValueChange={(value) => toggleDog(value, d)}
-                    value={value}
-                  />
-                  <View style={{flex: 1}} />
+                  <View style={{marginLeft: 12}}>
+                    <Switch
+                      disabled={
+                        d.status === 'in optie' || d.status === 'gereserveerd'
+                      }
+                      trackColor={{false: '#767577', true: 'seagreen'}}
+                      thumbColor={value ? 'white' : '#f4f3f4'}
+                      ios_backgroundColor="#3e3e3e"
+                      onValueChange={(value) => toggleDog(value, d)}
+                      value={value}
+                    />
+                  </View>
+                  <View style={{flex: 1, alignItems: 'center'}}></View>
                   <Button
                     icon={() => (
-                      <Icon name="arrow-right" size={18} color="white" />
+                      <Icon name="arrow-right" size={14} color="black" />
                     )}
-                    mode="contained"
-                    style={{
-                      marginVertical: 8,
-                    }}
+                    mode="text"
                     contentStyle={{
-                      height: 50,
-                      backgroundColor: 'tomato',
-                      paddingHorizontal: 12,
+                      height: 80,
+                      width: 80,
                     }}
-                    onPress={() => navigateDogDetail(d)}>
-                    Detail
-                  </Button>
+                    onPress={() => navigateDogDetail(d)}
+                  />
                 </Card.Actions>
               </Card>
             </View>

@@ -34,18 +34,40 @@ import Amplify, {
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 
 const Profile = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
-  const [loading, setLoading] = useState(false);
+  const isFocused = useIsFocused();
+
+  const [loading, setLoading] = useState(true);
+  const [stateChoices, setStateChoices] = useState([]);
 
   const [name, setName] = useState(applicant.name || '');
   const [email, setEmail] = useState(applicant.email || '');
   const [phone, setPhone] = useState(applicant.phone || '');
+
+  useEffect(() => {
+    if (isFocused === true) init();
+    return () => {
+      setLoading(true);
+    };
+  }, [isFocused]);
+
+  const init = async () => {
+    const {
+      data: {choicesByApplicant},
+    } = await API.graphql({
+      query: queries.choicesByApplicant,
+      variables: {applicantId: applicant.id},
+    });
+    // console.log('choices', choicesByApplicant.items);
+    setStateChoices(choicesByApplicant.items);
+    setLoading(false);
+  };
 
   const saveApplicant = async () => {
     setLoading(true);
@@ -63,7 +85,7 @@ const Profile = (props) => {
     setLoading(false);
   };
 
-  const likedDogs = choices.reduce((memo, choice) => {
+  const likedDogs = stateChoices.reduce((memo, choice) => {
     const find = dogs.find((d) => d.id === choice.dogId);
     if (find && choice.liked === true) memo.push(find);
     return memo;
@@ -110,11 +132,13 @@ const Profile = (props) => {
           </View>
         </SafeAreaView>
       </View>
-      <Title style={{paddingHorizontal: 16, textAlign: 'center'}}>
-        {likedDogs.length > 1
-          ? `${likedDogs.length} dogs`
-          : `${likedDogs.length} dog`}
-      </Title>
+      {likedDogs.length !== 0 ? (
+        <Title style={{paddingHorizontal: 16, textAlign: 'center'}}>
+          {likedDogs.length > 1
+            ? `${likedDogs.length} dogs`
+            : `${likedDogs.length} dog`}
+        </Title>
+      ) : null}
       <View style={styles.dogsContainer}>
         {likedDogs.map((dog, i) => {
           return (

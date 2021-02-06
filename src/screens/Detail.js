@@ -120,7 +120,10 @@ const Detail = (props) => {
       <View style={{alignItems: 'stretch', paddingBottom: 50}}>
         <View
           style={{
-            backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
+            backgroundColor:
+              activeDog.status && activeDog.status !== 'nieuw!'
+                ? 'tomato'
+                : 'seagreen',
             height: 50,
             alignItems: 'center',
             justifyContent: 'center',
@@ -257,7 +260,7 @@ const Detail = (props) => {
             <DataTable.Row>
               <DataTable.Cell>Vergoeding</DataTable.Cell>
               <DataTable.Cell numeric>
-                {String(activeDog.vergoeding)}
+                €{String(activeDog.vergoeding)},-
               </DataTable.Cell>
             </DataTable.Row>
           ) : null}
