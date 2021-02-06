@@ -85,14 +85,17 @@ const Profile = (props) => {
     delete payload.updatedAt;
     delete payload.choices;
 
-    await API.graphql({
+    const {
+      data: {updateApplicant},
+    } = await API.graphql({
       query: mutations.updateApplicant,
       variables: {
         input: payload,
       },
     });
-    setExpanded(false);
     setLoading(false);
+    setExpanded(false);
+    dispatch({type: 'SET_APPLICANT', payload: updateApplicant});
   };
 
   const likedDogs = stateChoices.reduce((memo, choice) => {
