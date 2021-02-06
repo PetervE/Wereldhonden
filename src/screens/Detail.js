@@ -17,7 +17,14 @@ import {
   SafeAreaView,
   AppState,
 } from 'react-native';
-import {Button, Title, Divider, Badge} from 'react-native-paper';
+import {
+  Button,
+  Title,
+  Divider,
+  Badge,
+  DataTable,
+  Paragraph,
+} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import {Loader, Centered} from '../components/common';
@@ -104,74 +111,174 @@ const Detail = (props) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View
-        style={{
-          backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
-          height: 50,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}>
-        <Text style={{fontWeight: '500', color: 'white'}}>
-          {activeDog.status.length
-            ? activeDog.status.toUpperCase()
-            : 'BESCHIKBAAR'}
-        </Text>
-      </View>
-
-      <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
-        <Button
-          icon={() => <Icon name="camera" size={18} color="#222222" />}
-          mode="text"
+    <ScrollView
+      style={{flex: 1}}
+      contentContainerStyle={{
+        alignItems: 'stretch',
+      }}>
+      <View style={{alignItems: 'stretch', height: 2000}}>
+        <View
           style={{
-            marginVertical: 8,
-          }}
-          labelStyle={{
-            color: '#222222',
-            textDecorationLine: activeMedia === 'fotos' ? 'underline' : 'none',
-          }}
-          contentStyle={{
+            backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
             height: 50,
-            paddingHorizontal: 12,
-          }}
-          onPress={() => setActiveMedia('fotos')}>
-          Photos
-        </Button>
-        <Button
-          icon={() => <Icon name="video-camera" size={18} color="#222222" />}
-          mode="text"
-          style={{
-            marginVertical: 8,
-          }}
-          labelStyle={{
-            color: '#222222',
-            textDecorationLine: activeMedia === 'videos' ? 'underline' : 'none',
-          }}
-          contentStyle={{
-            height: 50,
-            paddingHorizontal: 12,
-          }}
-          onPress={() => setActiveMedia('videos')}>
-          Videos
-        </Button>
-      </View>
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Text style={{fontWeight: '500', color: 'white'}}>
+            {activeDog.status.length
+              ? activeDog.status.toUpperCase()
+              : 'BESCHIKBAAR'}
+          </Text>
+        </View>
 
-      <Carousel
-        layout={'stack'}
-        data={activeDog[activeMedia]}
-        sliderWidth={windowWidth}
-        itemWidth={windowWidth - 20}
-        renderItem={renderItem}
-        // onSnapToItem={(index) => console.log('fotos', index)}
-      />
-    </View>
+        <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
+          <Button
+            icon={() => <Icon name="camera" size={18} color="#222222" />}
+            mode="text"
+            style={{
+              marginVertical: 8,
+            }}
+            labelStyle={{
+              color: '#222222',
+              textDecorationLine:
+                activeMedia === 'fotos' ? 'underline' : 'none',
+            }}
+            contentStyle={{
+              height: 50,
+              paddingHorizontal: 12,
+            }}
+            onPress={() => setActiveMedia('fotos')}>
+            Photos
+          </Button>
+          <Button
+            icon={() => <Icon name="video-camera" size={18} color="#222222" />}
+            mode="text"
+            style={{
+              marginVertical: 8,
+            }}
+            labelStyle={{
+              color: '#222222',
+              textDecorationLine:
+                activeMedia === 'videos' ? 'underline' : 'none',
+            }}
+            contentStyle={{
+              height: 50,
+              paddingHorizontal: 12,
+            }}
+            onPress={() => setActiveMedia('videos')}>
+            Videos
+          </Button>
+        </View>
+
+        <Carousel
+          layout={'stack'}
+          data={activeDog[activeMedia]}
+          sliderWidth={windowWidth}
+          itemWidth={windowWidth - 20}
+          renderItem={renderItem}
+          // onSnapToItem={(index) => console.log('fotos', index)}
+        />
+
+        <DataTable>
+          <DataTable.Row>
+            <DataTable.Cell>Geslacht</DataTable.Cell>
+            <DataTable.Cell numeric>{activeDog.geslacht}</DataTable.Cell>
+          </DataTable.Row>
+
+          <DataTable.Row>
+            <DataTable.Cell>Type</DataTable.Cell>
+            <DataTable.Cell numeric>{activeDog.type}</DataTable.Cell>
+          </DataTable.Row>
+
+          <DataTable.Row>
+            <DataTable.Cell>Leeftijd</DataTable.Cell>
+            <DataTable.Cell numeric>{activeDog.leeftijd}</DataTable.Cell>
+          </DataTable.Row>
+
+          <DataTable.Row>
+            <DataTable.Cell>Schofthoogte</DataTable.Cell>
+            <DataTable.Cell numeric>{activeDog.schofthoogte}</DataTable.Cell>
+          </DataTable.Row>
+
+          {activeDog.gecastreerd ? (
+            <DataTable.Row>
+              <DataTable.Cell>Gecastreerd</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {String(activeDog.gecastreerd)}
+              </DataTable.Cell>
+            </DataTable.Row>
+          ) : null}
+
+          {activeDog.gesteriliseerd ? (
+            <DataTable.Row>
+              <DataTable.Cell>Gesteriliseerd</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {String(activeDog.gesteriliseerd)}
+              </DataTable.Cell>
+            </DataTable.Row>
+          ) : null}
+
+          {activeDog.land_van_herkomst ? (
+            <DataTable.Row>
+              <DataTable.Cell>Land van Herkomst</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {String(activeDog.land_van_herkomst)}
+              </DataTable.Cell>
+            </DataTable.Row>
+          ) : null}
+
+          {activeDog.huidige_verblijfplaats ? (
+            <DataTable.Row>
+              <DataTable.Cell>Huidige verblijfplaats</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {String(activeDog.huidige_verblijfplaats)}
+              </DataTable.Cell>
+            </DataTable.Row>
+          ) : null}
+
+          {activeDog.vergoeding ? (
+            <DataTable.Row>
+              <DataTable.Cell>Vergoeding</DataTable.Cell>
+              <DataTable.Cell numeric>
+                {String(activeDog.vergoeding)}
+              </DataTable.Cell>
+            </DataTable.Row>
+          ) : null}
+
+          <View
+            style={{
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              alignItems: 'stretch',
+            }}>
+            <Title>Het verhaal van {activeDog.titel}</Title>
+            <Paragraph
+              style={{
+                lineHeight: 28,
+              }}>
+              {activeDog.verhaal}
+            </Paragraph>
+          </View>
+
+          <View
+            style={{
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+            }}>
+            <Title>Het karakter van {activeDog.titel}</Title>
+            <Paragraph
+              style={{
+                lineHeight: 28,
+              }}>
+              {activeDog.karakter}
+            </Paragraph>
+          </View>
+        </DataTable>
+      </View>
+    </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
 
 export default Detail;
