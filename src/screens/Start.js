@@ -64,9 +64,6 @@ const Start = (props) => {
   };
 
   const toggleDog = async (value, dog) => {
-    console.log('toggle dog', value, dog);
-    console.log(choices);
-
     let choice = choices.find((c) => {
       if (c.dogId === dog.id && c.applicantId === applicant.id) return c;
     });
@@ -104,7 +101,6 @@ const Start = (props) => {
       query: queries.choicesByApplicant,
       variables: {applicantId: applicant.id},
     });
-    console.log('new choices', choicesByApplicant.items);
     dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
   };
 

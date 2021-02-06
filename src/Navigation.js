@@ -56,7 +56,7 @@ const Navigation = (props) => {
       query: queries.choicesByApplicant,
       variables: {applicantId: applicant.id},
     });
-    console.log('choices', choicesByApplicant.items);
+    // console.log('choices', choicesByApplicant.items);
     dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
     setLoading(false);
   };
@@ -66,8 +66,6 @@ const Navigation = (props) => {
       query: mutations.createApplicant,
       variables: {input: {}},
     });
-    console.log('create', data);
-
     await AsyncStorage.setItem('@user', data.createApplicant.id);
     dispatch({
       type: 'SET_APPLICANT',
@@ -86,7 +84,7 @@ const Navigation = (props) => {
         variables: {id: value},
       });
       if (getApplicant) {
-        console.log('user', getApplicant);
+        // console.log('user', getApplicant);
         dispatch({type: 'SET_APPLICANT', payload: getApplicant});
       } else {
         createUser();
@@ -112,7 +110,7 @@ const Navigation = (props) => {
       }
       return memo;
     }, []);
-    console.log('dogs', dogs);
+    // console.log('dogs', dogs);
     dispatch({type: 'SET_DOGS', payload: items});
   };
 
