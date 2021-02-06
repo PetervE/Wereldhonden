@@ -16,7 +16,8 @@ import {
   SafeAreaView,
   AppState,
 } from 'react-native';
-import {Button, Title, Divider, Card} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {Button, Title, Divider, Card, TextInput} from 'react-native-paper';
 
 import {store, initialState} from '../store.js';
 
@@ -40,6 +41,28 @@ const Profile = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
+  const [loading, setLoading] = useState(false);
+
+  const [name, setName] = useState(applicant.name || '');
+  const [email, setEmail] = useState(applicant.email || '');
+  const [phone, setPhone] = useState(applicant.phone || '');
+
+  const saveApplicant = async () => {
+    setLoading(true);
+    let payload = {...applicant, name, email, phone};
+    delete payload.createdAt;
+    delete payload.updatedAt;
+    delete payload.choices;
+
+    await API.graphql({
+      query: mutations.updateApplicant,
+      variables: {
+        input: payload,
+      },
+    });
+    setLoading(false);
+  };
+
   const likedDogs = choices.reduce((memo, choice) => {
     const find = dogs.find((d) => d.id === choice.dogId);
     if (find && choice.liked === true) memo.push(find);
@@ -48,13 +71,50 @@ const Profile = (props) => {
 
   return (
     <ScrollView style={{flex: 1}}>
-      <SafeAreaView>
-        <Title style={{paddingHorizontal: 16}}>
-          {likedDogs.length > 1
-            ? `${likedDogs.length} dogs`
-            : `${likedDogs.length} dog`}
-        </Title>
-      </SafeAreaView>
+      <View style={styles.formContainer}>
+        <SafeAreaView>
+          <TextInput
+            style={styles.inputStyle}
+            label="Name"
+            value={name}
+            onChangeText={(text) => setName(String(text))}
+          />
+          <TextInput
+            style={styles.inputStyle}
+            label="Email"
+            value={email}
+            onChangeText={(text) => setEmail(String(text))}
+          />
+          <TextInput
+            style={styles.inputStyle}
+            label="Phone number"
+            value={phone}
+            onChangeText={(text) => setPhone(String(text))}
+          />
+          <View style={{alignItems: 'center'}}>
+            <Button
+              disabled={loading || !name || !email || !phone}
+              icon={() => <Icon name="save" size={18} color="white" />}
+              mode="contained"
+              style={{
+                marginVertical: 8,
+              }}
+              contentStyle={{
+                height: 50,
+                backgroundColor: 'tomato',
+                paddingHorizontal: 12,
+              }}
+              onPress={saveApplicant}>
+              Save
+            </Button>
+          </View>
+        </SafeAreaView>
+      </View>
+      <Title style={{paddingHorizontal: 16, textAlign: 'center'}}>
+        {likedDogs.length > 1
+          ? `${likedDogs.length} dogs`
+          : `${likedDogs.length} dog`}
+      </Title>
       <View style={styles.dogsContainer}>
         {likedDogs.map((dog, i) => {
           return (
@@ -87,6 +147,15 @@ const styles = StyleSheet.create({
   cardContainer: {
     paddingVertical: 8,
     paddingHorizontal: 16,
+  },
+  formContainer: {
+    backgroundColor: '#222222',
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    marginBottom: 12,
+  },
+  inputStyle: {
+    marginVertical: 8,
   },
 });
 
