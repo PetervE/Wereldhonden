@@ -37,5 +37,13 @@
         }
       }
     }
+  },
+  "auth": {
+    "wereldhonden5525e0b0": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
   }
 }

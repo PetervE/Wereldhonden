@@ -12,26 +12,8 @@
       "AmplifyAppId": "dqdyr0dzg0sr2"
     },
     "categories": {
-      "function": {
-        "scraper": {}
-      }
-    }
-  },
-  "production": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-wereldhonden-production-230608-authRole",
-      "UnauthRoleArn": "arn:aws:iam::897517238696:role/amplify-wereldhonden-production-230608-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::897517238696:role/amplify-wereldhonden-production-230608-authRole",
-      "Region": "eu-central-1",
-      "DeploymentBucketName": "amplify-wereldhonden-production-230608-deployment",
-      "UnauthRoleName": "amplify-wereldhonden-production-230608-unauthRole",
-      "StackName": "amplify-wereldhonden-production-230608",
-      "StackId": "arn:aws:cloudformation:eu-central-1:897517238696:stack/amplify-wereldhonden-production-230608/85397d10-68c7-11eb-b60a-063d467b766e",
-      "AmplifyAppId": "dqdyr0dzg0sr2"
-    },
-    "categories": {
-      "function": {
-        "scraper": {}
+      "auth": {
+        "wereldhonden5525e0b0": {}
       }
     }
   }

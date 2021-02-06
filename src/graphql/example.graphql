@@ -20,21 +20,23 @@
 # }
 
 type Applicant 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
  {
 	id: ID!
-  name: String
+	name: String
 	phone: String
 	email: String
 	choices: [Choice] @connection(keyName: "byApplicant", fields: ["id"])
 }
 
 type Choice 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
-@key(name: "byApplicant", fields: ["applicantId"])
+@key(name: "byApplicant", fields: ["applicantId"], queryField: "choicesByApplicant")
  {
 	id: ID!
-  liked: Boolean
+	liked: Boolean
 	applicantId: ID!
 	applicant: Applicant @connection(fields: ["applicantId"])
 	dogId: ID! 
@@ -42,6 +44,7 @@ type Choice
 }
 
 type Dog 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
  {
 	id: ID!

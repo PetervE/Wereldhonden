@@ -20,6 +20,7 @@
 # }
 
 type Applicant 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
  {
 	id: ID!
@@ -30,6 +31,7 @@ type Applicant
 }
 
 type Choice 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
 @key(name: "byApplicant", fields: ["applicantId"], queryField: "choicesByApplicant")
  {
@@ -42,6 +44,7 @@ type Choice
 }
 
 type Dog 
+@auth(rules: [ { allow: public, queries: null }]) 
 @model
  {
 	id: ID!
