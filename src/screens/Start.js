@@ -25,6 +25,7 @@ import {
   Card,
   Paragraph,
 } from 'react-native-paper';
+import {CommonActions} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Loader, Centered} from '../components/common';
 
@@ -43,24 +44,14 @@ import Amplify, {
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
+import {NavigationContainer} from '@react-navigation/native';
 
 const Start = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
-  const {applicant, dogs, choices} = state;
+  const {applicant, dogs, choices, activeDog} = state;
 
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
-  useEffect(() => {
-    init();
-  }, []);
-
-  const init = async () => {
-    try {
-    } catch (e) {
-      console.log('Error init', e);
-    }
-  };
 
   const toggleDog = async (value, dog) => {
     let choice = choices.find((c) => {
@@ -100,6 +91,17 @@ const Start = (props) => {
       variables: {applicantId: applicant.id},
     });
     dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
+  };
+
+  const navigateDogDetail = (dog) => {
+    navigation.dispatch(
+      CommonActions.navigate({
+        name: 'Detail',
+        params: {
+          dog: dog,
+        },
+      }),
+    );
   };
 
   if (!dogs.length) {
@@ -149,7 +151,7 @@ const Start = (props) => {
                       backgroundColor: 'tomato',
                       paddingHorizontal: 12,
                     }}
-                    onPress={() => navigation.navigate('Detail')}>
+                    onPress={() => navigateDogDetail(d)}>
                     Detail
                   </Button>
                 </Card.Actions>

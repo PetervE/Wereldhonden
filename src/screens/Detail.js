@@ -34,9 +34,22 @@ import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
 
 const Detail = (props) => {
+  const {navigation, route} = props;
+  const {state, dispatch} = useContext(store);
+  const {applicant, dogs, choices} = state;
+
+  const [activeDog, setActiveDog] = useState(false);
+
+  useEffect(() => {
+    console.log('detail dog', props.route.params.dog);
+    let active = props.route.params.dog || false;
+    setActiveDog(active);
+    return () => {};
+  }, []);
+
   return (
     <View style={styles.centered}>
-      <Text>Detail</Text>
+      <Text>{activeDog.titel}</Text>
     </View>
   );
 };
@@ -44,7 +57,7 @@ const Detail = (props) => {
 const styles = StyleSheet.create({
   centered: {
     flex: 1,
-    alignItems: 'stretch',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });
