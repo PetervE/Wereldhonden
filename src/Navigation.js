@@ -87,7 +87,7 @@ const Navigation = (props) => {
         variables: {id: value},
       });
       if (getApplicant) {
-        // console.log('user', getApplicant);
+        console.log('user', getApplicant);
         dispatch({type: 'SET_APPLICANT', payload: getApplicant});
       } else {
         createUser();

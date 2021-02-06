@@ -3,6 +3,7 @@ import React, {
   useState,
   useEffect,
   useContext,
+  useCallback,
   useRef,
 } from 'react';
 import {
@@ -32,11 +33,41 @@ import Amplify, {
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
+import {useFocusEffect} from '@react-navigation/native';
 
 const Profile = (props) => {
+  const {navigation, route} = props;
+  const {state, dispatch} = useContext(store);
+  const {applicant, dogs, choices} = state;
+
+  const [likes, setLikes] = useState([]);
+  const [likedDogs, setLikedDogs] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const items = choices.reduce((memo, item) => {
+        if (item.liked === true) memo.push(item);
+        return memo;
+      }, []);
+      setLikes(items);
+    }, []),
+  );
+
+  useEffect(() => {
+    if (!likes.length) return;
+    let items = [];
+    likes.map((l) => {
+      const find = dogs.find((d) => d.id === l.dogId);
+      if (find) items.push(find);
+    });
+    setLikedDogs(items);
+  }, [likes]);
+
   return (
     <View style={styles.centered}>
-      <Text>Profile</Text>
+      {likedDogs.map((x) => {
+        return <Text>{x.titel}</Text>;
+      })}
     </View>
   );
 };

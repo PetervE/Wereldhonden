@@ -48,8 +48,6 @@ const Start = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
-  const [isEnabled, setIsEnabled] = useState(false);
-
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
@@ -94,7 +92,6 @@ const Start = (props) => {
         },
       });
     }
-
     const {
       data: {choicesByApplicant},
     } = await API.graphql({
