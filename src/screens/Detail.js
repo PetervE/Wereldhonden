@@ -17,6 +17,7 @@ import {
   AppState,
 } from 'react-native';
 import {Button, Title, Divider} from 'react-native-paper';
+import YouTube from 'react-native-youtube';
 import {Loader, Centered} from '../components/common';
 import {windowWidth, windowHeight} from '../components/device';
 import Carousel from 'react-native-snap-carousel';
@@ -66,6 +67,25 @@ const Detail = (props) => {
     );
   };
 
+  const renderVideo = ({item}) => {
+    let s1 = item.split('/')[2].split('?')[0];
+    console.log('s1', s1.toUpperCase());
+
+    return (
+      <YouTube
+        videoId={s1} // The YouTube video ID
+        play={false} // control playback of video with true/false
+        fullscreen={true} // control whether the video should play in fullscreen or inline
+        loop={false} // control whether the video should loop when ended
+        // onReady={(e) => this.setState({isReady: true})}
+        // onChangeState={(e) => this.setState({status: e.state})}
+        // onChangeQuality={(e) => this.setState({quality: e.quality})}
+        // onError={(e) => this.setState({error: e.error})}
+        style={{alignSelf: 'stretch', height: 300}}
+      />
+    );
+  };
+
   if (!activeDog) {
     return (
       <Centered>
@@ -84,6 +104,15 @@ const Detail = (props) => {
         sliderWidth={windowWidth}
         itemWidth={windowWidth - 60}
         renderItem={renderItem}
+        // onSnapToItem={(index) => console.log(index)}
+      />
+
+      <Carousel
+        layout={'default'}
+        data={activeDog.videos}
+        sliderWidth={windowWidth}
+        itemWidth={windowWidth - 60}
+        renderItem={renderVideo}
         // onSnapToItem={(index) => console.log(index)}
       />
     </View>
