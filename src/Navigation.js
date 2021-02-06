@@ -128,20 +128,17 @@ const Navigation = (props) => {
 
   const Tab = createBottomTabNavigator();
 
-  function StartStack() {
+  function TabStack() {
     return (
-      <Stack.Navigator>
-        <Stack.Screen name="Start" component={Start} />
-        <Stack.Screen name="Detail" component={Detail} />
-      </Stack.Navigator>
-    );
-  }
+      <Tab.Navigator
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+        }}
+        screenOptions={({route}) => {
+          console.log('ROUTE', route);
 
-  return (
-    <View style={{flex: 1}}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={({route}) => ({
+          return {
             tabBarIcon: ({focused, color, size}) => {
               if (route.name === 'Start') {
                 return <Icon name="rocket" size={18} color="black" />;
@@ -151,30 +148,45 @@ const Navigation = (props) => {
                 return <Icon name="stop" size={18} color="black" />;
               }
             },
-          })}
-          tabBarOptions={{
-            activeTintColor: 'tomato',
-            inactiveTintColor: 'gray',
-          }}>
-          <Tab.Screen
-            name="Start"
-            component={StartStack}
-            options={{title: `start`, headerShown: false}}
-            initialParams={{theme: theme}}
+          };
+        }}>
+        <Tab.Screen
+          name="Start"
+          component={Start}
+          options={{title: `start`}}
+          initialParams={{theme: theme}}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{title: `profile`}}
+          initialParams={{theme: theme}}
+        />
+        <Tab.Screen
+          name="Admin"
+          component={Admin}
+          options={{title: `admin`}}
+          initialParams={{theme: theme}}
+        />
+      </Tab.Navigator>
+    );
+  }
+
+  return (
+    <View style={{flex: 1}}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="Home"
+            component={TabStack}
           />
-          <Tab.Screen
-            name="Profile"
-            component={Profile}
-            options={{title: `profile`, headerShown: false}}
-            initialParams={{theme: theme}}
+          <Stack.Screen
+            options={{headerShown: true}}
+            name="Detail"
+            component={Detail}
           />
-          <Tab.Screen
-            name="Admin"
-            component={Admin}
-            options={{title: `admin`, headerShown: false}}
-            initialParams={{theme: theme}}
-          />
-        </Tab.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
     </View>
   );

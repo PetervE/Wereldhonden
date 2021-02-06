@@ -84,7 +84,7 @@ const Detail = (props) => {
         sliderWidth={windowWidth}
         itemWidth={windowWidth - 60}
         renderItem={renderItem}
-        onSnapToItem={(index) => console.log(index)}
+        // onSnapToItem={(index) => console.log(index)}
       />
     </View>
   );
