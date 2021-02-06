@@ -13,6 +13,7 @@ import {
   StatusBar,
   AppState,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {withTheme, Button} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
@@ -130,17 +131,21 @@ const Navigation = (props) => {
     <View style={{flex: 1}}>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Start"
-          headerMode="float"
-          screenOptions={
-            {
-              // headerStyle: {backgroundColor: 'red'},
-              // headerTintColor: '#fff',
-              // headerTitleStyle: {
-              //   fontWeight: 'bold',
-              // },
-            }
-          }>
+          screenOptions={({route}) => ({
+            tabBarIcon: ({focused, color, size}) => {
+              if (route.name === 'Start') {
+                return <Icon name="rocket" size={18} color="black" />;
+              } else if (route.name === 'Profile') {
+                return <Icon name="user" size={18} color="black" />;
+              } else if (route.name === 'Admin') {
+                return <Icon name="stop" size={18} color="black" />;
+              }
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'tomato',
+            inactiveTintColor: 'gray',
+          }}>
           <Tab.Screen
             name="Start"
             component={Start}
@@ -150,7 +155,7 @@ const Navigation = (props) => {
           <Tab.Screen
             name="Profile"
             component={Profile}
-            options={{title: `profile`, headerShown: false}}
+            options={{title: `profile`, headerShown: false, tabBarBadge: 4}}
             initialParams={{theme: theme}}
           />
           <Tab.Screen
