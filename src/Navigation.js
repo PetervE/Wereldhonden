@@ -16,6 +16,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {withTheme, Button} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Amplify, {API, graphqlOperation} from 'aws-amplify';
@@ -27,6 +28,7 @@ import * as subscriptions from './graphql/subscriptions';
 import {Loader, Centered} from './components/common';
 
 import Start from './screens/Start';
+import Profile from './screens/Profile';
 import Admin from './screens/Admin';
 
 import {store, StateProvider, initialState} from './store.js';
@@ -122,10 +124,12 @@ const Navigation = (props) => {
     );
   }
 
+  const Tab = createBottomTabNavigator();
+
   return (
     <View style={{flex: 1}}>
       <NavigationContainer>
-        <Stack.Navigator
+        <Tab.Navigator
           initialRouteName="Start"
           headerMode="float"
           screenOptions={
@@ -137,19 +141,25 @@ const Navigation = (props) => {
               // },
             }
           }>
-          <Stack.Screen
+          <Tab.Screen
             name="Start"
             component={Start}
             options={{title: `start`, headerShown: false}}
             initialParams={{theme: theme}}
           />
-          <Stack.Screen
-            name="Admin"
-            component={Admin}
-            options={{title: `admin`, headerShown: true}}
+          <Tab.Screen
+            name="Profile"
+            component={Profile}
+            options={{title: `profile`, headerShown: false}}
             initialParams={{theme: theme}}
           />
-        </Stack.Navigator>
+          <Tab.Screen
+            name="Admin"
+            component={Admin}
+            options={{title: `admin`, headerShown: false}}
+            initialParams={{theme: theme}}
+          />
+        </Tab.Navigator>
       </NavigationContainer>
     </View>
   );

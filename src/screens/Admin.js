@@ -125,10 +125,18 @@ const Admin = (props) => {
   };
 
   return (
-    <View>
+    <View style={styles.centered}>
       <Button onPress={scrape}>Click</Button>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  centered: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+});
 
 export default Admin;
