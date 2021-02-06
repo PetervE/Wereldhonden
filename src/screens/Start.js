@@ -53,31 +53,25 @@ const Start = (props) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   useEffect(() => {
-    console.log('user', applicant);
     init();
   }, []);
 
   const init = async () => {
     try {
-      const {data} = await API.graphql({
-        query: queries.listDogs,
-        variables: {},
-      });
-      if (!data) return console.log('Error scrape: no data');
-      const items = data.listDogs.items.reduce((memo, item) => {
-        if (item.status !== 'geadopteerd') {
-          memo.push({
-            ...item,
-            fotos: item.fotos ? JSON.parse(item.fotos) : false,
-            videos: item.videos ? JSON.parse(item.videos) : false,
-          });
-        }
-        return memo;
-      }, []);
-      dispatch({type: 'SET_DOGS', payload: items});
     } catch (e) {
       console.log('Error init', e);
     }
+  };
+
+  const toggleDog = async (value, dog) => {
+    console.log('toggle dog', value, dog);
+
+    const {data} = await API.graphql({
+      query: queries.getChoi,
+      variables: {dogId: dog.id, applicantId: applicant.id},
+    });
+
+    console.log(data);
   };
 
   if (!dogs.length) {
@@ -105,7 +99,7 @@ const Start = (props) => {
                       trackColor={{false: '#767577', true: '#81b0ff'}}
                       thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                       ios_backgroundColor="#3e3e3e"
-                      onValueChange={toggleSwitch}
+                      onValueChange={(value) => toggleDog(value, d)}
                       value={isEnabled}
                     />
                   </Card.Actions>

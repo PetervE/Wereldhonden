@@ -3,6 +3,7 @@ import React, {createContext, useReducer} from 'react';
 const initialState = {
   applicant: false,
   dogs: [],
+  choices: [],
 };
 
 const store = createContext(initialState);
@@ -18,6 +19,9 @@ const StateProvider = ({children}) => {
 
       case 'SET_DOGS':
         return {...state, dogs: action.payload};
+
+      case 'SET_CHOICES':
+        return {...state, choices: action.payload};
 
       default:
         throw new Error();

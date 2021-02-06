@@ -37,7 +37,7 @@ const Navigation = (props) => {
   const {theme, navigation} = props;
 
   const {state, dispatch} = useContext(store);
-  const {applicant} = state;
+  const {applicant, dogs, choices} = state;
 
   useEffect(() => {
     init();
@@ -62,21 +62,53 @@ const Navigation = (props) => {
     const value = await AsyncStorage.getItem('@user');
     if (value) {
       // get user
-      const {data} = await API.graphql({
+      const {
+        data: {getApplicant},
+      } = await API.graphql({
         query: queries.getApplicant,
         variables: {id: value},
       });
-      if (data.getApplicant) {
-        dispatch({type: 'SET_APPLICANT', payload: data.getApplicant});
+      if (getApplicant) {
+        console.log('user', getApplicant);
+        dispatch({type: 'SET_APPLICANT', payload: getApplicant});
       } else {
         createUser();
       }
     } else {
       createUser();
     }
+
+    const {
+      data: {listDogs},
+    } = await API.graphql({
+      query: queries.listDogs,
+      variables: {},
+    });
+    if (!listDogs) return console.log('Error scrape: no data');
+    const items = listDogs.items.reduce((memo, item) => {
+      if (item.status !== 'geadopteerd') {
+        memo.push({
+          ...item,
+          fotos: item.fotos ? JSON.parse(item.fotos) : false,
+          videos: item.videos ? JSON.parse(item.videos) : false,
+        });
+      }
+      return memo;
+    }, []);
+    console.log('dogs', dogs);
+    dispatch({type: 'SET_DOGS', payload: items});
+
+    const {
+      data: {choicesByApplicant},
+    } = await API.graphql({
+      query: queries.choicesByApplicant,
+      variables: {applicantId: applicant.id},
+    });
+    console.log('choices', choicesByApplicant.items);
+    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
   };
 
-  if (!applicant) {
+  if (!applicant || !dogs.length) {
     return (
       <Centered>
         <Loader />
@@ -102,7 +134,7 @@ const Navigation = (props) => {
           <Stack.Screen
             name="Start"
             component={Start}
-            options={{title: `start`, headerShown: true}}
+            options={{title: `start`, headerShown: false}}
             initialParams={{theme: theme}}
           />
           <Stack.Screen

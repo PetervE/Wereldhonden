@@ -199,3 +199,60 @@ export const listDogs = /* GraphQL */ `
     }
   }
 `;
+export const choicesByApplicant = /* GraphQL */ `
+  query ChoicesByApplicant(
+    $applicantId: ID
+    $sortDirection: ModelSortDirection
+    $filter: ModelChoiceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    choicesByApplicant(
+      applicantId: $applicantId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        liked
+        applicantId
+        applicant {
+          id
+          name
+          phone
+          email
+          createdAt
+          updatedAt
+        }
+        dogId
+        dog {
+          id
+          titel
+          status
+          geslacht
+          gesteriliseerd
+          gecastreerd
+          huidige_verblijfplaats
+          land_van_herkomst
+          leeftijd
+          type
+          schofthoogte
+          vergoeding
+          bijzonderheden
+          opmerking
+          verhaal
+          karakter
+          fotos
+          videos
+          createdAt
+          updatedAt
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
