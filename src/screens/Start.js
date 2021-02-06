@@ -76,10 +76,15 @@ const Start = (props) => {
       });
       updatedItem = data.updateChoice;
       const index = choices.findIndex((x) => x.id === updatedItem.id);
-      let updatedArray = [...choices];
-      updatedArray[index] = updatedItem;
-      console.log(updatedItem);
-      setStateChoices(updatedArray);
+
+      let updatedArray = [...stateChoices];
+      console.log(updatedArray);
+      if (typeof index === 'number') {
+        updatedArray[index] = updatedItem;
+        setStateChoices(updatedArray);
+      } else {
+        setStateChoices(updatedArray);
+      }
     } else {
       // create choice
       let {data} = await API.graphql({
