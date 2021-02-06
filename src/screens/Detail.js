@@ -46,9 +46,7 @@ const Detail = (props) => {
   const {applicant, dogs, choices} = state;
 
   const [activeDog, setActiveDog] = useState(false);
-
   const [playing, setPlaying] = useState(false);
-
   const [activeMedia, setActiveMedia] = useState('fotos');
 
   const onStateChange = useCallback((state) => {
@@ -82,13 +80,14 @@ const Detail = (props) => {
       );
     }
     if (activeMedia === 'videos') {
+      let id = item.split('/')[2].split('?')[0];
       return (
         <View>
           <YoutubePlayer
             height={300}
             play={playing}
             videoId={id}
-            onChangeState={onStateChange}
+            // onChangeState={onStateChange}
           />
           <Button title={playing ? 'pause' : 'play'} onPress={togglePlaying} />
         </View>
@@ -108,16 +107,14 @@ const Detail = (props) => {
     <View style={styles.container}>
       <View
         style={{
-          backgroundColor: 'white',
+          backgroundColor: 'tomato',
           height: 50,
-          marginBottom: 8,
           alignItems: 'center',
-          justifyContent: 'space-around',
-          flexDirection: 'row',
+          justifyContent: 'center',
         }}>
-        <View>
-          <Title style={{textAlign: 'center'}}>{activeDog.titel}</Title>
-        </View>
+        <Text style={{fontWeight: '500', color: 'white'}}>
+          {activeDog.status.length ? activeDog.status.toUpperCase() : ''}
+        </Text>
       </View>
 
       <View style={{flexDirection: 'row', justifyContent: 'space-evenly'}}>
@@ -163,7 +160,7 @@ const Detail = (props) => {
         sliderWidth={windowWidth}
         itemWidth={windowWidth - 20}
         renderItem={renderItem}
-        onSnapToItem={(index) => console.log('fotos', index)}
+        // onSnapToItem={(index) => console.log('fotos', index)}
       />
     </View>
   );

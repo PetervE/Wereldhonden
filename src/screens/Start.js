@@ -99,6 +99,7 @@ const Start = (props) => {
         name: 'Detail',
         params: {
           dog: dog,
+          title: dog.titel,
         },
       }),
     );

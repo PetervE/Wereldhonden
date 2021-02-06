@@ -181,7 +181,10 @@ const Navigation = (props) => {
             component={TabStack}
           />
           <Stack.Screen
-            options={{headerShown: true}}
+            options={({route}) => ({
+              headerShown: true,
+              title: route.params.title || 'Detail',
+            })}
             name="Detail"
             component={Detail}
           />
