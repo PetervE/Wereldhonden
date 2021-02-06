@@ -16,7 +16,7 @@ import {
   SafeAreaView,
   AppState,
 } from 'react-native';
-import {Button, Title, Divider} from 'react-native-paper';
+import {Button, Title, Divider, Card} from 'react-native-paper';
 
 import {store, initialState} from '../store.js';
 
@@ -40,18 +40,37 @@ const Profile = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
+  const likedDogs = choices.reduce((memo, choice) => {
+    const find = dogs.find((d) => d.id === choice.dogId);
+    if (find && choice.liked === true) memo.push(find);
+    return memo;
+  }, []);
+
   return (
-    <View style={styles.centered}>
-      {choices.map((choice, i) => {
-        const dog = dogs.find((d) => d.id === choice.dogId);
-        if (!dog || choice.liked === false) return null;
-        return (
-          <View key={dog.id}>
-            <Text>{dog.titel}</Text>
-          </View>
-        );
-      })}
-    </View>
+    <ScrollView style={{flex: 1}}>
+      <SafeAreaView>
+        <Title style={{paddingHorizontal: 16}}>
+          {likedDogs.length > 1
+            ? `${likedDogs.length} dogs`
+            : `${likedDogs.length} dog`}
+        </Title>
+      </SafeAreaView>
+      <View style={styles.dogsContainer}>
+        {likedDogs.map((dog, i) => {
+          return (
+            <View style={styles.cardContainer} key={dog.id}>
+              <Card>
+                <Card.Title title={dog.titel} subtitle={dog.type} />
+                <Card.Cover
+                  source={{uri: `https://wereldhonden.nl${dog.fotos[0]}`}}
+                />
+                <Card.Actions></Card.Actions>
+              </Card>
+            </View>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 
@@ -60,6 +79,14 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  dogsContainer: {
+    flex: 1,
+    paddingVertical: 8,
+  },
+  cardContainer: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
   },
 });
 

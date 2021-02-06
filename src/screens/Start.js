@@ -110,39 +110,37 @@ const Start = (props) => {
   }
 
   return (
-    <View style={{flex: 1}}>
-      <ScrollView style={{flex: 1}}>
-        <View style={styles.dogsContainer}>
-          {dogs.map((d, i) => {
-            let value;
-            let choice = choices.find((c) => {
-              if (c.dogId === d.id && c.applicantId === applicant.id) return c;
-            });
-            if (choice) value = choice.liked;
+    <ScrollView style={{flex: 1}}>
+      <View style={styles.dogsContainer}>
+        {dogs.map((d, i) => {
+          let value;
+          let choice = choices.find((c) => {
+            if (c.dogId === d.id && c.applicantId === applicant.id) return c;
+          });
+          if (choice) value = choice.liked;
 
-            return (
-              <View style={styles.cardContainer} key={`dog-${i}`}>
-                <Card>
-                  <Card.Title title={d.titel} subtitle={d.type} />
-                  <Card.Cover
-                    source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
+          return (
+            <View style={styles.cardContainer} key={`dog-${i}`}>
+              <Card>
+                <Card.Title title={d.titel} subtitle={d.type} />
+                <Card.Cover
+                  source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
+                />
+                <Card.Actions>
+                  <Switch
+                    trackColor={{false: '#767577', true: '#81b0ff'}}
+                    thumbColor={value ? '#f5dd4b' : '#f4f3f4'}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={(value) => toggleDog(value, d)}
+                    value={value}
                   />
-                  <Card.Actions>
-                    <Switch
-                      trackColor={{false: '#767577', true: '#81b0ff'}}
-                      thumbColor={value ? '#f5dd4b' : '#f4f3f4'}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={(value) => toggleDog(value, d)}
-                      value={value}
-                    />
-                  </Card.Actions>
-                </Card>
-              </View>
-            );
-          })}
-        </View>
-      </ScrollView>
-    </View>
+                </Card.Actions>
+              </Card>
+            </View>
+          );
+        })}
+      </View>
+    </ScrollView>
   );
 };
 
