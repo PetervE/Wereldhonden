@@ -114,7 +114,7 @@ const Start = (props) => {
 
   return (
     <ScrollView style={{flex: 1}}>
-      <View style={styles.dogsContainer}>
+      <SafeAreaView style={styles.dogsContainer}>
         {dogs.map((d, i) => {
           let value;
           let choice = choices.find((c) => {
@@ -159,7 +159,7 @@ const Start = (props) => {
             </View>
           );
         })}
-      </View>
+      </SafeAreaView>
     </ScrollView>
   );
 };

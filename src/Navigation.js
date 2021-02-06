@@ -131,13 +131,12 @@ const Navigation = (props) => {
   function TabStack() {
     return (
       <Tab.Navigator
+        initialRouteName="Start"
         tabBarOptions={{
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
         }}
         screenOptions={({route}) => {
-          console.log('ROUTE', route);
-
           return {
             tabBarIcon: ({focused, color, size}) => {
               if (route.name === 'Start') {
