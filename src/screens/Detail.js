@@ -113,6 +113,7 @@ const Detail = (props) => {
   return (
     <ScrollView
       style={{flex: 1}}
+      showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         alignItems: 'stretch',
       }}>
