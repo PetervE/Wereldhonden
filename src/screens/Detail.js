@@ -116,7 +116,7 @@ const Detail = (props) => {
       contentContainerStyle={{
         alignItems: 'stretch',
       }}>
-      <View style={{alignItems: 'stretch', paddingBottom: 50 }}>
+      <View style={{alignItems: 'stretch', paddingBottom: 50}}>
         <View
           style={{
             backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
@@ -170,14 +170,30 @@ const Detail = (props) => {
           </Button>
         </View>
 
-        <Carousel
-          layout={'stack'}
-          data={activeDog[activeMedia]}
-          sliderWidth={windowWidth}
-          itemWidth={windowWidth - 20}
-          renderItem={renderItem}
-          // onSnapToItem={(index) => console.log('fotos', index)}
-        />
+        <View>
+          <View style={{zIndex: 2}}>
+            <Carousel
+              layout={'stack'}
+              data={activeDog[activeMedia]}
+              sliderWidth={windowWidth}
+              itemWidth={windowWidth - 20}
+              renderItem={renderItem}
+              // onSnapToItem={(index) => console.log('fotos', index)}
+            />
+          </View>
+          <View
+            style={{
+              position: 'absolute',
+              width: '100%',
+              zIndex: 1,
+              height: '100%',
+              justifyContent: 'center',
+              paddingBottom: 80,
+              alignItems: 'center',
+            }}>
+            <Loader />
+          </View>
+        </View>
 
         <DataTable>
           <DataTable.Row>
@@ -243,6 +259,40 @@ const Detail = (props) => {
                 {String(activeDog.vergoeding)}
               </DataTable.Cell>
             </DataTable.Row>
+          ) : null}
+
+          {activeDog.bijzonderheden ? (
+            <View
+              style={{
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                alignItems: 'stretch',
+              }}>
+              <Title>Bijzonderheden</Title>
+              <Paragraph
+                style={{
+                  lineHeight: 28,
+                }}>
+                {activeDog.bijzonderheden}
+              </Paragraph>
+            </View>
+          ) : null}
+
+          {activeDog.opmerking ? (
+            <View
+              style={{
+                paddingHorizontal: 16,
+                paddingVertical: 8,
+                alignItems: 'stretch',
+              }}>
+              <Title>Opmerking</Title>
+              <Paragraph
+                style={{
+                  lineHeight: 28,
+                }}>
+                {activeDog.opmerking}
+              </Paragraph>
+            </View>
           ) : null}
 
           <View
