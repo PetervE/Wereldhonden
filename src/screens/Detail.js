@@ -116,7 +116,7 @@ const Detail = (props) => {
       contentContainerStyle={{
         alignItems: 'stretch',
       }}>
-      <View style={{alignItems: 'stretch', height: 2000}}>
+      <View style={{alignItems: 'stretch', paddingBottom: 50 }}>
         <View
           style={{
             backgroundColor: activeDog.status ? 'tomato' : 'seagreen',
