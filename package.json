@@ -29,7 +29,8 @@
     "react-native-screens": "^2.17.1",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-icons": "^8.0.0",
-    "react-native-youtube": "^2.0.1"
+    "react-native-webview": "^11.2.1",
+    "react-native-youtube-iframe": "^1.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
