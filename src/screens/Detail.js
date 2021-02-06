@@ -16,6 +16,7 @@ import {
   AppState,
 } from 'react-native';
 import {Button, Title, Divider} from 'react-native-paper';
+import {Loader, Centered} from '../components/common';
 
 import {store, initialState} from '../store.js';
 
@@ -46,6 +47,14 @@ const Detail = (props) => {
     setActiveDog(active);
     return () => {};
   }, []);
+
+  if (!activeDog) {
+    return (
+      <Centered>
+        <Loader />
+      </Centered>
+    );
+  }
 
   return (
     <View style={styles.centered}>
