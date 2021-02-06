@@ -46,7 +46,7 @@ import * as subscriptions from '../graphql/subscriptions';
 const Start = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
-  const {applicant, dogs} = state;
+  const {applicant, dogs, choices} = state;
 
   const [isEnabled, setIsEnabled] = useState(false);
 
@@ -65,13 +65,47 @@ const Start = (props) => {
 
   const toggleDog = async (value, dog) => {
     console.log('toggle dog', value, dog);
+    console.log(choices);
 
-    const {data} = await API.graphql({
-      query: queries.getChoi,
-      variables: {dogId: dog.id, applicantId: applicant.id},
+    let choice = choices.find((c) => {
+      if (c.dogId === dog.id && c.applicantId === applicant.id) return c;
     });
 
-    console.log(data);
+    if (choice) {
+      // update
+      let payload = {...choice, liked: value};
+      delete payload.applicant;
+      delete payload.dog;
+      delete payload.createdAt;
+      delete payload.updatedAt;
+      const {data} = await API.graphql({
+        query: mutations.updateChoice,
+        variables: {
+          input: payload,
+        },
+      });
+    } else {
+      // create choice
+      const {data} = await API.graphql({
+        query: mutations.createChoice,
+        variables: {
+          input: {
+            liked: value,
+            dogId: dog.id,
+            applicantId: applicant.id,
+          },
+        },
+      });
+    }
+
+    const {
+      data: {choicesByApplicant},
+    } = await API.graphql({
+      query: queries.choicesByApplicant,
+      variables: {applicantId: applicant.id},
+    });
+    console.log('new choices', choicesByApplicant.items);
+    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
   };
 
   if (!dogs.length) {
@@ -87,6 +121,12 @@ const Start = (props) => {
       <ScrollView style={{flex: 1}}>
         <View style={styles.dogsContainer}>
           {dogs.map((d, i) => {
+            let value;
+            let choice = choices.find((c) => {
+              if (c.dogId === d.id && c.applicantId === applicant.id) return c;
+            });
+            if (choice) value = choice.liked;
+
             return (
               <View style={styles.cardContainer} key={`dog-${i}`}>
                 <Card>
@@ -97,10 +137,10 @@ const Start = (props) => {
                   <Card.Actions>
                     <Switch
                       trackColor={{false: '#767577', true: '#81b0ff'}}
-                      thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                      thumbColor={value ? '#f5dd4b' : '#f4f3f4'}
                       ios_backgroundColor="#3e3e3e"
                       onValueChange={(value) => toggleDog(value, d)}
-                      value={isEnabled}
+                      value={value}
                     />
                   </Card.Actions>
                 </Card>

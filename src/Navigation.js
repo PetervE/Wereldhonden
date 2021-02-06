@@ -38,11 +38,28 @@ const Navigation = (props) => {
 
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     init();
     return () => {};
   }, []);
+
+  useEffect(() => {
+    if (applicant && applicant.id) getChoices();
+  }, [applicant]);
+
+  const getChoices = async () => {
+    const {
+      data: {choicesByApplicant},
+    } = await API.graphql({
+      query: queries.choicesByApplicant,
+      variables: {applicantId: applicant.id},
+    });
+    console.log('choices', choicesByApplicant.items);
+    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
+    setLoading(false);
+  };
 
   const createUser = async () => {
     const {data} = await API.graphql({
@@ -97,18 +114,9 @@ const Navigation = (props) => {
     }, []);
     console.log('dogs', dogs);
     dispatch({type: 'SET_DOGS', payload: items});
-
-    const {
-      data: {choicesByApplicant},
-    } = await API.graphql({
-      query: queries.choicesByApplicant,
-      variables: {applicantId: applicant.id},
-    });
-    console.log('choices', choicesByApplicant.items);
-    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
   };
 
-  if (!applicant || !dogs.length) {
+  if (loading) {
     return (
       <Centered>
         <Loader />
