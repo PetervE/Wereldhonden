@@ -17,7 +17,15 @@ import {
   AppState,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Button, Title, Divider, Card, TextInput} from 'react-native-paper';
+import {
+  Button,
+  Title,
+  List,
+  Divider,
+  Card,
+  TextInput,
+  Paragraph,
+} from 'react-native-paper';
 
 import {store, initialState} from '../store.js';
 
@@ -43,6 +51,7 @@ const Profile = (props) => {
 
   const isFocused = useIsFocused();
 
+  const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState(true);
   const [stateChoices, setStateChoices] = useState([]);
 
@@ -82,6 +91,7 @@ const Profile = (props) => {
         input: payload,
       },
     });
+    setExpanded(false);
     setLoading(false);
   };
 
@@ -93,45 +103,73 @@ const Profile = (props) => {
 
   return (
     <ScrollView style={{flex: 1}}>
-      <View style={styles.formContainer}>
+      <View>
         <SafeAreaView>
-          <TextInput
-            style={styles.inputStyle}
-            label="Name"
-            value={name}
-            onChangeText={(text) => setName(String(text))}
-          />
-          <TextInput
-            style={styles.inputStyle}
-            label="Email"
-            value={email}
-            onChangeText={(text) => setEmail(String(text))}
-          />
-          <TextInput
-            style={styles.inputStyle}
-            label="Phone number"
-            value={phone}
-            onChangeText={(text) => setPhone(String(text))}
-          />
-          <View style={{alignItems: 'center'}}>
-            <Button
-              disabled={loading || !name || !email || !phone}
-              icon={() => <Icon name="save" size={18} color="white" />}
-              mode="contained"
-              style={{
-                marginVertical: 8,
-              }}
-              contentStyle={{
-                height: 50,
-                backgroundColor: 'tomato',
+          <Title style={{paddingHorizontal: 20}}>Jouw wereldhonden</Title>
+          <Paragraph style={{paddingHorizontal: 20}}>
+            Op deze pagina zie je de honden waar je interesse in hebt om
+            mogelijk te adopteren.
+          </Paragraph>
+          <Paragraph style={{paddingHorizontal: 20}}>
+            Vul je gegevens in om gecontacteerd te worden door Wereldhonden voor
+            de vervolgstappen.
+          </Paragraph>
+          <List.Section>
+            <List.Accordion
+              expanded={expanded}
+              onPress={() => setExpanded(!expanded)}
+              titleStyle={{
+                backgroundColor: '#cccccc',
+                color: '#222222',
                 paddingHorizontal: 12,
+                paddingVertical: 12,
+                fontWeight: '500',
               }}
-              onPress={saveApplicant}>
-              Save
-            </Button>
-          </View>
+              title={
+                applicant && applicant.name ? applicant.name : 'Contactgegevens'
+              }>
+              <View style={styles.formContainer}>
+                <TextInput
+                  style={styles.inputStyle}
+                  label="Naam"
+                  value={name}
+                  onChangeText={(text) => setName(String(text))}
+                />
+                <TextInput
+                  style={styles.inputStyle}
+                  label="E-mail"
+                  value={email}
+                  onChangeText={(text) => setEmail(String(text))}
+                />
+                <TextInput
+                  style={styles.inputStyle}
+                  label="Telefoonnummer"
+                  value={phone}
+                  onChangeText={(text) => setPhone(String(text))}
+                />
+                <View style={{alignItems: 'center'}}>
+                  <Button
+                    disabled={loading || !name || !email || !phone}
+                    icon={() => <Icon name="save" size={18} color="white" />}
+                    mode="contained"
+                    style={{
+                      marginVertical: 8,
+                    }}
+                    contentStyle={{
+                      height: 50,
+                      backgroundColor: 'tomato',
+                      paddingHorizontal: 12,
+                    }}
+                    onPress={saveApplicant}>
+                    Save
+                  </Button>
+                </View>
+              </View>
+            </List.Accordion>
+          </List.Section>
         </SafeAreaView>
       </View>
+
       {likedDogs.length !== 0 ? (
         <Title style={{paddingHorizontal: 16, textAlign: 'center'}}>
           {likedDogs.length > 1
