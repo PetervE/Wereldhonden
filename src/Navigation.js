@@ -155,7 +155,7 @@ const Navigation = (props) => {
           <Tab.Screen
             name="Profile"
             component={Profile}
-            options={{title: `profile`, headerShown: false, tabBarBadge: 4}}
+            options={{title: `profile`, headerShown: false}}
             initialParams={{theme: theme}}
           />
           <Tab.Screen

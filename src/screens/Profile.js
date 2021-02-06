@@ -46,7 +46,7 @@ const Profile = (props) => {
         const dog = dogs.find((d) => d.id === choice.dogId);
         if (!dog || choice.liked === false) return null;
         return (
-          <View key={`liked-${i}`}>
+          <View key={dog.id}>
             <Text>{dog.titel}</Text>
           </View>
         );
