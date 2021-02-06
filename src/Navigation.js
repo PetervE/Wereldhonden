@@ -19,6 +19,7 @@ import {withTheme, Button} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
+import {navigationRef, isReadyRef} from './RootNavigation';
 
 import Amplify, {API, graphqlOperation} from 'aws-amplify';
 
@@ -46,7 +47,9 @@ const Navigation = (props) => {
 
   useEffect(() => {
     init();
-    return () => {};
+    return () => {
+      isReadyRef.current = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -173,7 +176,11 @@ const Navigation = (props) => {
 
   return (
     <View style={{flex: 1}}>
-      <NavigationContainer>
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={() => {
+          isReadyRef.current = true;
+        }}>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             options={{headerShown: false}}
@@ -184,6 +191,13 @@ const Navigation = (props) => {
             options={({route}) => ({
               headerShown: true,
               title: route.params.title || 'Detail',
+              headerLeft: () => (
+                <Button
+                  contentStyle={{height: 50, width: 50}}
+                  onPress={() => navigationRef.current?.goBack()}>
+                  <Icon name="arrow-left" size={14} color="#222222" />
+                </Button>
+              ),
             })}
             name="Detail"
             component={Detail}
