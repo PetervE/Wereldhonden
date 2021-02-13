@@ -4,8 +4,23 @@
             "name": "/scraper",
             "lambdaFunction": "scraper",
             "privacy": {
-                "open": true
-            }
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/scraper"
         }
     ],
     "resourceName": "restapi",
@@ -16,8 +31,8 @@
         }
     ],
     "privacy": {
-        "auth": 0,
-        "unauth": 0,
+        "auth": 1,
+        "unauth": 1,
         "authRoleName": "amplify-wereldhonden-dev-111828-authRole",
         "unAuthRoleName": "amplify-wereldhonden-dev-111828-unauthRole"
     },
@@ -31,5 +46,5 @@
             ]
         }
     ],
-    "uuid": "09bee620"
+    "uuid": "2a4d8240"
 }

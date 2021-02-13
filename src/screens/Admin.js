@@ -15,6 +15,7 @@ import {
   SafeAreaView,
   AppState,
 } from 'react-native';
+import awsconfig from '../aws-exports';
 import {Button, Title, Divider} from 'react-native-paper';
 
 import {store, initialState} from '../store.js';
@@ -29,13 +30,43 @@ import Amplify, {
   Predicates,
 } from 'aws-amplify';
 
+import {
+  Authenticator,
+  Greetings,
+  SignIn,
+  ConfirmSignIn,
+  RequireNewPassword,
+  SignUp,
+  ConfirmSignUp,
+  VerifyContact,
+  ForgotPassword,
+  TOTPSetup,
+  Loading,
+} from 'aws-amplify-react-native';
+import {Loader, Centered} from '../components/common';
+
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
 
 const Admin = (props) => {
+  const {authData} = props;
+
+  const [admin, setAdmin] = useState(authData);
+
+  useEffect(() => {
+    console.log('init admin page', props);
+    return () => {};
+  }, []);
+
   const scrape = async () => {
     try {
+      const user = await Auth.currentAuthenticatedUser();
+      const token = await user.signInUserSession.idToken.jwtToken;
+      console.log(token);
+
+      return;
+
       const result = await API.get('restapi', '/scraper', {
         timeout: 60000,
       });
@@ -68,6 +99,10 @@ const Admin = (props) => {
     } catch (e) {
       console.log('Error scrape', e);
     }
+  };
+
+  const signout = async () => {
+    await Auth.signOut({global: true});
   };
 
   const dogUpdate = async (dog, item) => {
@@ -124,8 +159,17 @@ const Admin = (props) => {
     }
   };
 
+  if (!admin) {
+    return (
+      <Centered>
+        <Loader />
+      </Centered>
+    );
+  }
+
   return (
     <View style={styles.centered}>
+      <Button onPress={signout}>Sign out</Button>
       <Button onPress={scrape}>Click</Button>
     </View>
   );
@@ -139,4 +183,54 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Admin;
+const MyCustomSignIn = () => {
+  return (
+    <View style={{flex: 1, justifyContent: 'center'}}>
+      <Text>Sign in</Text>
+    </View>
+  );
+};
+
+const AdminApp = (props) => {
+  const [authState, setAuthState] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    init();
+    if (authState === 'signIn' && admin) setAdmin(false);
+  }, [authState]);
+
+  const init = async () => {
+    try {
+      if (admin || loading) return;
+      setLoading(true);
+      const adminCheck = await Auth.currentAuthenticatedUser();
+      console.log('admin', adminCheck);
+      if (adminCheck) {
+        setAdmin(adminCheck);
+      } else {
+        setAdmin(false);
+      }
+      setLoading(false);
+    } catch (err) {
+      if (admin) setAdmin(false);
+      if (loading) setLoading(false);
+    }
+  };
+  return (
+    <Authenticator
+      authState="signIn"
+      authData={admin || {}}
+      onStateChange={(status) => {
+        setAuthState(status);
+      }}
+      hideDefault={admin ? true : false}
+      amplifyConfig={awsconfig}
+      errorMessage={(e) => console.log('error Authenticator', e)}>
+      {admin && authState === 'signedIn' && <Admin override={'signedIn'} />}
+    </Authenticator>
+  );
+};
+
+export default AdminApp;

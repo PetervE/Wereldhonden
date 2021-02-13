@@ -39,7 +39,7 @@
     }
   },
   "auth": {
-    "wereldhonden5525e0b0": {
+    "wereldhondena65209db": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

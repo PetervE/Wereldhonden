@@ -56,7 +56,7 @@ const Start = (props) => {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const toggleDog = async (value, dog) => {
-    let choice = choices.find((c) => {
+    let choice = stateChoices.find((c) => {
       if (c.dogId === dog.id && c.applicantId === applicant.id) return c;
     });
 
@@ -127,69 +127,85 @@ const Start = (props) => {
   return (
     <ScrollView style={{flex: 1}}>
       <SafeAreaView style={styles.dogsContainer}>
-        {dogs.map((d, i) => {
-          let value;
-          let choice = stateChoices.find((c) => {
-            if (c.dogId === d.id && c.applicantId === applicant.id) return c;
-          });
-          if (choice) value = choice.liked;
+        {dogs
+          // .filter((dog) => {
+          //   return (
+          //     dog.status !== 'in optie' &&
+          //     dog.status !== 'gereserveerd' &&
+          //     dog.status !== 'geadopteerd'
+          //   );
+          // })
+          .sort(function (a, b) {
+            var textA = a.titel.toUpperCase();
+            var textB = b.titel.toUpperCase();
+            return textA < textB ? -1 : textA > textB ? 1 : 0;
+          })
+          .map((d, i) => {
+            let value;
+            let choice = stateChoices.find((c) => {
+              if (c.dogId === d.id && c.applicantId === applicant.id) return c;
+            });
+            if (choice) value = choice.liked;
 
-          return (
-            <View style={styles.cardContainer} key={`dog-${i}`}>
-              <Card>
-                <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
-                  <View style={{flex: 1}}>
-                    <Card.Title title={d.titel} subtitle={d.type} />
-                  </View>
+            return (
+              <View style={styles.cardContainer} key={`dog-${i}`}>
+                <Card>
                   <View
-                    style={{
-                      paddingHorizontal: 8,
-                      backgroundColor:
-                        d.status && d.status !== 'nieuw!'
-                          ? 'tomato'
-                          : 'seagreen',
-                      height: 30,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Text style={{fontWeight: '500', color: 'white'}}>
-                      {d.status.length ? d.status.toUpperCase() : 'BESCHIKBAAR'}
-                    </Text>
+                    style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                    <View style={{flex: 1}}>
+                      <Card.Title title={d.titel} subtitle={d.type} />
+                    </View>
+                    <View
+                      style={{
+                        paddingHorizontal: 8,
+                        backgroundColor:
+                          d.status && d.status !== 'nieuw!'
+                            ? 'tomato'
+                            : 'seagreen',
+                        height: 30,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                      <Text style={{fontWeight: '500', color: 'white'}}>
+                        {d.status.length
+                          ? d.status.toUpperCase()
+                          : 'BESCHIKBAAR'}
+                      </Text>
+                    </View>
                   </View>
-                </View>
-                <Card.Cover
-                  source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
-                />
-                <Card.Actions>
-                  <View style={{marginLeft: 12}}>
-                    <Switch
-                      disabled={
-                        d.status === 'in optie' || d.status === 'gereserveerd'
-                      }
-                      trackColor={{false: '#767577', true: 'seagreen'}}
-                      thumbColor={value ? 'white' : '#f4f3f4'}
-                      ios_backgroundColor="#3e3e3e"
-                      onValueChange={(value) => toggleDog(value, d)}
-                      value={value}
-                    />
-                  </View>
-                  <View style={{flex: 1, alignItems: 'center'}}></View>
-                  <Button
-                    icon={() => (
-                      <Icon name="arrow-right" size={14} color="black" />
-                    )}
-                    mode="text"
-                    contentStyle={{
-                      height: 80,
-                      width: 80,
-                    }}
-                    onPress={() => navigateDogDetail(d)}
+                  <Card.Cover
+                    source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
                   />
-                </Card.Actions>
-              </Card>
-            </View>
-          );
-        })}
+                  <Card.Actions>
+                    <View style={{marginLeft: 12}}>
+                      <Switch
+                        disabled={
+                          d.status === 'in optie' || d.status === 'gereserveerd'
+                        }
+                        trackColor={{false: '#767577', true: 'seagreen'}}
+                        thumbColor={value ? 'white' : '#f4f3f4'}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={(newValue) => toggleDog(newValue, d)}
+                        value={value}
+                      />
+                    </View>
+                    <View style={{flex: 1, alignItems: 'center'}}></View>
+                    <Button
+                      icon={() => (
+                        <Icon name="arrow-right" size={14} color="black" />
+                      )}
+                      mode="text"
+                      contentStyle={{
+                        height: 80,
+                        width: 80,
+                      }}
+                      onPress={() => navigateDogDetail(d)}
+                    />
+                  </Card.Actions>
+                </Card>
+              </View>
+            );
+          })}
       </SafeAreaView>
     </ScrollView>
   );
