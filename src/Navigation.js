@@ -49,7 +49,7 @@ const Navigation = (props) => {
   const {applicant, dogs, choices} = state;
   const [loading, setLoading] = useState(false);
 
-  let subscription, subscription2, subscription3;
+  let subscription;
   const listen = () => {
     subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateUpdate),
@@ -63,30 +63,6 @@ const Navigation = (props) => {
         getDogs();
       },
     });
-    subscription2 = API.graphql(
-      graphqlOperation(subscriptions.onCreateChoice),
-    ).subscribe({
-      next: ({
-        value: {
-          data: {onCreateChoice},
-        },
-      }) => {
-        console.log('onCreateChoice update', onCreateChoice);
-        if (onCreateChoice.applicantId === applicant.id) getChoices();
-      },
-    });
-    subscription3 = API.graphql(
-      graphqlOperation(subscriptions.onUpdateChoice),
-    ).subscribe({
-      next: ({
-        value: {
-          data: {onUpdateChoice},
-        },
-      }) => {
-        console.log('onUpdateChoice update', onUpdateChoice);
-        if (onUpdateChoice.applicantId === applicant.id) getChoices();
-      },
-    });
     AppState.addEventListener('change', _handleAppStateChange);
     getDogs();
   };
@@ -97,14 +73,6 @@ const Navigation = (props) => {
     if (subscription) {
       subscription.unsubscribe();
       subscription = null;
-    }
-    if (subscription2) {
-      subscription2.unsubscribe();
-      subscription2 = null;
-    }
-    if (subscription3) {
-      subscription3.unsubscribe();
-      subscription3 = null;
     }
   };
 
