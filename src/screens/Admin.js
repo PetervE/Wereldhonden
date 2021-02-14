@@ -164,14 +164,6 @@ const Admin = (props) => {
     }
   };
 
-  if (!admin) {
-    return (
-      <Centered>
-        <Loader />
-      </Centered>
-    );
-  }
-
   return (
     <View style={styles.centered}>
       <Button onPress={signout}>Sign out</Button>
@@ -201,7 +193,7 @@ const MyCustomSignIn = () => {
 
 const AdminApp = (props) => {
   const [authState, setAuthState] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
@@ -211,7 +203,7 @@ const AdminApp = (props) => {
 
   const init = async () => {
     try {
-      setLoading(true);
+      if (!loading) setLoading(true);
       const adminCheck = await Auth.currentAuthenticatedUser();
       if (adminCheck) {
         setAdmin(adminCheck);
@@ -224,6 +216,15 @@ const AdminApp = (props) => {
       if (loading) setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <Centered>
+        <Loader />
+      </Centered>
+    );
+  }
+
   return (
     <Authenticator
       authState="signIn"
@@ -231,7 +232,7 @@ const AdminApp = (props) => {
       onStateChange={(status) => {
         setAuthState(status);
       }}
-      hideDefault={admin ? true : false}
+      hideDefault={admin || loading ? true : false}
       amplifyConfig={awsconfig}
       errorMessage={(e) => console.log('error Authenticator', e)}>
       {admin && authState === 'signedIn' && <Admin override={'signedIn'} />}

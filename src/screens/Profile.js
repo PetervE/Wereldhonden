@@ -51,7 +51,6 @@ const Profile = (props) => {
 
   const isFocused = useIsFocused();
 
-  const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState(true);
   const [stateChoices, setStateChoices] = useState([]);
 
@@ -79,7 +78,7 @@ const Profile = (props) => {
   };
 
   const saveApplicant = async () => {
-    setLoading(true);
+    // setLoading(true);
     let payload = {...applicant, name, email, phone};
     delete payload.createdAt;
     delete payload.updatedAt;
@@ -93,8 +92,7 @@ const Profile = (props) => {
         input: payload,
       },
     });
-    setLoading(false);
-    setExpanded(false);
+    // setLoading(false);
     dispatch({type: 'SET_APPLICANT', payload: updateApplicant});
   };
 
@@ -106,7 +104,7 @@ const Profile = (props) => {
 
   return (
     <ScrollView style={{flex: 1}}>
-      <View>
+      <View style={{paddingTop: 20}}>
         <SafeAreaView>
           <Title style={{paddingHorizontal: 20}}>Jouw wereldhonden</Title>
           <Paragraph style={{paddingHorizontal: 20}}>
@@ -117,59 +115,47 @@ const Profile = (props) => {
             Vul je gegevens in om gecontacteerd te worden door Wereldhonden voor
             de vervolgstappen.
           </Paragraph>
-          <List.Section>
-            <List.Accordion
-              expanded={expanded}
-              onPress={() => setExpanded(!expanded)}
-              titleStyle={{
-                backgroundColor: '#cccccc',
-                color: '#222222',
-                paddingHorizontal: 12,
-                paddingVertical: 12,
-                fontWeight: '500',
-              }}
-              title={
-                applicant && applicant.name ? applicant.name : 'Contactgegevens'
-              }>
-              <View style={styles.formContainer}>
-                <TextInput
-                  style={styles.inputStyle}
-                  label="Naam"
-                  value={name}
-                  onChangeText={(text) => setName(String(text))}
-                />
-                <TextInput
-                  style={styles.inputStyle}
-                  label="E-mail"
-                  value={email}
-                  onChangeText={(text) => setEmail(String(text))}
-                />
-                <TextInput
-                  style={styles.inputStyle}
-                  label="Telefoonnummer"
-                  value={phone}
-                  onChangeText={(text) => setPhone(String(text))}
-                />
-                <View style={{alignItems: 'center'}}>
-                  <Button
-                    disabled={loading || !name || !email || !phone}
-                    icon={() => <Icon name="save" size={18} color="white" />}
-                    mode="contained"
-                    style={{
-                      marginVertical: 8,
-                    }}
-                    contentStyle={{
-                      height: 50,
-                      backgroundColor: 'tomato',
-                      paddingHorizontal: 12,
-                    }}
-                    onPress={saveApplicant}>
-                    Save
-                  </Button>
-                </View>
-              </View>
-            </List.Accordion>
-          </List.Section>
+          <View style={styles.formContainer}>
+            <TextInput
+              style={styles.inputStyle}
+              label="Naam"
+              value={name}
+              onBlur={saveApplicant}
+              onChangeText={(text) => setName(String(text))}
+            />
+            <TextInput
+              autoCapitalize="none"
+              style={styles.inputStyle}
+              label="E-mail"
+              value={email}
+              onBlur={saveApplicant}
+              onChangeText={(text) => setEmail(String(text))}
+            />
+            <TextInput
+              style={styles.inputStyle}
+              label="Telefoonnummer"
+              value={phone}
+              onBlur={saveApplicant}
+              onChangeText={(text) => setPhone(String(text))}
+            />
+            {/* <View style={{alignItems: 'center'}}>
+                <Button
+                  disabled={loading || !name || !email || !phone}
+                  icon={() => <Icon name="save" size={18} color="white" />}
+                  mode="contained"
+                  style={{
+                    marginVertical: 8,
+                  }}
+                  contentStyle={{
+                    height: 50,
+                    backgroundColor: 'tomato',
+                    paddingHorizontal: 12,
+                  }}
+                  onPress={saveApplicant}>
+                  Save
+                </Button>
+              </View> */}
+          </View>
         </SafeAreaView>
       </View>
 
@@ -180,38 +166,46 @@ const Profile = (props) => {
             : `${likedDogs.length} dog`}
         </Title>
       ) : null}
-      <View style={styles.dogsContainer}>
+
+      <List.Section style={styles.dogsContainer}>
         {likedDogs.map((dog, i) => {
           return (
-            <View style={styles.cardContainer} key={dog.id}>
+            <List.Accordion
+              title={dog.titel}
+              style={styles.cardContainer}
+              key={dog.id}>
               <Card>
-                <Card.Title title={dog.titel} subtitle={dog.type} />
-                {dog.status && dog.status.length ? (
-                  <View
-                    style={{
-                      paddingHorizontal: 8,
-                      backgroundColor:
-                        dog.status && dog.status !== 'nieuw!'
-                          ? 'tomato'
-                          : 'seagreen',
-                      height: 30,
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}>
-                    <Text style={{fontWeight: '500', color: 'white'}}>
-                      {dog.status.toUpperCase()}
-                    </Text>
+                <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                  <View style={{flex: 1}}>
+                    <Card.Title title={dog.titel} subtitle={dog.type} />
                   </View>
-                ) : null}
+                  {dog.status && dog.status.length ? (
+                    <View
+                      style={{
+                        paddingHorizontal: 8,
+                        backgroundColor:
+                          dog.status && dog.status !== 'nieuw!'
+                            ? 'tomato'
+                            : 'seagreen',
+                        height: 30,
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                      <Text style={{fontWeight: '500', color: 'white'}}>
+                        {dog.status.toUpperCase()}
+                      </Text>
+                    </View>
+                  ) : null}
+                </View>
                 <Card.Cover
                   source={{uri: `https://wereldhonden.nl${dog.fotos[0]}`}}
                 />
-                <Card.Actions></Card.Actions>
+                {/* <Card.Actions></Card.Actions> */}
               </Card>
-            </View>
+            </List.Accordion>
           );
         })}
-      </View>
+      </List.Section>
     </ScrollView>
   );
 };

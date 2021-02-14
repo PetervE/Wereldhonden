@@ -48,10 +48,12 @@ const Navigation = (props) => {
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
   const [loading, setLoading] = useState(false);
+  const [listening, setListening] = useState(false);
 
   let subscription;
   const listen = () => {
     console.log('LISTEN', applicant);
+    setListening(true);
     subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateUpdate),
     ).subscribe({
@@ -70,6 +72,7 @@ const Navigation = (props) => {
 
   const unlisten = () => {
     console.log('UNLISTEN', applicant);
+    setListening(false);
     AppState.removeEventListener('change', _handleAppStateChange);
     isReadyRef.current = false;
     if (subscription) {
@@ -86,7 +89,11 @@ const Navigation = (props) => {
   }, []);
 
   useEffect(() => {
-    if (applicant && applicant.id) listen(); // listen to updates and get data when user in state
+    console.log('applicant', applicant);
+    if (applicant && applicant.id && !listening) listen();
+    else {
+      if (loading) setLoading(false);
+    }
   }, [applicant]);
 
   const _handleAppStateChange = (nextAppState) => {
@@ -130,7 +137,6 @@ const Navigation = (props) => {
         variables: {id: value},
       });
       if (getApplicant) {
-        console.log('user', getApplicant);
         dispatch({type: 'SET_APPLICANT', payload: getApplicant});
       } else {
         createUser();
