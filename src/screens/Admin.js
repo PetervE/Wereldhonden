@@ -85,7 +85,8 @@ const Admin = (props) => {
           }
         });
         if (find) {
-          if (dog.status && dog.status.length !== find.status.length) {
+          dog.status = dog.status || '';
+          if (dog.status.length !== find.status.length) {
             dogUpdate(dog, find);
           }
         } else {
@@ -204,10 +205,8 @@ const AdminApp = (props) => {
 
   const init = async () => {
     try {
-      if (admin || loading) return;
       setLoading(true);
       const adminCheck = await Auth.currentAuthenticatedUser();
-      console.log('admin', adminCheck);
       if (adminCheck) {
         setAdmin(adminCheck);
       } else {

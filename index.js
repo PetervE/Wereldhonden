@@ -1,11 +1,17 @@
 import 'react-native-gesture-handler';
-import '@react-native-async-storage/async-storage';
-import {AppRegistry} from 'react-native';
+import {AppRegistry, NativeModules} from 'react-native';
 import App from './src/App';
 import {name as appName} from './app.json';
 
 import Amplify from 'aws-amplify';
 import awsconfig from './src/aws-exports';
+
+// NativeModules.RNCNetInfo = {
+//   getCurrentState: jest.fn(() => Promise.resolve()),
+//   addListener: jest.fn(),
+//   removeListeners: jest.fn(),
+// };
+
 Amplify.configure({
   ...awsconfig,
   Analytics: {

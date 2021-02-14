@@ -186,6 +186,23 @@ const Profile = (props) => {
             <View style={styles.cardContainer} key={dog.id}>
               <Card>
                 <Card.Title title={dog.titel} subtitle={dog.type} />
+                {dog.status && dog.status.length ? (
+                  <View
+                    style={{
+                      paddingHorizontal: 8,
+                      backgroundColor:
+                        dog.status && dog.status !== 'nieuw!'
+                          ? 'tomato'
+                          : 'seagreen',
+                      height: 30,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <Text style={{fontWeight: '500', color: 'white'}}>
+                      {dog.status.toUpperCase()}
+                    </Text>
+                  </View>
+                ) : null}
                 <Card.Cover
                   source={{uri: `https://wereldhonden.nl${dog.fotos[0]}`}}
                 />

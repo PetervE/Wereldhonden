@@ -47,7 +47,7 @@ const Navigation = (props) => {
 
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   let subscription;
   const listen = () => {
@@ -69,8 +69,11 @@ const Navigation = (props) => {
 
   const unlisten = () => {
     AppState.removeEventListener('change', _handleAppStateChange);
-    subscription.unsubscribe();
     isReadyRef.current = false;
+    if (subscription) {
+      subscription.unsubscribe();
+      subscription = null;
+    }
   };
 
   useEffect(() => {
@@ -89,7 +92,7 @@ const Navigation = (props) => {
       appState.current.match(/inactive|background/) &&
       nextAppState === 'active'
     ) {
-      listen();
+      init();
     }
     if (
       appState.current == 'active' &&
@@ -114,6 +117,7 @@ const Navigation = (props) => {
   };
 
   const init = async () => {
+    setLoading(true);
     const value = await AsyncStorage.getItem('@user');
     if (value) {
       // get user
@@ -132,7 +136,6 @@ const Navigation = (props) => {
     } else {
       createUser();
     }
-    getDogs();
   };
 
   const getDogs = async () => {
@@ -167,7 +170,7 @@ const Navigation = (props) => {
     });
     // console.log('choices', choicesByApplicant.items);
     dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
-    setLoading(false);
+    if (loading) setLoading(false);
   };
 
   if (loading) {
