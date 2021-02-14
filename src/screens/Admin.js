@@ -53,6 +53,7 @@ const Admin = (props) => {
   const {state, dispatch} = useContext(store);
   const {authData} = props;
   const [admin, setAdmin] = useState(authData);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     return () => {};
@@ -60,6 +61,7 @@ const Admin = (props) => {
 
   const scrape = async () => {
     try {
+      setLoading(true);
       const user = await Auth.currentAuthenticatedUser();
       const token = await user.signInUserSession.idToken.jwtToken;
       const requestInfo = {
@@ -100,6 +102,7 @@ const Admin = (props) => {
         query: mutations.createUpdate,
         variables: {input: {}},
       });
+      setLoading(false);
     } catch (e) {
       console.log('Error scrape', e);
     }
@@ -172,7 +175,10 @@ const Admin = (props) => {
   return (
     <View style={styles.centered}>
       <Button onPress={signout}>Sign out</Button>
-      <Button onPress={scrape}>Click</Button>
+
+      <Button loading={loading} icon="camera" mode="contained" onPress={scrape}>
+        {loading ? '' : 'Update'}
+      </Button>
     </View>
   );
 };

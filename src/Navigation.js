@@ -51,6 +51,7 @@ const Navigation = (props) => {
 
   let subscription;
   const listen = () => {
+    console.log('LISTEN', applicant);
     subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateUpdate),
     ).subscribe({
@@ -68,6 +69,7 @@ const Navigation = (props) => {
   };
 
   const unlisten = () => {
+    console.log('UNLISTEN', applicant);
     AppState.removeEventListener('change', _handleAppStateChange);
     isReadyRef.current = false;
     if (subscription) {
@@ -147,13 +149,11 @@ const Navigation = (props) => {
     });
     if (!listDogs) return console.log('Error scrape: no data');
     const items = listDogs.items.reduce((memo, item) => {
-      if (item.status !== 'geadopteerd') {
-        memo.push({
-          ...item,
-          fotos: item.fotos ? JSON.parse(item.fotos) : false,
-          videos: item.videos ? JSON.parse(item.videos) : false,
-        });
-      }
+      memo.push({
+        ...item,
+        fotos: item.fotos ? JSON.parse(item.fotos) : false,
+        videos: item.videos ? JSON.parse(item.videos) : false,
+      });
       return memo;
     }, []);
     // console.log('dogs', dogs);
