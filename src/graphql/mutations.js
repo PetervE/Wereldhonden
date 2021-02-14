@@ -310,3 +310,39 @@ export const deleteDog = /* GraphQL */ `
     }
   }
 `;
+export const createUpdate = /* GraphQL */ `
+  mutation CreateUpdate(
+    $input: CreateUpdateInput!
+    $condition: ModelUpdateConditionInput
+  ) {
+    createUpdate(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUpdate = /* GraphQL */ `
+  mutation UpdateUpdate(
+    $input: UpdateUpdateInput!
+    $condition: ModelUpdateConditionInput
+  ) {
+    updateUpdate(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUpdate = /* GraphQL */ `
+  mutation DeleteUpdate(
+    $input: DeleteUpdateInput!
+    $condition: ModelUpdateConditionInput
+  ) {
+    deleteUpdate(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;

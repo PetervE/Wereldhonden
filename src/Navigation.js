@@ -35,6 +35,7 @@ import Admin from './screens/Admin';
 import Detail from './screens/Detail';
 
 import {store, StateProvider, initialState} from './store.js';
+import {sub} from 'react-native-reanimated';
 
 const Stack = createStackNavigator();
 
@@ -46,8 +47,18 @@ const Navigation = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    let subscription = API.graphql(
+      graphqlOperation(subscriptions.onCreateUpdate),
+    ).subscribe({
+      next: (next) => {
+        console.log('update', next);
+        getDogs();
+      },
+    });
+
     init();
     return () => {
+      subscription.unsubscribe();
       isReadyRef.current = false;
     };
   }, []);
@@ -80,6 +91,28 @@ const Navigation = (props) => {
     });
   };
 
+  const getDogs = async () => {
+    const {
+      data: {listDogs},
+    } = await API.graphql({
+      query: queries.listDogs,
+      variables: {},
+    });
+    if (!listDogs) return console.log('Error scrape: no data');
+    const items = listDogs.items.reduce((memo, item) => {
+      if (item.status !== 'geadopteerd') {
+        memo.push({
+          ...item,
+          fotos: item.fotos ? JSON.parse(item.fotos) : false,
+          videos: item.videos ? JSON.parse(item.videos) : false,
+        });
+      }
+      return memo;
+    }, []);
+    // console.log('dogs', dogs);
+    dispatch({type: 'SET_DOGS', payload: items});
+  };
+
   const init = async () => {
     const value = await AsyncStorage.getItem('@user');
     if (value) {
@@ -100,25 +133,7 @@ const Navigation = (props) => {
       createUser();
     }
 
-    const {
-      data: {listDogs},
-    } = await API.graphql({
-      query: queries.listDogs,
-      variables: {},
-    });
-    if (!listDogs) return console.log('Error scrape: no data');
-    const items = listDogs.items.reduce((memo, item) => {
-      if (item.status !== 'geadopteerd') {
-        memo.push({
-          ...item,
-          fotos: item.fotos ? JSON.parse(item.fotos) : false,
-          videos: item.videos ? JSON.parse(item.videos) : false,
-        });
-      }
-      return memo;
-    }, []);
-    // console.log('dogs', dogs);
-    dispatch({type: 'SET_DOGS', payload: items});
+    getDogs();
   };
 
   if (loading) {

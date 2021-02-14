@@ -199,6 +199,31 @@ export const listDogs = /* GraphQL */ `
     }
   }
 `;
+export const getUpdate = /* GraphQL */ `
+  query GetUpdate($id: ID!) {
+    getUpdate(id: $id) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUpdates = /* GraphQL */ `
+  query ListUpdates(
+    $filter: ModelUpdateFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUpdates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
 export const choicesByApplicant = /* GraphQL */ `
   query ChoicesByApplicant(
     $applicantId: ID

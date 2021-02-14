@@ -283,3 +283,30 @@ export const onDeleteDog = /* GraphQL */ `
     }
   }
 `;
+export const onCreateUpdate = /* GraphQL */ `
+  subscription OnCreateUpdate {
+    onCreateUpdate {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUpdate = /* GraphQL */ `
+  subscription OnUpdateUpdate {
+    onUpdateUpdate {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUpdate = /* GraphQL */ `
+  subscription OnDeleteUpdate {
+    onDeleteUpdate {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;

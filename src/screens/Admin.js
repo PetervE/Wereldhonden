@@ -50,12 +50,11 @@ import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
 
 const Admin = (props) => {
+  const {state, dispatch} = useContext(store);
   const {authData} = props;
-
   const [admin, setAdmin] = useState(authData);
 
   useEffect(() => {
-    console.log('init admin page', props);
     return () => {};
   }, []);
 
@@ -63,7 +62,6 @@ const Admin = (props) => {
     try {
       const user = await Auth.currentAuthenticatedUser();
       const token = await user.signInUserSession.idToken.jwtToken;
-      console.log(token);
       const requestInfo = {
         headers: {Authorization: token},
         timeout: 120000,
@@ -94,6 +92,13 @@ const Admin = (props) => {
           insertDog(dog);
         }
       }, []);
+
+      const {
+        data: {createUpdate},
+      } = await API.graphql({
+        query: mutations.createUpdate,
+        variables: {input: {}},
+      });
     } catch (e) {
       console.log('Error scrape', e);
     }
