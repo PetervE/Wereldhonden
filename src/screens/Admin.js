@@ -85,7 +85,7 @@ const Admin = (props) => {
           }
         });
         if (find) {
-          if (find.status.length && find.status !== dog.status) {
+          if (dog.status && dog.status.length !== find.status.length) {
             dogUpdate(dog, find);
           }
         } else {
@@ -112,15 +112,13 @@ const Admin = (props) => {
     try {
       delete item.createdAt;
       delete item.updatedAt;
+      // TODO: update all editable fields
       await API.graphql({
         query: mutations.updateDog,
         variables: {
           input: {
             ...item,
-            status:
-              typeof dog.status === 'string' && item.status !== dog.status
-                ? dog.status
-                : '',
+            status: dog.status,
           },
         },
       });

@@ -42,6 +42,9 @@ const Stack = createStackNavigator();
 const Navigation = (props) => {
   const {theme, navigation} = props;
 
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
   const [loading, setLoading] = useState(true);
@@ -50,18 +53,34 @@ const Navigation = (props) => {
     let subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateUpdate),
     ).subscribe({
-      next: (next) => {
-        console.log('update', next);
+      next: ({
+        value: {
+          data: {onCreateUpdate},
+        },
+      }) => {
+        console.log('update', onCreateUpdate);
         getDogs();
       },
     });
-
+    AppState.addEventListener('change', _handleAppStateChange);
     init();
     return () => {
+      AppState.removeEventListener('change', _handleAppStateChange);
       subscription.unsubscribe();
       isReadyRef.current = false;
     };
   }, []);
+
+  const _handleAppStateChange = (nextAppState) => {
+    if (
+      appState.current.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      getDogs();
+    }
+    appState.current = nextAppState;
+    setAppStateVisible(appState.current);
+  };
 
   useEffect(() => {
     if (applicant && applicant.id) getChoices();

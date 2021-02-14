@@ -128,13 +128,13 @@ const Start = (props) => {
     <ScrollView style={{flex: 1}}>
       <SafeAreaView style={styles.dogsContainer}>
         {dogs
-          // .filter((dog) => {
-          //   return (
-          //     dog.status !== 'in optie' &&
-          //     dog.status !== 'gereserveerd' &&
-          //     dog.status !== 'geadopteerd'
-          //   );
-          // })
+          .filter((dog) => {
+            return (
+              dog.status !== 'in optie' &&
+              dog.status !== 'gereserveerd' &&
+              dog.status !== 'geadopteerd'
+            );
+          })
           .sort(function (a, b) {
             var textA = a.titel.toUpperCase();
             var textB = b.titel.toUpperCase();
@@ -146,7 +146,6 @@ const Start = (props) => {
               if (c.dogId === d.id && c.applicantId === applicant.id) return c;
             });
             if (choice) value = choice.liked;
-
             return (
               <View style={styles.cardContainer} key={`dog-${i}`}>
                 <Card>
@@ -155,23 +154,23 @@ const Start = (props) => {
                     <View style={{flex: 1}}>
                       <Card.Title title={d.titel} subtitle={d.type} />
                     </View>
-                    <View
-                      style={{
-                        paddingHorizontal: 8,
-                        backgroundColor:
-                          d.status && d.status !== 'nieuw!'
-                            ? 'tomato'
-                            : 'seagreen',
-                        height: 30,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}>
-                      <Text style={{fontWeight: '500', color: 'white'}}>
-                        {d.status.length
-                          ? d.status.toUpperCase()
-                          : 'BESCHIKBAAR'}
-                      </Text>
-                    </View>
+                    {d.status && d.status.length ? (
+                      <View
+                        style={{
+                          paddingHorizontal: 8,
+                          backgroundColor:
+                            d.status && d.status !== 'nieuw!'
+                              ? 'tomato'
+                              : 'seagreen',
+                          height: 30,
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}>
+                        <Text style={{fontWeight: '500', color: 'white'}}>
+                          {d.status.toUpperCase()}
+                        </Text>
+                      </View>
+                    ) : null}
                   </View>
                   <Card.Cover
                     source={{uri: `https://wereldhonden.nl${d.fotos[0]}`}}
