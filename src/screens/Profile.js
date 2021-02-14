@@ -42,41 +42,20 @@ import Amplify, {
 import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as subscriptions from '../graphql/subscriptions';
-import {useFocusEffect, useIsFocused} from '@react-navigation/native';
+// import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 
 const Profile = (props) => {
   const {navigation, route} = props;
   const {state, dispatch} = useContext(store);
   const {applicant, dogs, choices} = state;
 
-  const isFocused = useIsFocused();
-
   const [expanded, setExpanded] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [stateChoices, setStateChoices] = useState([]);
+  const [stateChoices, setStateChoices] = useState(choices);
 
   const [name, setName] = useState(applicant.name || '');
   const [email, setEmail] = useState(applicant.email || '');
   const [phone, setPhone] = useState(applicant.phone || '');
-
-  useEffect(() => {
-    if (isFocused === true) init();
-    return () => {
-      setLoading(true);
-    };
-  }, [isFocused]);
-
-  const init = async () => {
-    const {
-      data: {choicesByApplicant},
-    } = await API.graphql({
-      query: queries.choicesByApplicant,
-      variables: {applicantId: applicant.id},
-    });
-    // console.log('choices', choicesByApplicant.items);
-    setStateChoices(choicesByApplicant.items);
-    setLoading(false);
-  };
 
   const saveApplicant = async () => {
     setLoading(true);
