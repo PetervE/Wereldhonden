@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "wereldhondena65209db": {}
+      },
+      "function": {
+        "scraper": {
+          "deploymentBucketName": "amplify-wereldhonden-dev-111828-deployment",
+          "s3Key": "amplify-builds/scraper-73693043616c46656945-build.zip"
+        }
       }
     }
   }

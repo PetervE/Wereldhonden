@@ -64,14 +64,12 @@ const Admin = (props) => {
       const user = await Auth.currentAuthenticatedUser();
       const token = await user.signInUserSession.idToken.jwtToken;
       console.log(token);
-
-      return;
-
-      const result = await API.get('restapi', '/scraper', {
-        timeout: 60000,
-      });
-      if (!result || !result.length)
-        return console.log('Error scrape: no data');
+      const requestInfo = {
+        headers: {Authorization: token},
+        timeout: 120000,
+      };
+      const result = await API.get('restapi', '/scraper', requestInfo);
+      if (!result || !result.length) return console.log('Error scrape no data');
 
       const {data} = await API.graphql({
         query: queries.listDogs,

@@ -4,20 +4,6 @@ exports.handler = async (event) => {
   let result = null;
   let browser = null;
 
-  async function waitAndClick(index, page) {
-    const selector = `#divload${index}`;
-    const button = `#click${index}`;
-
-    await page.evaluate(
-      (button) => document.querySelector(button).click(),
-      button,
-    );
-    await page.waitForFunction(
-      `document.querySelector('${selector}') && document.querySelector('${selector}').clientHeight != 0`,
-      {visible: true},
-    );
-  }
-
   try {
     browser = await chromium.puppeteer.launch({
       args: chromium.args,
@@ -31,15 +17,28 @@ exports.handler = async (event) => {
 
     await page.goto('https://wereldhonden.nl/hond-adopteren');
 
-    for (var i = 0; i < 41; i++) {
-      await waitAndClick(i, page);
-    }
+    result = await page.evaluate(async () => {
+      function sleep(ms) {
+        return new Promise((resolve) => {
+          setTimeout(resolve, ms);
+        });
+      }
 
-    result = await page.evaluate(() => {
       let data = []; // Create an empty array that will store our data
       let elements = document.querySelectorAll('div[itemprop="blogPost"]'); // Select all Products
+      const items = Array.from(elements);
 
-      Array.from(elements).map((element, index) => {
+      for (var i = 0; i < items.length; i++) {
+        const selector = `#divload${i}`;
+        const button = `#click${i}`;
+        elem = document.querySelector(button);
+        if (elem) {
+          await elem.click();
+          await sleep(500);
+        }
+      }
+
+      items.map((element, index) => {
         const obj = {};
         let lastProp, isProp;
 
