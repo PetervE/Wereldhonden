@@ -49,8 +49,9 @@ const Navigation = (props) => {
   const {applicant, dogs, choices} = state;
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let subscription = API.graphql(
+  let subscription;
+  const listen = () => {
+    subscription = API.graphql(
       graphqlOperation(subscriptions.onCreateUpdate),
     ).subscribe({
       next: ({
@@ -63,39 +64,41 @@ const Navigation = (props) => {
       },
     });
     AppState.addEventListener('change', _handleAppStateChange);
-    init();
+    getDogs();
+  };
+
+  const unlisten = () => {
+    AppState.removeEventListener('change', _handleAppStateChange);
+    subscription.unsubscribe();
+    isReadyRef.current = false;
+  };
+
+  useEffect(() => {
+    init(); // get user first
     return () => {
-      AppState.removeEventListener('change', _handleAppStateChange);
-      subscription.unsubscribe();
-      isReadyRef.current = false;
+      unlisten();
     };
   }, []);
+
+  useEffect(() => {
+    if (applicant && applicant.id) listen(); // listen to updates and get data when user in state
+  }, [applicant]);
 
   const _handleAppStateChange = (nextAppState) => {
     if (
       appState.current.match(/inactive|background/) &&
       nextAppState === 'active'
     ) {
-      getDogs();
+      listen();
+    }
+    if (
+      appState.current == 'active' &&
+      (nextAppState === 'inactive' || nextAppState === 'background')
+    ) {
+      unlisten();
     }
     appState.current = nextAppState;
     setAppStateVisible(appState.current);
-  };
-
-  useEffect(() => {
-    if (applicant && applicant.id) getChoices();
-  }, [applicant]);
-
-  const getChoices = async () => {
-    const {
-      data: {choicesByApplicant},
-    } = await API.graphql({
-      query: queries.choicesByApplicant,
-      variables: {applicantId: applicant.id},
-    });
-    // console.log('choices', choicesByApplicant.items);
-    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
-    setLoading(false);
   };
 
   const createUser = async () => {
@@ -108,6 +111,28 @@ const Navigation = (props) => {
       type: 'SET_APPLICANT',
       payload: data.createApplicant,
     });
+  };
+
+  const init = async () => {
+    const value = await AsyncStorage.getItem('@user');
+    if (value) {
+      // get user
+      const {
+        data: {getApplicant},
+      } = await API.graphql({
+        query: queries.getApplicant,
+        variables: {id: value},
+      });
+      if (getApplicant) {
+        console.log('user', getApplicant);
+        dispatch({type: 'SET_APPLICANT', payload: getApplicant});
+      } else {
+        createUser();
+      }
+    } else {
+      createUser();
+    }
+    getDogs();
   };
 
   const getDogs = async () => {
@@ -130,29 +155,19 @@ const Navigation = (props) => {
     }, []);
     // console.log('dogs', dogs);
     dispatch({type: 'SET_DOGS', payload: items});
+    getChoices();
   };
 
-  const init = async () => {
-    const value = await AsyncStorage.getItem('@user');
-    if (value) {
-      // get user
-      const {
-        data: {getApplicant},
-      } = await API.graphql({
-        query: queries.getApplicant,
-        variables: {id: value},
-      });
-      if (getApplicant) {
-        console.log('user', getApplicant);
-        dispatch({type: 'SET_APPLICANT', payload: getApplicant});
-      } else {
-        createUser();
-      }
-    } else {
-      createUser();
-    }
-
-    getDogs();
+  const getChoices = async () => {
+    const {
+      data: {choicesByApplicant},
+    } = await API.graphql({
+      query: queries.choicesByApplicant,
+      variables: {applicantId: applicant.id},
+    });
+    // console.log('choices', choicesByApplicant.items);
+    dispatch({type: 'SET_CHOICES', payload: choicesByApplicant.items});
+    setLoading(false);
   };
 
   if (loading) {
