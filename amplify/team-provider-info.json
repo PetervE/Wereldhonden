@@ -12,14 +12,14 @@
       "AmplifyAppId": "dqd2vtopn0biv"
     },
     "categories": {
+      "auth": {
+        "wereldhonden6ef91288": {}
+      },
       "function": {
         "wereldhondenscraper": {
           "deploymentBucketName": "amplify-wereldhonden-production-234948-deployment",
           "s3Key": "amplify-builds/wereldhondenscraper-77385a32677a2b485362-build.zip"
         }
-      },
-      "auth": {
-        "wereldhonden6ef91288": {}
       }
     }
   }
