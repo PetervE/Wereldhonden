@@ -1,27 +1,6 @@
 {
-  "function": {
-    "scraper": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
   "api": {
-    "restapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "scraper",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "graphql": {
+    "wereldhondengraphql": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -36,10 +15,37 @@
           "additionalAuthenticationProviders": []
         }
       }
+    },
+    "wereldhondenrest": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "wereldhondenscraper",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
+  },
+  "storage": {
+    "dynamoDogs": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    }
+  },
+  "function": {
+    "wereldhondenscraper": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "auth": {
-    "wereldhondena65209db": {
+    "wereldhonden6ef91288": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

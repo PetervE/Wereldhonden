@@ -68,7 +68,7 @@ const Admin = (props) => {
         headers: {Authorization: token},
         timeout: 120000,
       };
-      const result = await API.get('restapi', '/scraper', requestInfo);
+      const result = await API.get('wereldhondenrest', '/scraper', requestInfo);
       if (!result || !result.length) return console.log('Error scrape no data');
 
       const {data} = await API.graphql({
@@ -196,9 +196,18 @@ const AdminApp = (props) => {
   const [loading, setLoading] = useState(true);
   const [admin, setAdmin] = useState(false);
 
+  const listener = (data) => {
+    const {payload} = data;
+    console.log(1337, payload);
+  };
+
   useEffect(() => {
+    Hub.listen('MY_CHANNEL', listener);
     init();
     if (authState === 'signIn' && admin) setAdmin(false);
+    return () => {
+      Hub.remove('MY_CHANNEL', listener);
+    };
   }, [authState]);
 
   const init = async () => {

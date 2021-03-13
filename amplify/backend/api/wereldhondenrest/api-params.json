@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/scraper",
+            "lambdaFunction": "wereldhondenscraper",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/scraper"
+        }
+    ],
+    "resourceName": "wereldhondenrest",
+    "apiName": "wereldhondenrest",
+    "functionArns": [
+        {
+            "lambdaFunction": "wereldhondenscraper"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-wereldhonden-production-234948-authRole",
+        "unAuthRoleName": "amplify-wereldhonden-production-234948-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "wereldhondenscraper",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

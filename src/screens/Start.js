@@ -75,7 +75,9 @@ const Start = (props) => {
         },
       });
       updatedItem = data.updateChoice;
-      const index = choices.findIndex((x) => x.id === updatedItem.id);
+      console.log('UPDATED', updatedItem);
+      const index = stateChoices.findIndex((x) => x.id === updatedItem.id);
+      console.log('find index of choice', index, stateChoices);
       let updatedArray = [...stateChoices];
       if (typeof index === 'number') {
         updatedArray[index] = updatedItem;
